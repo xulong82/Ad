@@ -1,0 +1,73 @@
+---
+title: "Alzheimer's Disease Project"
+author: "Xulong Wang"
+date: "February 17, 2015"
+output: 
+  ioslides_presentation:
+    widescreen: true
+    smaller: true
+---
+
+# A genome-wide gene-expression analysis in APP-transgenic mice during development
+
+```{r, echo=FALSE, warning = F}
+library(ape)
+library(amap)
+library(ggplot2)
+library(ggdendro)
+library(pheatmap)
+
+rm(list = ls())
+setwd("~/Dropbox/GitHub/Ad/data")
+load(file = "complete_tpm.rdt")
+col.manual <- c("grey70", "firebrick1", "chartreuse3", "dodgerblue3", "gold1", "darkorchid2")
+
+# --- 2014 samples only
+brain.tpm <- brain.tpm[, c(grep("2014", colnames(brain.tpm)), grep("mouse", colnames(brain.tpm)))]
+brain.tpm <- brain.tpm[apply(brain.tpm, 1, function (x) max(x) > 5), ]
+brain.tpm <- log2(brain.tpm + 1)
+
+```
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## HC on samples
+
+```{r echo=F, fig.height = 5, fig.width = 10}
+mycol <- rep("blue", ncol(brain.tpm))
+mycol[grep("mouse", colnames(brain.tpm))] <- "red"
+hc1 <- hcluster(t(brain.tpm), method = "pearson", link = "average")
+par(mar = c(0, 0, 0, 0))
+plot(as.phylo(hc1), type = "unrooted", tip.color = mycol, cex = 0.5, font = 2, lab4ut = "axial")
+```
+
+## Mouse 1559
+
+```{r}
+brain.tpm1 <- brain.tpm[apply(brain.tpm, 1, function(x) max(x) - min(x) > 1), ]
+dim(brain.tpm1)
+```
+
+```{r echo=F, fig.height = 4, fig.width = 10}
+par(mfrow = c(1, 2), mar = c(5, 4, 2, 2))
+plot(brain.tpm1$WT6m1484.2014 - brain.tpm1$APP5m1558.2014, ylim = c(-6, 6), xlab = "", ylab = "", main = "WT6m1484 - APP5m1558")
+abline(0, 0, lwd = 1, col = "red")
+plot(brain.tpm1$APP5m1559.2014 - brain.tpm1$APP5m2633.2014, ylim = c(-6, 6), xlab = "", ylab = "", main = "APP5m1559 - APP5m2633")
+abline(0, 0, lwd = 1, col = "red")
+```
+
+## Downstream dataset
+
+`r brain.tpm <- brain.tpm[, -grep("APP5m1559.2014", colnames(brain.tpm))]`
+```{r}
+dim(brain.tpm)
+```
+```{r echo=F, fig.height=4, fig.width = 6}
+par(mar = c(5, 4, 0, 2))
+hist(c(as.matrix(brain.tpm)), xlab = "Log2(TPM)", main = "")
+```
+
