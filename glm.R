@@ -4,18 +4,22 @@
 library(ape)
 library(amap)
 library(ggdendro)
+library(VennDiagram)
 library(MASS)
 library(xtable)
 library(ggplot2)
+library(ggvis)
 library(pheatmap)
 library(grid)
-library(mygene)
 
 rm(list = ls())
-setwd("~/Dropbox/GitHub/Ad/data")
-load("brain2014.rdt")
+setwd("~/Dropbox/GitHub/Ad")
+load("./data/brain2014.rdt")
+load("./data/retina2014.rdt")
 
 dt <- brain.tpm
+dt <- retina.tpm
+
 cutoff <- quantile(c(as.matrix(dt)), 0.25)  # TPM level
 dt <- dt[apply(dt, 1, function(x) max(x) > cutoff), ]
 dt <- dt[apply(dt, 1, function(x) sum(x > 0) > round(ncol(dt) / 10)), ]
@@ -27,113 +31,106 @@ uid <- paste(age, group, sep = "_")
 conditions <- c("2m_WT", "2m_APP", "4m_WT", "4m_APP", "5m_WT", "5m_APP", "6m_WT", "6m_APP")
 
 # --- GLM regression ---
-fit <- list()
 glm.dt <- as.matrix(dt)
-for (i in 1:nrow(glm.dt)) {
-  if (i %% 1e3 == 0) cat(i, "\n")
-  y <- glm.dt[i, ]
-  fit0 <- lm(y ~ age + group + batch + age * group)
-  fit[[i]] <- summary(fit0)
-}
-names(fit) <- rownames(glm.dt)
+glm.fit <- lapply(1:nrow(glm.dt), function (x) summary(lm(glm.dt[x, ] ~ age + group + batch + age * group)))
+names(glm.fit) <- rownames(glm.dt)
 dt.bc <- dt
 for (i in 1:nrow(dt.bc)) 
-  dt.bc[i, ] <- dt[i, ] - fit[[i]]$coefficients["batchmouse", "Estimate"] * (as.numeric(batch) - 1)
-save(dt.bc, age, group, uid, conditions, file = "bc2014.rdt")
-save(fit, file = "glm_fit.rdt")
+  dt.bc[i, ] <- dt[i, ] - glm.fit[[i]]$coefficients["batchmouse", "Estimate"] * (as.numeric(batch) - 1)
+save(dt.bc, age, group, uid, conditions, file = "./data/brain_bc2014.rdt")
+# save(dt.bc, age, group, uid, conditions, file = "./data/retina_bc2014.rdt")
 
-# --- PCA GLM estimate
-fit.est <- NULL
-for (id in names(fit))
-  fit.est <- rbind(fit.est, fit[[id]]$coefficients[, "Estimate"])
-rownames(fit.est) <- names(fit)
-  
-svd.dt <- fit.est
-svd <- svd(svd.dt)
-rownames(svd$v) <- colnames(svd.dt)
-  
-svd <- svd(svd.dt[, -c(1, 6)])
-rownames(svd$v) <- colnames(svd.dt[, -c(1, 6)])
-  
-dev.off()
-barplot(svd$d)
-barplot(svd$v[, 1], main = paste("PC", 1), las = 2)
-abline(h = 0)
-par(mfrow = c(3, 3))
-for (i in 1:ncol(svd$v)) barplot(svd$v[, i], main = paste("PC", i), las = 2)
-  
-# --- GLM cohorts ---
-r2 <- sapply(fit, function (x) x$r.squared)
-fval <- sapply(fit, function (x) x$fstatistic)
+dt.cond <- NULL
+for (idx in conditions) dt.cond <- cbind(dt.cond, rowMeans(dt.bc[, uid == idx]))
+colnames(dt.cond) <- conditions
+
+r2 <- sapply(glm.fit, function (x) x$r.squared)
+fval <- sapply(glm.fit, function (x) x$fstatistic)
 pval <- apply(fval, 2, function (x) pf(x[1], x[2], x[3], lower.tail = F))
 qval <- p.adjust(pval, method = "fdr")
+fit.qr <- glm.fit[qval < 0.05 & r2 > 0.5]
 
-geneId <- names(fit)[qval < 0.05 & r2 > 0.5]
-fit <- fit[geneId]
+fit.app <- fit.qr[["App"]]
+save(fit.app, file = "/fit_app.rdt")
 
-fit.est <- NULL
-fit.pval <- NULL
-for (id in geneId) {
-  fit.pval <- rbind(fit.pval, fit[[id]]$coefficients[, "Pr(>|t|)"])
-  fit.est <- rbind(fit.est, fit[[id]]$coefficients[, "Estimate"])
-} 
-rownames(fit.pval) <- rownames(fit.est) <- geneId
+# --- PCA GLM estimate
+fit.est <- lapply(glm.fit, function (x) x$coefficients[, "Estimate"])
+fit.est <- do.call(rbind, fit.est)
 
+fit.est <- lapply(fit.qr, function (x) x$coefficients[, "Estimate"])
+fit.est <- do.call(rbind, fit.est)
+fit.pval <- lapply(fit.qr, function (x) x$coefficients[, "Pr(>|t|)"])
+fit.pval <- do.call(rbind, fit.pval)
+  
+svd.dt <- fit.est[, -c(1, 6)]
+feature <- factor(colnames(svd.dt), levels = colnames(svd.dt))
+geneId <- rownames(svd.dt)
+PC <- paste("PC", 1:ncol(svd.dt), sep = "")
+svd <- svd(svd.dt)
+barplot(svd$d)
+rownames(svd$v) <- feature
+colnames(svd$v) <- PC
+
+gdt <- data.frame(value = c(svd$v), PC = rep(PC, each = 7), feature = rep(feature, 7))
+gdt$geno <- rep("WT", nrow(gdt))
+gdt$geno[grep("APP", gdt$feature)] <- "APP"
+save(gdt, file = "./markdown/gdt01.rdt")
+
+ggplot(gdt, aes(x = feature, y = value, fill = geno)) + 
+  geom_bar(stat = "identity") + facet_grid(. ~ PC) +
+  scale_fill_manual(values = c("red", "blue")) +
+  theme_bw() + xlab("") + ylab("") + 
+  theme(axis.text.x = element_text(angle = 90))
+
+barplot(svd$u[, 1]) 
+cut <- quantile(abs(svd$u[, 1]), 0.95)
+abline(h = -cut, col = "red"); abline(h = cut, col = "red")
+
+x = geneId[abs(svd$u[, 1]) > cut]
+x.dt = dt.cond[x, ]
+gdt <- data.frame(value = c(x.dt), gene = rep(rownames(x.dt), 8), group = rep(conditions, each = nrow(x.dt)))
+gdt %>% ggvis(~group, ~value, stroke = ~gene) %>% layer_lines() %>%
+  add_tooltip(function (x) paste("Gene: ", x$gene), "hover")
+
+# --- GLM cohorts ---
 logit <- apply(fit.pval, 2, function (x) x < 0.05) & apply(fit.est, 2, function (x) abs(x) > 0.2)
 geneId.age <- geneId[as.logical(rowSums(logit[, grep("age", colnames(fit.pval))]))]
 geneId.app <- geneId[as.logical(rowSums(logit[, grep("APP", colnames(fit.pval))]))]
-write.table(geneId.age, file = "./Gene/geneId_age.txt", sep = "\t", row.names = F, col.names = F, quote = F)
-write.table(geneId.app, file = "./Gene/geneId_app.txt", sep = "\t", row.names = F, col.names = F, quote = F)
 
-profile.app <- logit[geneId.app, grep("APP", colnames(logit))]
-profile.app.str <- apply(profile.app, 1, function (x) paste(x, collapse = "-"))
-profile.app.table <- sort(table(profile.app.str))
-profile.app.Id <- names(profile.app.table)
+grid.newpage()                                                                                                                                       
+draw.pairwise.venn(length(geneId.age), length(geneId.app), length(intersect(geneId.age, geneId.app)), 
+                   category = c("Age", "APP"), fill = c("light blue", "pink"))
+                                                                                                                                                        
+profile <- logit[geneId.app, grep("APP", colnames(logit))]
+profile <- logit[geneId.age, grep("age", colnames(logit))]
 
-geneId.app.profile <- list()
-for (idx in profile.app.Id)
-  geneId.app.profile[[idx]] <- geneId.app[profile.app.str == idx]
+profile.str <- apply(profile, 1, function (x) paste(x, collapse = "-"))
+profile.table <- sort(table(profile.str))
+profile.Id <- names(profile.table)
 
-lapply(geneId.app.profile, write, "./Gene/glm_app_profile.txt", append = TRUE, ncolumns = 1e3)
-  
-profile.age <- logit[geneId.age, grep("age", colnames(logit))]
-profile.age.str <- apply(profile.age, 1, function (x) paste(x, collapse = "-"))
-profile.age.table <- sort(table(profile.age.str))
-profile.age.Id <- names(profile.age.table)
-  
-geneId.age.profile <- list()
-for (idx in profile.age.Id)
-  geneId.age.profile[[idx]] <- geneId.age[profile.age.str == idx]
-  
-lapply(geneId.age.profile, write, "./Gene/glm_age_profile.txt", append = TRUE, ncolumns = 1e3)
-  
-mus2hg <- read.delim("~/Dropbox/X/hg2mus.map", header = F, stringsAsFactors = F)
-annotation <- queryMany(geneId.app, scopes="symbol", species="mouse", 
-  return.as = "DataFrame", fields = c("name", "summary", "go", "kegg"))
-annotation <- queryMany(geneId.age, scopes="symbol", species="mouse", 
-  return.as = "DataFrame", fields = c("name", "summary", "go", "kegg"))
-table <- annotation[c("query", "name", "summary")]
-table <- table[!duplicated(table$query), ]
+save(logit, profile.Id, file = "markdown/logit.rdt")
 
-table$hg <- mus2hg$V1[match(geneId.app, mus2hg$V4)]
-table$hg <- mus2hg$V1[match(geneId.age, mus2hg$V4)]
-annotation.hg <- queryMany(table$hg, scopes="symbol", species="human", 
-  return.as = "DataFrame", fields = c("name", "summary", "go", "kegg"))
-table.hg <- annotation.hg[c("query", "name", "summary")]
-table.hg <- table.hg[!duplicated(table.hg$query), ]
-table$summary_hg <- table.hg$summary[match(table$hg, table.hg$query)]
-table$summary <- paste("Mus", table$summary, sep = ":")
-table$summary_hg <- paste("Hg", table$summary_hg, sep = ":")
-table$summary <- paste(table$summary, table$summary_hg)
-table <- as.data.frame(table[c("query", "name", "hg", "summary")])
+geneId.profile <- list()
+for (idx in profile.Id)
+  geneId.profile[[idx]] <- geneId.app[profile.str == idx]
+  geneId.profile[[idx]] <- geneId.age[profile.str == idx]
 
-write.table(table, file = "./Gene/table_app.txt", sep = "\t", row.names = F, col.names = T, quote = F)
-write.table(table, file = "./Gene/table_age.txt", sep = "\t", row.names = F, col.names = T, quote = F)
+tile.dt <- NULL
+for (i in 1:length(profile.Id))
+  tile.dt <- rbind(tile.dt, as.logical(unlist(strsplit(profile.Id[i], "-"))))
+tile.dt <- data.frame(value = c(tile.dt), 
+  profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
+  group = factor(rep(colnames(profile), each = nrow(tile.dt)), levels = colnames(profile)))
 
-write(print(xtable(table)), file = "./Gene/summary_app.tex", append = T)
-write(print(xtable(table)), file = "./Gene/summary_age.tex", append = T)
+save(tile.dt, profile.table, file = "./markdown/gdt03.rdt")
+ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
+  theme_bw() + xlab("") + ylab("") + coord_flip() +
+##scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_x_discrete(labels = c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_y_discrete(labels = profile.table) +
+  scale_fill_manual(values = c("grey80", "firebrick1")) 
 
-# --- HC ---
+# --- HC on GLM cohorts ---
 dt.hc <- dt.bc[geneId, ]
 dt.hc <- dt.bc[unique(c(geneId.app, geneId.age)), ]
 
@@ -144,12 +141,26 @@ dt.sus <- dt.bc[susId, ]
 hc1 <- hcluster(t(dt.hc), method = "pearson", link = "average")
 hc2 <- hcluster(dt.hc, method = "pearson", link = "average")
 
-plot(as.phylo(hc1), edge.width = 2, font = 2, cex = 0.7, label.offset = 1e-4, direction = "downward")
+mycol <- rep("grey50", ncol(dt.hc))
+mycol[grep("APP", colnames(dt))] <- "firebrick1"
+hc1 <- plot(as.phylo(hc1), edge.width = 2, font = 2, cex = 0.7, label.offset = 1e-4, tip.color = mycol, direction = "downward")
+save(hc1, mycol, file = "./markdown/brain_hc2.rdt")
 
-conditions <- unique(uid)
-byConditions <- NULL
-for (idx in conditions) byConditions <- cbind(byConditions, rowMeans(dt.bc[, uid == idx]))
-colnames(byConditions) <- conditions
+group1<- c("APP5m1558.2014", "APP5m2751.2014", "APP5m1633.2014","APP5m1636.2014","APP6m1684.2014","APP5m1648.2014", "APP5m1623.2014")
+group2<- c("mouse_3346_6m_APP", "mouse_3440_6m_APP", "mouse_3351_6m_APP", "mouse_6585_6m_APP", "APP5m1647.2014", "APP5m1738.2014")
 
-tef <- byConditions["Tef", ]
-c1qa <- byConditions["C1qa", ]
+dt.g1 <- dt.bc[, group1]
+dt.g2 <- dt.bc[, group2]
+colnames(dt.g1) <- paste("group1", colnames(dt.g1), sep = "_")
+colnames(dt.g2) <- paste("group2", colnames(dt.g2), sep = "_")
+dt.g12 <- cbind(dt.g1, dt.g2)
+fc <- rowMeans(dt.g1) - rowMeans(dt.g2) 
+treat <- gsub("^.*(group1|group2).*", "\\1", colnames(dt.g12))
+tt.pval <- apply(dt.g12, 1, function(x) pairwise.t.test(x, treat, p.adj = "none")$p.value)
+tt.qval <- p.adjust(tt.pval, method = "fdr")
+idx <- which(tt.qval < 0.05 & abs(fc) > 0.2)
+geneId <- rownames(dt.g12)[idx]
+
+mycol <- c("grey70", "firebrick1", "chartreuse3", "dodgerblue3", "gold1", "darkorchid2")
+clusts = cutree(hc2, 6)
+plot(as.phylo(hc2), type = "unrooted", tip.color = mycol[clusts], cex = 0.5, font = 2, lab4ut = "axial")

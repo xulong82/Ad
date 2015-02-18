@@ -4,63 +4,47 @@
 library(ape)
 library(amap)
 library(ggplot2)
+library(ggvis)
+library(WGCNA)
 library(dynamicTreeCut)
 
 rm(list = ls())
-setwd("~/Dropbox/AD")
-load("R/bc2014.rdt")
+setwd("~/Dropbox/GitHub/Ad")
+load("./data/brain_bc2014.rdt")
 dt <- dt.bc
-
-# --- DATA --- 
-age <- factor(gsub("^.*(2m|4m|5m|6m).*", "\\1", colnames(dt)), levels = c("2m", "4m", "5m", "6m"))
-group <- factor(gsub("^.*(WT|APP).*", "\\1", colnames(dt)), levels = c("WT", "APP"))
-uid <- paste(age, group, sep = "_")
-conditions <- c("2m_WT", "2m_APP", "4m_WT", "4m_APP", "5m_WT", "5m_APP", "6m_WT", "6m_APP")
-
-dt <- dt[apply(dt, 1, sd) > 0.1, ]
-aov.pval <- NULL  # --- ANOVA ---
+aov.pval <- NULL  
 for (i in 1:nrow(dt)) {
   if (i %% 1e3 == 0) cat(i, "\n")
   dat1 <- data.frame(y = as.matrix(dt)[i, ], age, group)
   aov <- aov(y ~ age * group, data = dat1)
   aov.pval <- c(aov.pval, min(summary(aov)[[1]][["Pr(>F)"]], na.rm = T))
 }
+dt.cond <- NULL
 dt <- dt[aov.pval < 0.05, ]
-
-byConditions <- NULL
-for (idx in conditions) byConditions <- cbind(byConditions, rowMeans(dt[, uid == idx]))
-colnames(byConditions) <- conditions
-
-dt <- as.data.frame(byConditions)
+for (idx in conditions) dt.cond <- cbind(dt.cond, rowMeans(dt[, uid == idx]))
+colnames(dt.cond) <- conditions
+dt.cond <- dt.cond[apply(dt.cond, 1, sd) > 0.1, ]
+dt <- as.data.frame(dt.cond)
 n.gene <- nrow(dt)
 geneId <- rownames(dt)
+str(dt)
 
-hc1 <- hcluster(t(dt), method = "pearson", link = "average")
-plot(as.phylo(hc1), type = "unrooted", cex = .5, font = 2, lab4ut = "axial")
-
-# --- TOPOLOGY OVERLAP MATRIX --- 
-sft <- NULL
-breaks <- 20
+sft <- NULL  # --- Scale free topology
 similarity <- cor(t(dt), method = "pearson")
 diag(similarity) <- 0
 for (beta in seq(1, 31, 2)) {
   adjacency <- abs(similarity)^beta
   k1 <- rowSums(adjacency)
-  discretized.k = cut(k1, breaks)
+  discretized.k = cut(k1, 20)  # breaks:20
   dk = tapply(k1, discretized.k, mean)
   p.dk = tapply(k1, discretized.k, length) / length(k1)
-  sum(p.dk, na.rm = T)
-  
   dk = dk[! is.na(dk)]
   p.dk = p.dk[! is.na(p.dk)]
-  
   fit <- summary(lm(log10(p.dk) ~ log10(dk)))
   sr2 <- -sign(fit$coefficients["log10(dk)", "Estimate"]) * fit$r.squared
   sft <- rbind(sft, c(beta, sr2))
 }
-
 plot(sft, main = "Scale free topology", xlab = "beta", ylab = "signed R2")
-
 sft.beta <- 27
 adjacency <- abs(similarity)^sft.beta
 tom <- matrix(0, n.gene, n.gene)
@@ -81,45 +65,47 @@ diss.tom <- 1 - tom
 
 # --- NETWORK ---
 dendro <- hclust(as.dist(diss.tom), method = "average")
-branch <- cutreeDynamic(dendro = dendro, distM = diss.tom, 
-                        cutHeight = 0.97, minClusterSize = 30, deepSplit = 2,
-                        pamRespectsDendro = F)
-
+branch <- cutreeDynamic(dendro = dendro, distM = diss.tom, minClusterSize = 30)
 names(branch) <- geneId
 table(branch)
+
+geneId.network <- list()
+for (idx in 1:8) geneId.network[[idx]] <- names(branch[branch == idx])
+lapply(geneId.network, write, "./data/network.txt", append = T, ncolumns = 1e3)
 
 eigene <- NULL
 branchId <- names(table(branch))[-1]
 for (idx in branchId) {
   dt1 <- dt[branch == idx, ]
   dt1 <- t(apply(dt1, 1, scale))
-  colnames(dt1) <- conditions
   svd1 <- svd(dt1)
   eigene <- rbind(eigene, svd1$v[, 1])
 }
-colnames(eigene) <- conditions
-rownames(eigene) <- branchId
+dimnames(eigene) <- list(branchId, conditions)
 
-mod.sim <- cor(t(eigene))
-diag(mod.sim) <- 0
-mod.sim[upper.tri(mod.sim)] <- 0
-which(mod.sim > 0.9, arr.ind = T)
+module <- paste("Module", branchId, sep = "")
+group <- factor(conditions, levels = conditions)
+gdt <- data.frame(value = c(eigene), module = rep(module, 8), group = rep(group, each = 8))
+gdt$geno <- factor(gsub("^.*(WT|APP).*", "\\1", gdt$group), levels = c("WT", "APP"))
+save(branch, gdt, file = "markdown/eigene.rdt")
+ggplot(gdt, aes(x = group, y = value, fill = geno)) + 
+  geom_bar(stat = "identity") + facet_grid(. ~ module) +
+  scale_fill_manual(values = c("red", "blue")) +
+  theme_bw() + xlab("") + ylab("") + 
+  theme(axis.text.x = element_text(angle = 90))
 
-barplot(eigene[11, ], las = 2)
-pdf("~/Desktop/eigengene.pdf")
-par(mfrow = c(1, 1))
-for (i in 1:length(branchId)) barplot(eigen.gene[i, ], las = 2)
-dev.off()
+x.dt = as.matrix(dt[branch == 6, ])
+matplot(t(scale(x.dt)), type = "l")
+x.dt <- t(apply(x.dt, 1, scale))
+gdt <- data.frame(value = c(x.dt), gene = rep(rownames(x.dt), 8), group = rep(group, each = nrow(x.dt)))
+save(gdt, file = "markdown/module6.rdt")
+gdt %>% ggvis(~group, ~value, stroke = ~gene) %>% layer_lines() %>% hide_legend("stroke") %>%
+  add_tooltip(function (x) paste("Gene: ", x$gene), "hover")
 
-# --- STATIC CUTREE ---
-branch <- cutree(tree1, h = 0.99)
-true.branch <- table(branch) >= min.size
-branch[!true.branch[branch]] <- 0;
-branchId <- sort(unique(branch))
-map <- data.frame(row.names = branchId, idx = 1:length(branchId) - 1)
-branch <- map[as.character(branch), "idx"]
-# --- WGCNA ---
-library(WGCNA)
-net <- blockwiseModules(t(dt), power = 27, minModuleSize = 30, deepSplit = 2, 
-         reassignThreshold = 0, mergeCutHeight = 0.15, 
-         numericLabels = T, pamRespectsDendro = F, verbose = 3)
+tom.mod <- tom[branch == 6, branch == 6]
+visant <- exportNetworkToVisANT(tom.mod, file = "./data/visant.txt", weighted = T, threshold = 0)
+cyt <- exportNetworkToCytoscape(tom.mod, edgeFile = "./data/cytodge.txt", nodeFile = "./data/cytonode.txt", 
+                               weighted = TRUE, threshold = 0.02)
+summary.mod <- table[match(geneId[branch == 6], table$query), ]
+
+geneId.m6 = geneId.network[[6]]

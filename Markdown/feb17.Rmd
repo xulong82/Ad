@@ -1,0 +1,263 @@
+---
+title: "Alzheimer's Disease Project"
+author: "Xulong Wang"
+date: "February 17, 2015"
+output: 
+  ioslides_presentation:
+    widescreen: true
+    smaller: true
+---
+
+# A genome-wide gene-expression analysis in APP-transgenic mice during development
+
+```{r, echo=F, warning=F, message=F}
+library(ape)
+library(ggplot2)
+library(VennDiagram)
+library(ggvis)
+library(grid)
+library(png)
+setwd("~/Dropbox/GitHub/Ad")
+
+```
+
+## Outline
+
+- Model the data with a generalized linear model (GLM)
+- Identify Age- and APP-related genes with GLM coefficients
+- Co-expression gene modules by the Age and APP phenotypes with a topology overlap matrix
+- Downstream GO and KEGG
+- Network and master regulators with topology-overlap-matrix and TF-targets 
+- Five-month APP stratification
+
+## Samples
+
+```{r echo=F, warning=F}
+load("data/complete_tpm.rdt")
+Ids <- colnames(brain.tpm)
+age <- gsub("^.*(2m|4m|5m|6m).*", "\\1", Ids)
+group <- gsub("^.*(WT|APP).*", "\\1", Ids)
+brain <- paste(age, group, sep = "_")
+table(brain)
+Ids <- colnames(retina.tpm)
+age <- gsub("^.*(2m|4m|5m|6m).*", "\\1", Ids)
+group <- gsub("^.*(WT|APP).*", "\\1", Ids)
+retina <- paste(age, group, sep = "_")
+table(retina)
+```
+
+## HC on samples
+
+```{r echo=F, fig.height = 5, fig.width = 10}
+load(file = "./markdown/brain_hc.rdt")
+par(mar = c(0, 0, 0, 0))
+plot(as.phylo(hc1), type = "unrooted", tip.color = mycol, cex = 0.5, font = 2, lab4ut = "axial")
+```
+
+## Mouse 1559
+
+```{r echo=F, fig.height = 4, fig.width = 10}
+load(file = "./markdown/mouse1559.rdt")
+par(mfrow = c(1, 2), mar = c(5, 4, 2, 2))
+plot(brain.tpm1$WT6m1484.2014 - brain.tpm1$APP5m1558.2014, ylim = c(-6, 6), xlab = "", ylab = "", main = "WT6m1484 - APP5m1558")
+abline(0, 0, lwd = 1, col = "red")
+plot(brain.tpm1$APP5m1559.2014 - brain.tpm1$APP5m2633.2014, ylim = c(-6, 6), xlab = "", ylab = "", main = "APP5m1559 - APP5m2633")
+abline(0, 0, lwd = 1, col = "red")
+```
+
+## Downstream dataset - brain
+
+```{r echo=F, fig.height=4, fig.width = 6}
+load(file = "./markdown/brain2014.rdt")
+par(mar = c(5, 4, 0, 2))
+plot(brain.hist, xlab = "Log2(TPM)", main = "")
+```
+
+## Model the data with a GLM
+
+$y \sim age + group + batch + age * group$
+
+```{r}
+load(file = "markdown/fit_app.rdt")
+fit.app$coefficients
+```
+
+## PCA GLM estimate
+
+```{r, echo=F, warning=F, fig.width = 10}
+load(file = "markdown/gdt01.rdt")
+ggplot(gdt, aes(x = feature, y = value, fill = geno)) + 
+  geom_bar(stat = "identity") + facet_grid(. ~ PC) +
+  scale_fill_manual(values = c("red", "blue")) +
+  theme_bw() + xlab("") + ylab("") + 
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+## Classify by GLM effect and p-value
+
+```{r, echo=F}
+load(file = "markdown/logit.rdt")
+tail(logit[, grep("APP", colnames(logit))], n = 3)
+tail(logit[, grep("age", colnames(logit))], n = 3)
+```
+```{r}
+profile.Id
+```
+## GLM cohorts: APP-related
+Gene number: 61
+
+```{r, echo=F, warning=F, fig.height = 2, fig.width = 5}
+load(file = "markdown/gdt02.rdt")
+load(file = "markdown/kegg1.rdt")
+ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
+  theme_bw() + xlab("") + ylab("") + coord_flip() +
+  scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_y_discrete(labels = profile.table) +
+  scale_fill_manual(values = c("grey80", "firebrick1")) 
+# kegg[c("Term", "Symbols")]
+kegg[c("KEGGID", "Pvalue", "Term")]
+```
+
+## GLM cohorts: Age-related
+Gene number: 173
+
+```{r, echo=F, warning=F, fig.height = 2.5, fig.width = 7}
+load(file = "markdown/gdt03.rdt")
+load(file = "markdown/kegg3.rdt")
+ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
+  theme_bw() + xlab("") + ylab("") + coord_flip() +
+##scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_x_discrete(labels = c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_y_discrete(labels = profile.table) +
+  scale_fill_manual(values = c("grey80", "firebrick1")) 
+kegg[c("KEGGID", "Pvalue", "Term")]
+```
+
+## HC on GLM cohorts: Both Age- and APP-related
+Gene number: 179
+
+```{r echo=F, fig.height = 4, fig.width = 10}
+load(file = "./markdown/brain_hc2.rdt")
+par(mar = c(0, 0, 0, 0))
+plot(as.phylo(hc1), edge.width = 2, font = 2, cex = 0.7, label.offset = 1e-4, tip.color = mycol, direction = "downward")
+```
+
+## GO and KEGG
+The 278 genes that separate the 2 groups
+
+```{r echo=F, fig.width = 10}
+img <- readPNG("./data/go1.png")
+ grid.raster(img)
+```
+
+## GO and KEGG
+The 278 genes that separate the 2 groups
+
+```{r echo=F, fig.width = 10}
+img <- readPNG("./data/kg1.png")
+ grid.raster(img)
+```
+
+## Stat3 is a potential master regulator
+61 GLM APP genes
+
+```{r echo=F, fig.width=4}
+img <- readPNG("./data/Stat3.png")
+ grid.raster(img)
+```
+
+## Stat3 is a potential master regulator
+133 GWAS AD genes and 61 GLM APP genes
+
+```{r echo=F, fig.width=6}
+img <- readPNG("./data/complete.png")
+ grid.raster(img)
+```
+
+## Stat3 fit
+```{r echo=F}
+load("./markdown/fit_stat3.rdt")
+fit.stat3$coefficients
+```
+
+## Co-expression network
+
+- Objective: identify gene groups with similar expression patterns
+- Modified from WGCNA
+- Build topoloy-overlap-matrix (TOM) as similarity matrix from gene expression's pearson correlation
+- Dynamic clustering with the TOM
+- Identify modules's signature profile
+- Downstream GO and KEGG on modules
+
+## Co-expression network
+
+```{r, echo=F, warning=F}
+load(file = "markdown/eigene.rdt")
+table(branch)
+```
+
+## Network eigen-genes
+
+```{r, echo=F, warning=F, fig.width = 10}
+ggplot(gdt, aes(x = group, y = value, fill = geno)) + 
+  geom_bar(stat = "identity") + facet_grid(. ~ module) +
+  scale_fill_manual(values = c("red", "blue")) +
+  theme_bw() + xlab("") + ylab("") + 
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+## Module 6
+```{r, echo=F, warning=F, message=F}
+load(file = "markdown/module6.rdt")
+gdt %>% ggvis(~group, ~value, stroke = ~gene) %>% layer_lines() %>% hide_legend("stroke") %>%
+  add_tooltip(function (x) paste("Gene: ", x$gene), "hover")
+```
+
+## Module 6
+```{r echo=F}
+load(file = "markdown/geneIds.rdt")
+geneId
+geneId.tf
+```
+
+## Module 6
+```{r echo=F, fig.width=10}
+img <- readPNG("./data/go4.png")
+ grid.raster(img)
+```
+
+## Module 6
+```{r echo=F, fig.width=10}
+img <- readPNG("./data/kg4.png")
+ grid.raster(img)
+```
+
+## Module 6
+```{r echo=F, fig.width=10}
+img <- readPNG("./data/mod6.png")
+ grid.raster(img)
+```
+
+## Nfya is a potential master regulator
+63 Module 6 genes
+
+```{r echo=F, fig.width=5}
+img <- readPNG("./data/Nfya1.png")
+ grid.raster(img)
+```
+
+## Nfya is a potential master regulator
+133 GWAS AD genes and 63 Module 6 genes
+
+```{r echo=F, fig.width=4}
+img <- readPNG("./data/Nfya.png")
+ grid.raster(img)
+```
+
+## Nfya fit
+```{r echo=F, fig.width = 8}
+load("./markdown/fit_nfya.rdt")
+fit.nfya$coefficients
+```
+
+## Discussion
