@@ -9,9 +9,11 @@ library(pathview)
 
 setwd("~/Dropbox/GitHub/Ad")
 load("./data/gene_summary.rdt")
+source("function.R")
 
 geneId <- geneId.app
 geneId <- geneId.m6
+gk <- myGK(geneId)
 
 ad.alz <- read.delim("./data/alzgene20120917.tsv", stringsAsFactors = F)$Gene
 hg2mus <- read.delim("~/Dropbox/X/hg2mus.map", stringsAsFactors = F, header = F)
@@ -26,42 +28,6 @@ TF <- read.delim("~/Dropbox/X/TFdb.Riken.txt", header = F, stringsAsFactors = F)
 geneId[geneId %in% TF]
 summary <- table[match(geneId, table$query), ]
 
-goAnn <- get("org.Mm.egGO")
-universe <- Lkeys(goAnn)
-entrezId <- mget(geneId, org.Mm.egSYMBOL2EG, ifnotfound = NA)
-entrezId <- entrezId[! is.na(entrezId)]
-entrezId <- as.character(entrezId)
-
-myGO <- NULL
-for (category in c("BP", "MF", "CC")) {
-  params <- new("GOHyperGParams", geneIds = entrezId, universeGeneIds = universe, annotation = "org.Mm.eg.db", 
-                ontology = category, pvalueCutoff = 0.01, testDirection = "over")  
-  over = hyperGTest(params)
-  bp <- summary(over)
-  myGO <- cbind(myGO, bp$Term[1:10])
-}
-colnames(myGO) <- c("BP", "MF", "CC")
-rownames(myGO) <- NULL
-
-glist <- geneIdsByCategory(over)
-glist <- sapply(glist, function(x) {y <- mget(x, envir=org.Mm.egSYMBOL); paste(y, collapse=";")})
-bp$Symbols <- glist[as.character(bp$GOBPID)]
-head(bp)
-
-keggAnn <- get("org.Mm.egPATH")
-universe <- Lkeys(keggAnn)
-params <- new("KEGGHyperGParams", 
-              geneIds=entrezId, universeGeneIds=universe, annotation="org.Mm.eg.db", 
-              categoryName="KEGG", pvalueCutoff=0.01, testDirection="over")
-over <- hyperGTest(params)
-kegg <- summary(over)
-
-glist <- geneIdsByCategory(over)
-glist <- sapply(glist, function(x) {y <- mget(x, envir=org.Mm.egSYMBOL); paste(y, collapse=";")})
-kegg$Symbols <- glist[as.character(kegg$KEGGID)]
-
-save(myGO, kegg, file = "markdown/kegg2.rdt")
-save(kegg, file = "markdown/kegg3.rdt")
 
 pathview <- rep(1, length(geneId))
 names(pathview) <- geneId

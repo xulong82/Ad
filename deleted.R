@@ -1,4 +1,3 @@
-# -------------------------------------------------------------------------
 myfitAic <- list()
 dt.aic <- dt[which(qval < 0.05), ]
 for (i in 1:nrow(dt.aic)) {
@@ -14,7 +13,6 @@ fval <- sapply(myfitAic, function (x) x$fstatistic)
 pval <- apply(fval, 2, function (x) pf(x[1], x[2], x[3], lower.tail = F))
 qval <- p.adjust(pval, method = "fdr")
 
-# --- grouping ---
 cond <- c("age4m", "age5m", "age6m", "groupAPP", "batchmouse", "age4m:groupAPP", "age5m:groupAPP", "age6m:groupAPP")
 grouping <- matrix(FALSE, nrow = length(geneId), ncol = length(cond), dimnames = list(geneId, cond))
 for (i in 1:length(geneId)) {
@@ -33,23 +31,15 @@ for (idx in colnames(grouping)) grouping.geneId[[idx]] <- c(idx, rownames(groupi
 number <- sapply(grouping.geneId, length)
 col.manual <- c("grey70", "firebrick1", "chartreuse3", "dodgerblue3", "gold1", "darkorchid2")
 col.manual <- c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00", "#ffff33", "#a65628", "#f781bf")
-pdf(file = "./Graphs/glm_number.pdf", width = 6, height = 12)
 op <- par(mar = c(15, 4, 4, 2))
 bar <- barplot(number, las = 3, col = col.manual, border = NA, ylim = c(0, 300), axes = F)
 abline(0, 0, lwd = 5, col = "black")
 text(x = bar, y = number + 5, labels = number, font = 2, col = "grey20")
-dev.off()
 
 lapply(grouping.geneId, write, "./DE/glm.txt", append = TRUE, ncolumns = 1000)
 
 geneId.de = geneId[as.logical(apply(grouping[, -5], 1, max))]
 write.table(geneId.de, file = "./DE/geneId.txt", sep = "\t", row.names = F, col.names = F, quote = F)
-
-library(pheatmap)
-library(ggplot2)
-
-rm(list = ls())
-load(file = "~/Dropbox/AD/R/complete_tpm.rdt")
 
 # --- optional: 2014 samples only
 brain.tpm <- brain.tpm[, c(grep("2014", colnames(brain.tpm)), grep("mouse", colnames(brain.tpm)))]
@@ -70,8 +60,6 @@ graph.dt <- data.frame(value = c(pca_brain$rotation[, 1:3]),
 graph.dt$order <- reorder(colnames(brain.tpm), 1:ncol(brain.tpm))
 
 # col.manual <- c("grey70", "firebrick1", "chartreuse3", "dodgerblue3", "gold1", "darkorchid2")
-pdf("~/Dropbox/AD/Figures/pca_brain.pdf", height = 7, width = 10)
-pdf("~/Dropbox/AD/Figures/pca_brain2014.pdf", height = 5, width = 10)
 ggplot(graph.dt, aes(x = order, y = value, fill = type)) + 
   geom_bar(stat = "identity", width = .75) + facet_grid(pc ~ .) +
   scale_fill_manual(values = c("firebrick1", "chartreuse3")) +
@@ -86,4 +74,3 @@ ggplot(graph.dt, aes(x = order, y = value, fill = type)) +
   theme(legend.position = "top", legend.direction = "horizontal", 
         legend.text = element_text(size = 8, face = "bold"),
         legend.title = element_blank(), legend.key = element_blank())
-dev.off()
