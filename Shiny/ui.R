@@ -31,41 +31,22 @@ shinyUI(
     sidebarLayout(
       sidebarPanel(
 	radioButtons("tissue2", label = h3("Choose tissue"), choices = list("Brain" = 1, "Retina" = 2), selected = 1),
-	radioButtons("number", label = h3("Less or more genes?"), 
-	             choices = list("Less: R2 > 0.5, |effect| > 0.2" = "less", "More: R2 > 0.4, |effect| > 0.1" = "more"), selected = "less"),
 	radioButtons("type", label = h3("App or Age genes?"), 
 	             choices = list("App" = "app", "Age" = "age"), selected = "app"),
-	radioButtons("result", label = h3("Choose a table to display"), 
-	             choices = list("Symbol by group" = "symbol_by_pattern", "Symbol and summary" = "symbol", "KEGG: p-values < 0.01" = "go_kegg", 
-	                            "BP: p-values < 0.001" = "go_bp", "MF: p-values < 0.001" = "go_mf", "CC: p-values < 0.001" = "go_cc"), selected = "go_kegg"),
+	selectInput("result", label = h3("Choose a table to display"), 
+	             choices = list("Symbol by group" = "symbol_by_pattern", "KEGG: p-values < 0.01" = "go_kegg", 
+	                            "BP: p-values < 0.001" = "go_bp", "MF: p-values < 0.001" = "go_mf", "CC: p-values < 0.001" = "go_cc"), selected = "symbol_by_pattern"),
+	selectInput("select3", label = h3("Less or more brain genes?"), 
+	            choices = list("Less: R2 > 0.5, |effect| > 0.2" = "less", "More: R2 > 0.4, |effect| > 0.1" = "more"), selected = "less"),
+	selectInput("select4", label = h3("Less or more retina genes?"), 
+	            choices = list("Less: R2 > 0.5, |effect| > 0.5" = "less", "More: R2 > 0.5, |effect| > 0.2" = "more"), selected = "less"),
 	p()
       ),
       mainPanel(
-        tableOutput("glm")
+        plotOutput("glm_graph"),
+        tableOutput("glm_table")
       )
     )
-  )),
-  tabPanel("Modules",
-           fluidPage(
-             p(strong("Modules:"), "Identify co-expression modules (CEM) with App and Age phenotype.", strong(a(href="network.html", "Click here for the protocol"))),
-             hr(),
-             sidebarLayout(
-               sidebarPanel(
-                 radioButtons("tissue3", label = h3("Choose tissue"), choices = list("Brain" = 1, "Retina" = 2), selected = 1),
-                 selectInput("select1", label = h3("Select a brain module"), 
-                             choices = list("Module 1" = 1, "Module 2" = 2, "Module 3" = 3, "Module 4" = 4, 
-                                            "Module 5" = 5, "Module 6" = 6, "Module 7" = 7, "Module 8" = 8), selected = 6),
-                 selectInput("select2", label = h3("Select a retina module"), 
-                             choices = list("Module 1" = 1, "Module 2" = 2, "Module 3" = 3, "Module 4" = 4), selected = 2),
-	               radioButtons("result2", label = h3("Choose a table to display"), 
-	                           choices = list("Symbol and summary" = "symbol", "KEGG: p-values < 0.01" = "kegg"), selected = "kegg"),
-                 p()
-               ),
-               mainPanel(
-                 plotOutput("network_graph"),
-                 tableOutput("network_table")
-               )
-             )
   )),
   tabPanel("Adult APP",
            fluidPage(
@@ -73,11 +54,13 @@ shinyUI(
              hr(),
              sidebarLayout(
                sidebarPanel(
-                 radioButtons("result3", label = h3("Choose a table to display"), 
-                              choices = list("Symbol and summary" = "symbol", "KEGG: p-values < 0.01" = "kegg"), selected = "kegg"),
+                 selectInput("result3", label = h3("Choose a table to display"), 
+                             choices = list("Genes" = "symbol", "KEGG: p-values < 0.01" = "KEGG",
+                                            "BP: p-values < 0.001" = "BP", "MF: p-values < 0.001" = "MF", "CC: p-values < 0.001" = "CC"), selected = "symbol"),
                  p()
                ),
                mainPanel(
+                 plotOutput("five_graph"),
                  tableOutput("five_table")
                )
              )
@@ -85,14 +68,8 @@ shinyUI(
   tabPanel("Board",
            h3("To do list:"),
            tags$ol(
-             tags$li("There are way more significant genes in retinal samples. So much that it is hard to extract meaningful things. I possibly need to put harder stringencies."), 
              tags$li("Extensive pathway analysis need to be applied on misc gene lists. iRegulon will be the tool for this purpose."), 
-             tags$li("Some comparison between the retinal and cereberal samples in details.")),
-           hr(),
-           h4("Leave XuLong a message?"),
-           tags$style(type='text/css', "#message {height: 300px; width:600px}"),
-           tags$textarea(id = "message", placeholder = 'Type here', rows = 20, ""),
-           submitButton("Submit")
+             tags$li("Some comparison between the retinal and cerebral samples in details."))
            )
 ))
     

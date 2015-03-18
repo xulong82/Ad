@@ -1,11 +1,12 @@
 library(shiny)
 library(ggplot2)
 library(mail)
+library(ape)
+library(amap)
 
 load("./brain_bc2014.rdt")
 load("./gene_summary.rdt")
 load("./glm_brain.rdt")
-load("./network_brain.rdt")
 load("./five.rdt")
 
 shinyServer(function(input, output) {
@@ -38,35 +39,58 @@ shinyServer(function(input, output) {
     table[table$query == geneId, ]
   }, include.rownames = FALSE)
   
-  output$glm <- renderTable({
-    if (input$tissue2 == 2) load("./glm_retina.rdt")
+  output$glm_graph <- renderPlot({
+    geneId.profile <- glm[[input$select3]][[input$type]]$symbol_by_pattern
+    profile.Id <- names(geneId.profile)
+    if (input$type == "app") {
+      mylab <- c("2m:APP", "4m:APP", "5m:APP", "6m:APP")
+    } else {
+      mylab <- c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")
+    }
 
-    table1 <- glm[[input$number]][[input$type]]
-    if (input$result == "symbol") {
-      x <- table1$symbol
-      table2 <- table[table$query %in% x, ]
-      rownames(table2) <- 1:nrow(table2)
-    } else if (input$result == "symbol_by_pattern") {
+    if (input$tissue2 == 2) {
+      load("./glm_retina.rdt")
+      geneId.profile <- glm[[input$select4]][[input$type]]$symbol_by_pattern
+      profile.Id <- names(geneId.profile)
+      if (input$type == "app") {
+        mylab <- c("2m:APP", "5m:APP", "6m:APP")
+      } else {
+        mylab <- c("5m:WT", "6m:WT", "5m:APP", "6m:APP")
+      }
+    } 
+
+    tile.dt <- NULL
+    for (i in 1:length(profile.Id))
+      tile.dt <- rbind(tile.dt, as.logical(unlist(strsplit(profile.Id[i], "-"))))
+    tile.dt <- data.frame(value = c(tile.dt), 
+      profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
+      group = factor(rep(mylab, each = nrow(tile.dt)), levels = mylab))
+
+    ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
+      theme_bw() + xlab("") + ylab("") + coord_flip() +
+      scale_y_discrete(labels = sapply(geneId.profile, length)) +
+      scale_fill_manual(values = c("grey80", "firebrick1")) 
+  })
+
+  output$glm_table <- renderTable({
+    table1 <- glm[[input$select3]][[input$type]]
+    if (input$tissue2 == 2) {
+      load("./glm_retina.rdt")
+      table1 <- glm[[input$select4]][[input$type]]
+    } 
+
+    if (input$result == "symbol_by_pattern") {
       x <- table1[["symbol_by_pattern"]] 
       x <- lapply(x, function (x) paste(x, collapse = ", "))
       table2 <- do.call(rbind, x)
       colnames(table2) <- "Gene Symbol"
+      table2 <- apply(table2, 2, rev)
     } else {
       table2 <- table1[[input$result]]
       table2$Symbols = gsub(";", "; ", table2$Symbols)
     } 
     table2
   }, include.rownames = TRUE)
-
-  output$network_graph <- renderPlot({
-    if (input$tissue3 == 2) load("./network_retina.rdt")
-    gdt <- network$gdt
-    ggplot(gdt, aes(x = group, y = value, fill = geno)) + 
-      geom_bar(stat = "identity") + facet_grid(. ~ module) +
-      scale_fill_manual(values = c("red", "blue")) +
-      theme_bw() + xlab("") + ylab("") + 
-      theme(axis.text.x = element_text(angle = 90))
-  })
 
   output$five_graph <- renderPlot({
     mycol <- five$gdt$mycol
@@ -80,24 +104,7 @@ shinyServer(function(input, output) {
         table1 <- table[table$query %in% x, ]
         rownames(table1) <- 1:nrow(table1)
       } else {
-        table1 <- five$gk$KEGG
-        table1$Symbols = gsub(";", "; ", table1$Symbols)
-      }
-      table1
-  })
-
-  output$network_table <- renderTable({
-      module <- as.numeric(input$select1)
-      if (input$tissue3 == 2) {
-        load("./network_retina.rdt")
-        module <- as.numeric(input$select2)
-      }
-      if (input$result2 == "symbol") {
-        x <- network$symbol[[module]]
-        table1 <- table[table$query %in% x, ]
-        rownames(table1) <- 1:nrow(table1)
-      } else {
-        table1 <- network$gk[[module]]$KEGG
+        table1 <- five$gk[[input$result3]]
         table1$Symbols = gsub(";", "; ", table1$Symbols)
       }
       table1
@@ -107,10 +114,4 @@ shinyServer(function(input, output) {
     filename = "feb17talk.html", content = function (file) file.copy("./talk.html", file)
   )
 
-  output$message <- renderText({
-    message <- input$message
-    sendmail("xulong.wang@jax.org", "AD Notice", as.character(message))
-  })
-
 })
-

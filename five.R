@@ -22,8 +22,8 @@ mycol <- rep("grey50", ncol(dt.hc))
 mycol[grep("APP", colnames(dt.hc))] <- "firebrick1"
 plot(as.phylo(hc1), edge.width = 2, font = 2, cex = 0.7, label.offset = 1e-4, tip.color = mycol, direction = "downward")
 
-group1<- c("APP5m1558.2014", "APP5m2751.2014", "APP5m1633.2014","APP5m1636.2014","APP6m1684.2014","APP5m1648.2014", "APP5m1623.2014")
-group2<- c("mouse_3346_6m_APP", "mouse_3440_6m_APP", "mouse_3351_6m_APP", "mouse_6585_6m_APP", "APP5m1647.2014", "APP5m1738.2014")
+group1<- c("APP5m1558.2014","APP5m2751.2014","APP5m1633.2014","APP5m1636.2014","APP6m1684.2014","APP5m1648.2014","APP5m1623.2014")
+group2<- c("mouse_3346_6m_APP","mouse_3440_6m_APP","mouse_3351_6m_APP","mouse_6585_6m_APP","APP5m1647.2014","APP5m1738.2014")
 
 mycol[colnames(dt.hc) %in% c(group1, group2)] <- "blue"
 plot(as.phylo(hc1), edge.width = 2, font = 2, cex = 0.7, label.offset = 1e-4, tip.color = mycol, direction = "downward")
