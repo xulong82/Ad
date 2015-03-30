@@ -37,6 +37,11 @@ conditions <- c("2m_WT", "2m_APP", "4m_WT", "4m_APP", "5m_WT", "5m_APP", "6m_WT"
 glm.dt <- as.matrix(dt)
 glm.fit <- lapply(1:nrow(glm.dt), function (x) summary(lm(glm.dt[x, ] ~ age + group + batch + age * group)))
 names(glm.fit) <- rownames(glm.dt)
+
+fit.coef <- lapply(glm.fit, function(x) x$coefficients)
+save(fit.coef, file = "data/fit_brain.rdt")
+save(fit.coef, file = "data/fit_retina.rdt")
+
 dt.bc <- dt
 for (i in 1:nrow(dt.bc)) 
   dt.bc[i, ] <- dt[i, ] - glm.fit[[i]]$coefficients["batchmouse", "Estimate"] * (as.numeric(batch) - 1)
@@ -83,6 +88,28 @@ glm <- list()
 save(glm, file = "data/glm_brain.rdt")
 save(glm, file = "data/glm_retina.rdt")
   
+# --- GRAPH
+grid.newpage()                                                                                                                                       
+draw.pairwise.venn(length(geneId.age), length(geneId.app), length(intersect(geneId.age, geneId.app)), 
+                   category = c("Age", "APP"), fill = c("light blue", "pink"))
+
+tile.dt <- NULL
+for (i in 1:length(profile.Id))
+  tile.dt <- rbind(tile.dt, as.logical(unlist(strsplit(profile.Id[i], "-"))))
+tile.dt <- data.frame(value = c(tile.dt), 
+  profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
+  group = factor(rep(colnames(profile), each = nrow(tile.dt)), levels = colnames(profile)))
+
+ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
+  theme_bw() + xlab("") + ylab("") + coord_flip() +
+# scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_x_discrete(labels = c("2m:APP", "5m:APP", "6m:APP")) +
+# scale_x_discrete(labels = c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")) +
+# scale_x_discrete(labels = c("5m:WT", "6m:WT", "5m:APP", "6m:APP")) +
+  scale_y_discrete(labels = profile.table) +
+  scale_fill_manual(values = c("grey80", "firebrick1")) 
+
+# --- BUILD THE RESULT OBJECT
 glm$less$app$symbol <- geneId.app
 glm$less$app$go_bp <- gk.app$BP
 glm$less$app$go_mf <- gk.app$MF
@@ -111,27 +138,18 @@ glm$more$age$go_cc <- gk.age$CC
 glm$more$age$go_kegg <- gk.age$KEGG
 glm$more$age$symbol_by_pattern <- geneId.profile
 
-# ---------------------------------------------------------------
-  
-grid.newpage()                                                                                                                                       
-draw.pairwise.venn(length(geneId.age), length(geneId.app), length(intersect(geneId.age, geneId.app)), 
-                   category = c("Age", "APP"), fill = c("light blue", "pink"))
+theId <- theGK <- list()
+theId[[1]] <- glm$more$app$symbol_by_pattern
+theId[[2]] <- glm$more$age$symbol_by_pattern
+theId[[3]] <- glm$less$app$symbol_by_pattern
+theId[[4]] <- glm$less$age$symbol_by_pattern
 
-tile.dt <- NULL
-for (i in 1:length(profile.Id))
-  tile.dt <- rbind(tile.dt, as.logical(unlist(strsplit(profile.Id[i], "-"))))
-tile.dt <- data.frame(value = c(tile.dt), 
-  profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
-  group = factor(rep(colnames(profile), each = nrow(tile.dt)), levels = colnames(profile)))
+for (i in 1:length(theId)) theGK[[i]] <- lapply(theId[[i]], myGK)
 
-ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
-  theme_bw() + xlab("") + ylab("") + coord_flip() +
-# scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
-  scale_x_discrete(labels = c("2m:APP", "5m:APP", "6m:APP")) +
-# scale_x_discrete(labels = c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")) +
-# scale_x_discrete(labels = c("5m:WT", "6m:WT", "5m:APP", "6m:APP")) +
-  scale_y_discrete(labels = profile.table) +
-  scale_fill_manual(values = c("grey80", "firebrick1")) 
+glm$more$app$gk_by_pattern <- theGK[[1]]
+glm$more$age$gk_by_pattern <- theGK[[2]]
+glm$less$app$gk_by_pattern <- theGK[[3]]
+glm$less$age$gk_by_pattern <- theGK[[4]]
 
 # --- PCA GLM estimate
 svd.dt <- fit.est[, -c(1, 6)]
@@ -169,3 +187,4 @@ gdt %>% ggvis(~group, ~value, stroke = ~gene) %>% layer_lines() %>%
 mycol <- c("grey70", "firebrick1", "chartreuse3", "dodgerblue3", "gold1", "darkorchid2")
 clusts = cutree(hc2, 6)
 plot(as.phylo(hc2), type = "unrooted", tip.color = mycol[clusts], cex = 0.5, font = 2, lab4ut = "axial")
+

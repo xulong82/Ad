@@ -4,7 +4,6 @@ library(org.Mm.eg.db)
 library(Category)
 library(pathview)
 
-geneId = c("App", "Gm26191")
 # --- GO AND KEGG ENRICHMENT ---
 myGK <- function (geneId) {
   mygk <- list()
@@ -13,8 +12,8 @@ myGK <- function (geneId) {
   entrezId <- entrezId[! is.na(entrezId)]
   entrezId <- as.character(entrezId)
   
-  if (length(entrezId) > 1) {  # use nsFilter() for additional filtering if required
-    
+  if (length(entrezId) > 1) {  
+    # use nsFilter() for additional filtering if required
     goAnn <- get("org.Mm.egGO")
     universe <- Lkeys(goAnn)
     for (category in c("BP", "MF", "CC")) {
@@ -42,7 +41,7 @@ myGK <- function (geneId) {
     mygk[["KEGG"]] <- kegg 
     
   } else {
-    mygk <- "Input genes do not have at least one entrezId!"
+    mygk <- "Input genes have zero entrezId!"
   }
 
   return(mygk)

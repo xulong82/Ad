@@ -1,0 +1,117 @@
+; Name	BRAIN
+; Species and nomenclature	Mus musculus, MGI symbols
+; Motif collection	10K (9713 PWMs)
+; Minimum NEScore	3.0
+; Rank threshold for visualization	5000
+; ROC threshold for AUC calculation (%)	0.03
+; Minimum identity between orthologous genes	0.0
+; Maximum false discovery rate (FDR) on motif similarity	0.001
+; Motif rankings database	500bp upstream (7 species)
+; Number of valid nodes	34
+; iRegulon version	iRegulon v1.3 (build: 2015-02-12)
+# Rank	Motif id	AUC	NES	ClusterCode	Transcription factor	Target genes
+1	homer-M00176	0.118653	5.75094	M1	Sox2,Sox9,Sox11,Sox30,Sox3	Wbp7,Vav2,Ptprk,Dpysl3,Atf5
+2	swissregulon-SOX2.p2	0.114219	5.50315	M1	Sox2	Wbp7,Ptprk,Vav2,Dpysl3,Atf5
+3	factorbook-SOX2	0.114073	5.49498	M1	Nanog,Sox4,Smad1,Sox2,Yy2,Sox3,Qsox1,Pdx1,Fli1,Gabpb1,Elf2,Etv6,Elk4,Elk1,Spib,Elf4	Vav2,Ptprk,Atf5,Wbp7,Dpysl3
+4	transfac_pro-M01308	0.114073	5.49498	M1	Sox4,Sox11,Nanog,Sox2,Smad1,Qsox1,Fli1,Gabpb1,Elf2,Etv6,Elk4,Elk1,Spib,Elf4,Cdx2,Jun,Fos,Yy2,Sox3,Pdx1	Vav2,Ptprk,Wbp7,Dpysl3,Atf5
+5	yetfasco-1251	0.109102	5.21724	M2	Yod1,Mef2a,Mef2c,Mef2d,2310045N01Rik,Mef2b,Zfp683,Prdm1,Prdm2,Tgif1,Tgif2,Gm7148,Gata3,Gata6,Gata5,Gata2,Gata4,Gata1,Rfx2,Rfx3,Rfx4,Rfx6,Rfx8,Rfx1	Akap12,Dpysl3,Cdh13,Tfrc
+6	swissregulon-SOX_8-9-10_.p2	0.103889	4.92588	M3	Sox10,Sox9,Sox8,Sox30	Wbp7,Ptprk,Cdh13,Vav2,Atf5
+7	hdpi-TRIM21	0.103791	4.92043	M4	Trim21	Cdh13,Armcx4,Ppfia4,Akap12
+8	elemento-CCTCGCG	0.10345	4.90137	M5		Dpysl3,Cdh13,Ube2e2,Wbp7,App,Zfp318
+9	swissregulon-HBP1_HMGB_SSRP1_UBTF.p2	0.100478	4.73527	M3	Ubtf,Hmgb2,Ssrp1,Hbp1,Sox14	Vav2,Wbp7,Ptprk,Atf5,Fat1,Dpysl3,Akap12
+10	yetfasco-46	0.100088	4.71349	M6		Prnp,Sgcb,Vav2,Rimklb
+11	yetfasco-1574	0.0982848	4.61274	M3		Prnp,Wbp7,Ptprk,Fat1,Rab3b,Psen1,Porcn,Dpysl3
+12	tfdimers-MD00282	0.0972615	4.55555	M1	Smad1,Gfi1	Ppfia4,Akap12,Cdh13,Zfp318
+13	yetfasco-1203	0.0971153	4.54738	M2	Tgif2,Gm7148,Tgif1	Akap12,Cdh13,Dpysl3,App
+14	yetfasco-1249	0.094484	4.40034	M2	2310045N01Rik,Mef2b,Mef2c,Mef2a,Mef2d,Pou5f1,Prdm2,Prdm1,Zfp683	Akap12,Dpysl3,Cdh13,App,Tfrc
+15	yetfasco-1274	0.0941916	4.38401	M2	Yod1,Rfx2,Rfx3,Rfx4,Rfx8,Rfx6,Rfx1	Akap12,Dpysl3,Cdh13,App,Tfrc
+16	jaspar-PF0103.1	0.0927298	4.30232	M7	Yy2	Vav2,Psen1,Zfp318,Atf5
+17	swissregulon-RBPJ.p2	0.0924374	4.28598	M8	Rbpj,Rbpjl	Wbp7,Psen1,Nov,Ppfia4
+18	elemento-AGGAGCG	0.0919014	4.25603	M9		Nov,Zfp318,Akap12,Wbp7,Rimklb,App,Cdh13,Ube2e2,Ptprk,Vav2,L1cam
+19	yetfasco-1301	0.0918526	4.2533	M5		Wbp7,App,Ptprk,Ube2e2,L1cam,Nov,Zfp318,Vav2,Psen1,Cdh13,Rimklb,Prnp,Dpysl3,Atf5,Plcg1
+20	jaspar-MA0077.1	0.0895137	4.1226	M3	Sox9,Sox30,Sox7,Sry,Sox10,Sox6	Wbp7,Atf5,Vav2,Dpysl3,Ptprk,Cdh13
+21	hdpi-EXOSC3	0.0891239	4.10082	M8	Exosc3	Cdh13,Porcn,Nov
+22	encode-UW.Motif.0450	0.0890264	4.09537	M10		Ube2e2,Ppfia4,Dpysl3,Cdh13
+23	yetfasco-2101	0.0880031	4.03819	M11		App,Porcn,Prnp,Wbp7,Zfp318,Rimklb,Vav2,Ptprk,Parp12,Akap12,Plcg1,Dtx4,Dpysl3,Atf5,Psen1
+24	transfac_pro-M03111	0.0870773	3.98645	M12	Meis1,Pknox2,Meis2,Meis3,Tgif2,Pknox1,Tgif1,Gm7148,Nfe2l1	Ube2e2,Ppfia4,Atf5
+25	yetfasco-1215	0.0861027	3.93199	M2	Gm7148,Tgif2,Tgif1,Mef2b,Mef2a,2310045N01Rik,Mef2c,Mef2d,Prdm2,Prdm1,Zfp683	Akap12,Cdh13,Dpysl3
+26	transfac_pro-M03576	0.0837638	3.80129	M13	Ubp1	Cdh13,Armcx4
+27	taipale-NAACAATRN-SOX9-DBD	0.083715	3.79857	M3	Sox9,Sox30,Sox7,Sry,Sox5,Sox18,Sox15,Sox6	Wbp7,Vav2,Atf5
+28	taipale-GCTTTTCCCACA-ZNF75A-DBD	0.0836176	3.79312	M8		Ppfia4,Nov,Akap12
+29	transfac_pro-M00820	0.0834227	3.78223	M14		Ppfia4,Akap12,Dpysl3
+30	yetfasco-1661	0.0830328	3.76044	M15		Akap12,Vav2,App
+31	hdpi-SMAP1L	0.0824481	3.72777	M4	Smap2	Cdh13,Armcx4
+32	homer-M00177	0.0823994	3.72505	M1	Sox3,Sox2,Nanog,Smad1,Sox4,Yy2,Qsox1,Sox21,Fli1,Gabpb1,Elf2,Etv6,Elk4,Elk1,Pou5f1,Elf4,Spib,Pdx1,Sox6	Vav2,Ptprk,Wbp7,Dpysl3,Atf5
+33	swissregulon-TGIF1.p2	0.0823019	3.7196	M12	Tgif1	Ppfia4,Ube2e2
+34	flyfactorsurvey-Sox15_SANGER_5_FBgn0005613	0.0819608	3.70054	M3	Sox7,Sox17,Sox18	Vav2,Wbp7,Atf5,Ptprk,Fat1,Psen1,Dpysl3,Akap12
+35	yetfasco-915	0.0817659	3.68965	M16	Srf,Mef2a,Mef2c,Mef2d,Mef2b,2310045N01Rik	Ppfia4,Porcn,Cdh13,Akap12
+36	transfac_public-M00418	0.0816197	3.68148	M12	Tgif1,Meis1,Meis2	Ppfia4,Ube2e2,Rimklb
+37	yetfasco-1260	0.0814735	3.67331	M2	Gm7148,Tgif2,Tgif1,Mef2a,Mef2d,Mef2c,2310045N01Rik,Mef2b,Stat1,Tcf3,Prdm2,Prdm1,Zfp683,E2f1	Akap12,Cdh13,Dpysl3
+38	hdpi-ZNF326	0.0810837	3.65153	M17	Zfp326	Akap12,Tfrc,Cdh13,Ppfia4
+39	jaspar-PF0099.1	0.0806452	3.62702	M18		Atf5,Parp12,Tfrc,Vav2,Wbp7
+40	yetfasco-1226	0.080499	3.61885	M2	Tgif1,Tgif2,Gm7148,E2f1,Tcf3,Prdm2,Prdm1,Zfp683,Mef2a,Mef2c,Mef2d,2310045N01Rik,Mef2b,Nr3c1,Foxo4,Foxp3,Pgr,Mybl1,Mybl2,Snapc4,Myb	Akap12,Cdh13,Dpysl3
+41	yetfasco-1197	0.0804503	3.61613	M2		Akap12,Dpysl3,Cdh13
+42	yetfasco-2054	0.0801579	3.59979	M3	Sox9,Sox14,Sox10	Wbp7,Akap12
+43	stark-MKSCMAGGACVHH	0.0801091	3.59707	M19		Nov,Armcx4,Wbp7,Ube2e2,Ptprk,Fxyd6,Porcn,Leprel4,Rab3b,Vav2,Sgcb,Fat1,Cdh13,Akap12,Plcg1,L1cam
+44	yetfasco-1069	0.0799142	3.58617	M2	Rfx2,Rfx3,Rfx4,Rfx8,Rfx6,Rfx1	Akap12,Cdh13,App,Ppfia4
+45	yetfasco-1273	0.0784037	3.50176	M2	Mybl1,Mybl2,Snapc4,Myb,Prdm2,Prdm1,Zfp683,Yod1,Tgif1,Tgif2,Gm7148,Mef2a,Mef2c,Mef2d,Mef2b,2310045N01Rik,Rfx2,Rfx3,Rfx4,Rfx6,Rfx8,Rfx1,E2f1,Tcf3	Akap12,Cdh13,Dpysl3,App,Tfrc
+46	encode-UW.Motif.0227	0.0783062	3.49632	M3		Ptprk,Dpysl3,Rab3b,Akap12,Ppfia4
+47	homer-M00178	0.0775266	3.45275	M1	Sox6,Nanog,Sry,Sox30,Sox9,Smad1,Sox18,Sox3	Vav2,Wbp7,Dpysl3,Atf5,Akap12,Ptprk
+48	elemento-GATCATC	0.0774291	3.4473	M20		Cdh13,App,Rab3b,Dtx4
+49	iDMMPMM-D	0.0772342	3.43641	M1	Sox14,Sox21,Nanog,Sox30,Sox9,Sox11,Sox7,Sox3	Wbp7,Vav2,Ptprk,Dpysl3,Atf5
+50	yetfasco-1886	0.0769905	3.4228	M21		Nov,Cdh13,Rab3b
+51	factorbook-ZNF263	0.0766494	3.40374	M22	Zfp263	Ppfia4,Akap12,Wbp7,Porcn,Zfp318,Dpysl3,L1cam
+52	homer-M01825	0.0765033	3.39557	M23		Ube2e2,Cdh13,Dpysl3,App,Prnp,Vav2,Parp12,Ppfia4,Rimklb,Akap12,Tfrc,Fbxo21
+53	yetfasco-1191	0.0764058	3.39012	M2	Tgif2,Gm7148,Tgif1,Nr3c1,Pgr,Prdm2,Prdm1,Zfp683,Foxp3,Mybl1,Mybl2,Snapc4,Myb,Rfx2,Rfx3,Rfx4,Rfx8,Rfx6,Rfx1	Cdh13,Akap12,Dpysl3,Tfrc,App
+54	tfdimers-MD00352	0.0763571	3.3874	M24	Nfatc2,Mycs	App,Prnp,Akap12,Cdh13
+55	tfdimers-MD00312	0.076016	3.36834	M1	Nanog,Pou5f1,Sox2,Smad1,Tcf7l1,Pou3f1,Pdx1,Cdx2,Yy1,Tcf3,Ap3b1,Pax4,Nfatc1,Qsox1,Hoxd1,E2f1,Pbx1,Maf	Cdh13,Akap12,App,Dpysl3,Nov,Parp12,Fxyd6,L1cam,Fat1,Prnp,Ppfia4,Leprel4,Atf5
+56	tfdimers-MD00034	0.07548	3.33838	M1	Sox2,Pdx1,Nanog,Smad1,Tcf7l1,Pou5f1,Sox11,Sox4,Qsox1,Cdx2,Yy1,Tcf3,Hoxd1,Maf,Nfatc1,Sox3,Ap3b1,Pax4,Cebpa,Cebpe,Cebpg,Cebpb,Pbx1,Pou2f1	Akap12,Leprel4,Cdh13,Ptprk
+57	yetfasco-1743	0.0753338	3.33021	M25		Ube2e2,Fxyd6,Atf5,Dpysl3
+58	yetfasco-1275	0.0751389	3.31932	M2	Mef2a,Mef2d,Mef2c,2310045N01Rik,Mef2b,Rfx2,Rfx3,Rfx1,Rfx6,Rfx4,Rfx8,Tgif1,Tgif2,Gm7148,Smad1,Nr3c1,Irf1,Foxi1	Akap12,Cdh13
+59	yetfasco-2005	0.0749927	3.31115	M16	Srf,Mef2b,2310045N01Rik,Mef2c,Mef2a,Mef2d	Ppfia4,Cdh13,Porcn,Akap12
+60	yetfasco-1209	0.0748465	3.30298	M2	Tgif2,Gm7148,Tgif1,Zfp683,Prdm1,Prdm2,Mybl1,Mybl2,Snapc4,Myb,Rfx2,Rfx3,Rfx4,Rfx8,Rfx6,Rfx1,2310045N01Rik,Mef2b,Mef2a,Mef2c,Mef2d	Akap12,Cdh13,Dpysl3,App,Tfrc
+61	homer-M00361	0.0747978	3.30026	M26	Rxra,Rxrg,Rxrb	Zfp318,Cdh13,Leprel4,Ppfia4
+62	homer-M01819	0.0747978	3.30026	M27		Ppfia4,Dtx4,Parp12
+63	yetfasco-932	0.0747978	3.30026	M16	2310045N01Rik,Mef2b,Mef2c,Mef2a,Mef2d	Ppfia4,Akap12,Cdh13
+64	yetfasco-1239	0.0746516	3.29209	M2	Mef2a,Mef2c,Mef2d,2310045N01Rik,Mef2b,Zfp683,Prdm1,Prdm2,E2f1,Tcf3,Stat1,Tgif1,Tgif2,Gm7148,Rfx2,Rfx3,Rfx6,Mybl2,Rfx1,Mybl1,Snapc4,Rfx4,Myb,Rfx8	Akap12,Cdh13
+65	yetfasco-1223	0.0745541	3.28665	M2		Akap12,Cdh13
+66	yetfasco-1194	0.074408	3.27848	M2		Akap12,Cdh13,Dpysl3,Tfrc
+67	yetfasco-1641	0.0742618	3.27031	M28		Cdh13,Akap12
+68	tfdimers-MD00291	0.074213	3.26759	M3	Foxo1,Yy2,Sox9,Cdk2ap1,Gm12184,Sox21	Wbp7,Atf5,Dpysl3
+69	tfdimers-MD00195	0.0739694	3.25397	M2	Cdx2,Foxo1,Foxa3,Foxa1,Foxa2,Foxo4	Cdh13,Ppfia4,Fat1
+70	yetfasco-1075	0.0739694	3.25397	M29		Prnp,Vav2,Ppfia4,Zfp318,Psen1,Plcg1,Porcn
+71	jaspar-MA0291.1	0.0732872	3.21585	M10		Nov,Ube2e2
+72	yetfasco-484	0.0731898	3.2104	M10		Nov,Ube2e2
+73	jaspar-MA0151.1	0.073141	3.20768	M14	Arid3a	Akap12,Ube2e2,Cdh13
+74	transfac_pro-M03171	0.0730923	3.20496	M30		Cdh13,Nov,Ppfia4
+75	transfac_public-M00038	0.0730923	3.20496	M31	Jdp2,Bach1,Fosb,Fosl1,Jund,Jun,Fos,Junb,Bach2,Fosl2,Batf,Sfpi1,Srf,Arnt,Tgif1,Tgif2,Gm7148	Ppfia4,Prnp,App
+76	tfdimers-MD00235	0.0728974	3.19407	M16	Stat1,Dbp,Sfpi1,Churc1,Tbp,Cebpb,Yy1,Nfatc3	Ppfia4,Prnp,Cdh13
+77	transfac_pro-M01830	0.0728974	3.19407	M32	Max,Arnt,Mycn,Myc,Mycs,Arnt2	Ppfia4,Zfp318,Akap12
+78	hdpi-PHLDA2	0.0727512	3.1859	M8	Phlda2	Porcn,Nov,Cdh13
+79	flyfactorsurvey-CG12236-PB_SANGER_2.5_FBgn0029822	0.072605	3.17773	M8		Cdh13,Porcn,Nov
+80	yetfasco-1266	0.0725563	3.17501	M2	Mef2a,2310045N01Rik,Mef2b,Mef2c,Mef2d,Mybl1,Mybl2,Snapc4,Myb	Cdh13,Akap12
+81	selexconsensus-prd-PD	0.0725076	3.17228	M33	Pax3,Pax7	Rnh1,Plcg1,Atf5,Leprel4,App,Tfrc,Zfp318,Wbp7,Sgcb,Ube2e2
+82	yetfasco-1185	0.0722152	3.15594	M2	Prdm2,Zfp683,Prdm1,Rfx2,Rfx3,Rfx4,Rfx8,Rfx6,Rfx1	Cdh13,Akap12,Dpysl3,App,Atf5,Fat1,Parp12,Leprel4,Ube2e2
+83	transfac_public-M00415	0.0719715	3.14233	M15	Zeb1	Rimklb,Psen1,Nov
+84	hdpi-AVEN	0.0719228	3.13961	M8	Aven	Porcn,Nov,Cdh13
+85	yetfasco-1263	0.0719228	3.13961	M2	Tgif2,Gm7148,Tgif1,2310045N01Rik,Mef2b,Mef2a,Mef2c,Mef2d,Rfx2,Rfx3,Rfx4,Rfx6,Rfx8,Rfx1	Cdh13,Akap12
+86	yetfasco-1258	0.0717766	3.13144	M2	Stat1,Tcf3,E2f1,Mef2a,Mef2c,Mef2d,Mef2b,2310045N01Rik,Prdm2,Prdm1,Zfp683,Mybl2,Mybl1,Snapc4,Myb	Akap12,Cdh13
+87	transfac_public-M00230	0.0715817	3.12055	M14		Rab3b,Ppfia4
+88	transfac_pro-M01257	0.0713868	3.10965	M16	Srf	Akap12,Ppfia4
+89	yetfasco-27	0.0711919	3.09876	M14	Pbx1	Akap12,Cdh13,Dpysl3
+90	yetfasco-1271	0.0711432	3.09604	M2	Mybl2,Mybl1,Myb,Snapc4,Yod1,E2f1,Tcf3,Mef2a,Mef2d,Mef2c,Mef2b,2310045N01Rik,Mms19	Akap12,Cdh13
+91	yetfasco-1210	0.0708508	3.0797	M2	Nfya	Akap12,Cdh13,Dpysl3
+92	yetfasco-1781	0.0708021	3.07698	M20	Jdp2,Junb,Jun,Jund,Fos,Fosl1,Fosb,Bach2,Batf,Sfpi1,Arnt,Srf	Prnp,Ppfia4,App
+93	yetfasco-1901	0.0708021	3.07698	M21		Dpysl3,Fat1,Porcn,Psen1,App
+94	flyfactorsurvey-Med_FlyReg_FBgn0011655	0.0705584	3.06336	M21	Smad4	Plcg1,Cdh13,Nov,Vav2
+95	homer-M00214	0.0705584	3.06336	M22	Zfp263	Ppfia4,Zfp318,Porcn,Wbp7,Akap12
+96	homer-M00636	0.0705584	3.06336	M21	Smad4	Plcg1,Cdh13,Nov,Vav2
+97	hdpi-SOX13	0.070461	3.05792	M34	Sox13	Cdh13,Tfrc,Akap12
+98	transfac_pro-M03147	0.0704122	3.05519	M10	Rorc,Rorb	Armcx4,Cdh13,Nov
+99	yetfasco-1262	0.0704122	3.05519	M2	Yod1	Akap12,Cdh13,Dpysl3,App
+100	tfdimers-MD00077	0.0700711	3.03613	M12	Srebf1,Mycs,Srebf2,Nfe2l1,Runx2,Cbfb,Yy1	Ube2e2,Ppfia4,Rimklb,App
+101	yetfasco-1198	0.0700711	3.03613	M2	Mybl2,Mybl1,Snapc4,Myb,Mef2a,2310045N01Rik,Mef2b,Mef2c,Mef2d	Akap12,Cdh13,Dpysl3,App,Prnp,Tfrc,Rnh1,Parp12,Fxyd6
+102	yetfasco-992	0.0700711	3.03613	M35		Nov,Rab3b
+103	yetfasco-1240	0.0698762	3.02524	M2		Akap12,Cdh13
+104	yetfasco-1015	0.0698275	3.02252	M16	Srf,Mef2a,Mef2c,Mef2d,2310045N01Rik,Mef2b	Ppfia4,Porcn,Cdh13,Akap12
+105	tfdimers-MD00200	0.06973	3.01707	M31	Pou1f1,Tlx2,Dbx1,Pou3f4,Lhx3,Pou3f1,Hnf1a,Hnf1b,Dbx2,Pou3f2,Nkx6-1,Vsx1,Pax6,Hoxc5,Pou2f1,Uncx,Hoxb4,Nkx6-3,Lhx1,Shox2,Pou4f3,Phox2b,Hoxd8,Lhx5,Isl2,Lmx1b,Alx1,Myb,Hoxa10,Crx,Cdx2,Pbx1,Hmbox1,Pou4f2	Cdh13,Akap12,Ppfia4,Dpysl3

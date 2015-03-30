@@ -1,0 +1,84 @@
+; Name	BRAIN
+; Species and nomenclature	Mus musculus, MGI symbols
+; Motif collection	10K (9713 PWMs)
+; Minimum NEScore	3.0
+; Rank threshold for visualization	5000
+; ROC threshold for AUC calculation (%)	0.03
+; Minimum identity between orthologous genes	0.0
+; Maximum false discovery rate (FDR) on motif similarity	0.001
+; Motif rankings database	500bp upstream (7 species)
+; Number of valid nodes	139
+; iRegulon version	iRegulon v1.3 (build: 2015-02-12)
+# Rank	Motif id	AUC	NES	ClusterCode	Transcription factor	Target genes
+1	taipale-NCCGGAWRYRYWTCCGGN-ETS1-full	0.0522564	5.69984	M1	Ets1,Ets2,Elk3,Erf,Etv5,Etv1,Fli1,Etv2,Fev,Elf3,Elk4,Etv3,Gabpa,Elk1,Erg,Elf2,Gabpb1	Pomp,Sf3b5,Rps18,Rpl13a,Rps11,2300009A05Rik,Rpl37a,Fam173a,Gas5,Romo1
+2	jaspar-PF0081.1	0.0470992	4.9922	M2		Rps18,Fth1,Fam173a,Gas5,Dbndd2,Rpl38,Rpl23,Rpl37a,Rplp2,Mrps26,Hnrnpa0,Cyb5r1,Cnbp,Sf3b5,Hsd17b11,Tsn,Cd83,Drap1,Bcas2,Rps10,Cyp27a1,Psme1,Gpsm1,Pla2g16,Ergic3,Gm561,Rpl22l1,2810008D09Rik,Csrp1,H2-K1,Rpl36al,Hprt,Edf1,Lyrm5,Rpl8,Rps7,2300009A05Rik,Rps9
+3	yetfasco-535	0.0466508	4.93066	M3	Foxn4,Foxn3,Foxn2,Foxn1,Foxh1	Gas5,Rpl9,Pomp,Dad1,Rpl13a,Hnrnpa0
+4	yetfasco-2100	0.045093	4.71691	M4		Cox7a2,Dbndd2,Hsd17b11,Rpl37a,Anapc13,Rpl38,Pomp,C1qtnf4,A030009H04Rik,Drap1,Vsnl1,Ube2e2,Rpp25,Uqcr10,Stxbp6,Mrps26,Cyp27a1,Tk2,Gas5,Rps7,Gnai2,Nap1l5,Rps18,S100a13
+5	yetfasco-1538	0.0450812	4.71529	M5	Hsf1,Hsf2,Hsf4,Hsf3	Nudc,H2-D1,C1qc,Vsnl1,Ftl1,Dbndd2,H2-K1,Rps18,Stxbp6
+6	taipale-NRGTCCAAAGTCCANY-HNF4A-full	0.0428153	4.40438	M6	Hnf4a	Pink1,Rnf5,Sh3bgrl2,Hsd17b11,C4b,H2-D1
+7	homer-M01812	0.0425085	4.36227	M7		Gstp1,Hsd17b11,Cyp27a1,Rps7,Rpl38,Bcas2
+8	tfdimers-MD00038	0.0424259	4.35094	M8	Tfap2c,Tfap2e,Tfap2a,Tfap2b,Pou2f1,Pura	Prkcdbp,Stxbp6,Fth1,C4b,Hnrnpa0,Gnai2,H2-D1,Fbxo44,Cd83,Gpsm1,H2-K1,C1qtnf4,Tmem9,Phpt1,Ftl1,2300009A05Rik,Dbndd2,Fbxo2
+9	yetfasco-2109	0.0419774	4.2894	M4		Dbndd2,Cox7a2,Rpl37a,A030009H04Rik,Hsd17b11,Romo1,Rpl38,Anapc13,Gas5,Tk2,Rpp25,Aldh6a1,Uqcr10,Rps18,Vsnl1,Drap1,Fbxo44,Rplp2,Nap1l5,Fbxo2,Stxbp6,Gm561,Ube2e2,Gnai2,Cyp27a1,S100a13,Rps7,Prkcdbp,Bcas2,Mrps26,Pomp,C1qtnf4
+10	elemento-TCCTTGC	0.0419066	4.27969	M9		Gas5,Dbndd2,Hsd17b11,C1qtnf4,C1qc,Ldhb,S100a13,Sh3bgrl2,Ndufb3,Phpt1,Gm561,Cox7a2l,Trem2
+11	yetfasco-616	0.0416588	4.24568	M7		Gstp1,Rps7,Hsd17b11,Cyp27a1,Rpl38,Bcas2
+12	elemento-TGACGCA	0.0406439	4.10642	M10		Hnrnpa0,Rpl13a,Rpl22l1,Rpl9,Prkcdbp,Gas5,Mrpl17,Cd63,Dad1
+13	yetfasco-448	0.0404197	4.07565	M7		Dbndd2,Hnrnpa0,A030009H04Rik,Sh3bgrl2,Vstm2l,Rnh1,Acadl,Tceal1,Fbxo44,Gas5,Pink1,Bcas2,Ube2e2,Parp12,Sar1b,Rps7,Ldhb,Cox7a2,Rpl13a,Rpl38,Phpt1,Nkx6-2,Edf1,Sf3b5,Cd83,Nap1l5,Anapc13,Mrpl17,Gnai2,Rnf5,Fbxo2,Csrp1,Rpl22l1,Sumo1,Gpr137b,Mrps26,Cd63,Gstp1,Dcxr,Apoe,Rpl36al,Rpl9,Vsnl1,Tmem9,2300009A05Rik,Hprt
+14	yetfasco-1387	0.0395464	3.95582	M1		Pomp,Rpl38,Rps18,Vstm2l,Gas5,Hsd17b11,Hnrnpa0,Rpl22l1,Parp12,Rps7,Fam173a,Romo1,Sf3b5,Rnf5,Gm561,Dbndd2,Eif3f,Rit2,Fdx1,Rpl37a,Rpl13a,Cyp27a1,Cox7a2,Ndufb3,Rpl23,Mrps26,Ndufb8,Gnai2,Cd83,Fbxo44,Ftl1,Vsnl1,Anapc13,Aldh6a1,H2-D1,Tsn,Sh3bgrl2,Fam103a1,Rplp2,Rpp25,Prkcdbp
+15	yetfasco-2132	0.0390625	3.88943	M2		Gas5,Rpl38,Fbxo44,Rps18,Fbxo2,Hsd17b11,Vsnl1,Eif3f,Dbndd2,Vstm2l,Nkx6-2,Rpl8,Rps7,Gm561,Cnbp,Fam103a1,Sh3bgrl2,Rpl23,Gnai2,Pomp,Tmem9,Fth1,H2-D1,Rpl37a,Prkcdbp,Ndufb8,Aldh6a1,Sf3b5,Cyp27a1,Rnf5,Phpt1,H2-K1,Cox7a2l,Rpp25
+16	homer-M00158	0.0385786	3.82304	M11	Irf4,Sfpi1,Prdm1,E2f1,Ep300,Zeb1,Myb	Gas5,H2-K1,H2-D1,Rpl13a,Rps18
+17	yetfasco-1386	0.0383426	3.79065	M1		Vstm2l,Rps18,Gas5,Rpl38,Hsd17b11,Pomp,Rps7,Rpl22l1,Fam173a,Romo1,Parp12,Cd83,Fdx1,Rplp2,Sf3b5,Hnrnpa0,Gm561,Rpl37a,Vsnl1,Rnf5,Ndufb3,Eif3f
+18	yetfasco-1000	0.0382246	3.77446	M12	Mettl3	Gas5,C1qtnf4,Hsd17b11,Fbxo44,Apod,Vsnl1,Vstm2l,Rit2,Fbxo2
+19	hdpi-RARB	0.0378116	3.71778	M13	Rarb	Fth1,Drap1,Gas5,Fbxo2,A030009H04Rik,Rps9,Fdx1,Vstm2l,Psme1,Dbndd2,Gstp1,Rps18,Nkx6-2,Rpl22l1,Rplp2
+20	tfdimers-MD00194	0.0374457	3.66758	M14	Nfatc3,Zeb1	Fbxo44,Fbxo2,C4b,Dbndd2,Trem2,Prkcdbp
+21	transfac_public-M00165	0.0373041	3.64815	M5	Hsf1,Hsf4,Hsf2,Hsf3	Nudc,Cd83,H2-D1,Ftl1,Dbndd2,Vsnl1,Rps18,C1qc,H2-K1
+22	yetfasco-2083	0.0373041	3.64815	M15		Vstm2l,Pomp,Cox7a2,Hsd17b11,Cd83,Vsnl1
+23	encode-UW.Motif.0669	0.0372805	3.64491	M16		C4b,Apoe,H2-K1,Dbndd2,H2-D1,Rpp25,Rpl13a
+24	hdpi-ZNF160	0.0372451	3.64005	M17		H2-D1,Dbndd2,H2-K1,Vstm2l,S100a13,Rpl13a
+25	elemento-GCGTCAC	0.0370917	3.619	M10		Dad1,Hnrnpa0,A030009H04Rik,Rpl13a,Cd63,Tceal1,Rpl22l1,Cd83,Rpl9
+26	hdpi-RAB7A	0.0369737	3.60281	M8	Rab7	Gnai2,Stxbp6,Hsd17b11,Rpp25,Vsnl1
+27	taipale-AAAAAGMGGAAGTN-SPIB-DBD	0.036773	3.57528	M11	Spib,Sfpi1,Spic,Gabpb1,Yy1,Nfatc3,Sirt6,Tcf4,Tbp	C1qc,Rnf5,Lyz2,Hnrnpa0,Rps18,C1qtnf4,Aldh6a1,Rps7,Rpl38,Dbndd2,Sf3b5,Chchd2
+28	stark-RTTRCGYATRCGCM	0.0367376	3.57042	M18		Mrpl17,Dad1,Ndufb8,Vsnl1,Stxbp6,Rnf5
+29	encode-UW.Motif.0578	0.0366432	3.55747	M16		Hsd17b11,Gpr137b,Gnai2,Prkcdbp,Dbndd2,Vstm2l,Fez2,S100a13,Rpp25,H2-K1,Cnbp
+30	hdpi-CYB5R1	0.0362302	3.50079	M19	Cyb5r1	Fbxo2,Fbxo44,Gm561,Rpp25,Pomp,Hsd17b11,Ndufb3
+31	swissregulon-GZF1.p2	0.0362302	3.50079	M20	Gzf1	Drap1,Rpl22l1,C4b,Il33,Sh3bgrl2,Dad1,Ndufb8,Nap1l5,Rps9,Fth1
+32	yetfasco-1529	0.0361004	3.48298	M13	Gata5,Gata1,Gata4,Gata3,Gata2,Gata6,Nr3c1	Vstm2l,Psme1,Rpl8,Hsd17b11,Pink1,Nkx6-2
+33	tfdimers-MD00449	0.0360886	3.48136	M21	Yy1,Rel,Relb,Ets1	H2-K1,H2-D1,C1qc,C1qtnf4,Cd63,Apoe
+34	transfac_pro-M01204	0.0359823	3.46678	M11	Spib,Sfpi1,Spic,Elk1,Gabpb1,Ets1,Elf1,Gabpa,Elk4,Elk3,Etv4,Etv6,Fli1,Erg,Elf4,Elf2,Ets2,Ehf,Ep300,E2f6,Tcf4,Yy1,Tbp,Nfatc3,Pura,Sirt6,Bptf,Hoxd10	C1qc,Lyz2,Hnrnpa0,C1qtnf4,Rps7,Chchd2,Rps18,Rnf5
+35	yetfasco-581	0.0359823	3.46678	M2		Gas5,Rps18,Vstm2l,Rpl38,Pomp,Rps7,Hsd17b11,Romo1,Sf3b5,Gm561,Rpl37a,Fam173a,Vsnl1,Rpl8,Prkcdbp,Eif3f,Rpl22l1,Parp12,Rplp2,Rnf5,Aldh6a1,Rps10,Fam103a1,Ndufb3,Cd83,Dbndd2,Dad1,Rpl13a,Cyp27a1,Hnrnpa0,Psme1,A030009H04Rik,Mrps26,Csrp1,Ergic3,Fdx1,Rpl23,Ldhb,Tsn,Sar1b,Lyrm5,H2-D1,Rit2,Rpp25,Pon2,Cnbp,Fbxo44
+36	homer-M01745	0.0358643	3.45059	M7		Rpl38,Vstm2l,Hnrnpa0,Pomp,Dbndd2,Gnai2
+37	transfac_pro-M03556	0.0358053	3.44249	M14	Nfat5	Dbndd2,Vstm2l,Gas5,Prkcdbp,Fbxo44
+38	tfdimers-MD00040	0.0357699	3.43763	M17	Ikzf2,Pou2f1,Gsc,Klf4	Vstm2l,Uqcr10,Tmem160,Dbndd2,Sh3bgrl2,Gm561,Rnf5,Rplp2
+39	yetfasco-1735	0.0357463	3.4344	M16		Tmem9,Epdr1,Nudc,Il33,A030009H04Rik,Gnai2
+40	yetfasco-995	0.0355575	3.40849	M5	Hsf1,Hsf2,Hsf4,Hsf3	Nudc,H2-D1,H2-K1,Dbndd2,Cd63
+41	yetfasco-1637	0.0355221	3.40363	M22	Kdm4d,Kdm4c,Kdm4a,Kdm4b	Rpp25,Epdr1,Sumo1,Dbndd2,Ldhb,Ndufb8,Sf3b5,Tmem160,Cox7a2l,Vsnl1,Tceal1,Ftl1
+42	yetfasco-2089	0.0355221	3.40363	M1		Vsnl1,Hsd17b11,Aldh6a1,Dbndd2,Rnf5
+43	taipale-NSCCNNNGGSN-TFAP2C-full	0.0355103	3.40201	M8	Tfap2c,Tfap2e,Tfap2b,Tfap2a,Pou2f1	Gnai2,Prkcdbp,Mrps26,Tmem9,Gm561,Hnrnpa0,Tsn,Fth1
+44	yetfasco-1217	0.03505	3.33886	M5	Hsf1,Hsf2,Hsf4,Hsf3	Nudc,C1qc,Cd83,H2-D1,H2-K1
+45	transfac_public-M00224	0.0348966	3.3178	M2	Stat1,Stat3,Stat5a,Stat5b,Stat6,Stat2,Stat4,Elf4	Gas5,C1qc,Rpl38,Dbndd2,Rps18,H2-D1,Apod,H2-K1,Gm561,Rnh1,Anapc13,B630019K06Rik,Bcas2,Fth1,Rpl22l1,Rit2,D4Wsu53e,Fbxo44
+46	hdpi-CYCS	0.0348022	3.30485	M17		Vstm2l,Evi2a,Hsd17b11,Prkcdbp,Sh3bgrl2
+47	yetfasco-651	0.0347432	3.29675	M7		Rpl38,Vstm2l,Hnrnpa0,Pomp,Dbndd2,Gnai2,Aldh6a1,Edf1,Rps18,Cyp27a1,Rpl37a,Gm561,H2-D1,Evi2a,Sh3bgrl2,Ergic3,Parp12,Ndufb8,Ldhb,Psme1,Mrps26,Tmem9,Tceal1
+48	elemento-CTTGCGCA	0.0345898	3.2757	M18		Cox7a2l,Dad1,2300009A05Rik,Ndufb8,Mrpl17
+49	yetfasco-1385	0.0345898	3.2757	M7		Pomp,Gas5,Hnrnpa0,Hsd17b11,Rps18,Vstm2l,Rpl38,Romo1,Rpl22l1,Parp12,Fam173a,Dbndd2,Tsn,Cyp27a1,Rps7,Sf3b5,Rnf5,Gnai2,Sh3bgrl2,Aldh6a1,Rplp2,H2-D1,Cd83,Fam103a1,Psme1,Rit2,Ftl1,Cox7a2,Gm561,2810428I15Rik,Eif3f,Rpl37a,Fbxo44,Cnbp,Rpl13a,Fdx1,Mrps26
+50	taipale-RRGGTCAAAGTCCRNN-HNF4A-full	0.0345544	3.27084	M6	Hnf4a,Pparg,Nr2f1,Rxrg,Rxrb,Nr2c2	C4b,Hsd17b11,Sh3bgrl2,Pink1
+51	transfac_public-M00377	0.0345426	3.26922	M22	Pax4,Cdx2,Hdx	Vstm2l,Fbxo44,Tmem9,Nkx6-2,Dbndd2,Fbxo2
+52	yetfasco-1292	0.0344246	3.25303	M5	Hsf1,Hsf2,Hsf4,Hsf3	H2-D1,Epdr1,H2-K1,Cd83
+53	yetfasco-567	0.0342121	3.22388	M13	Gata3,Gata5,Gata6,Gata4,Gata2,Gata1	Nkx6-2,Rpl13a,Vstm2l,Psme1,Hsd17b11,Rpl8,Uqcr10
+54	jaspar-MA0018.1	0.0341885	3.22064	M10	Creb1	Gas5,Mut,Rps9,Dad1,Fam174a,Hnrnpa0,Rplp2,0610012G03Rik,Rps28,Bcas2
+55	flyfactorsurvey-lola-PO_SANGER_5_FBgn0005630	0.0341531	3.21579	M8		C1qc,Phpt1,Cox7a2l,Rnf5,Dbndd2
+56	yetfasco-135	0.0339879	3.19312	M18		Dad1,Ndufb8,Csrp1,Mrpl17,Hsd17b11,Vsnl1,Rnf5,Vstm2l
+57	factorbook-PU1	0.0337519	3.16073	M11	Irf4,Sfpi1,E2f1,Myb,Ep300,E2f6,Tcf4	Rnf5,C1qc,Rps18,Hnrnpa0,H2-K1,H2-D1,Gas5,Rpl37a,Fez2,Lyz2,Ndufb8,Rpl38,Fam174a,Fth1
+58	yetfasco-1932	0.0337401	3.15911	M23		Rnf5,C1qtnf4,Epdr1,Hsd17b11,C1qc,Gm561,Rps18
+59	factorbook-HNF4	0.0336339	3.14454	M6	Hnf4a,Hnf4g,Nr2f1,Nr2f2	C4b,Pink1,Sh3bgrl2,Hsd17b11,Rnf5
+60	tfdimers-MD00105	0.0333978	3.11215	M11	Pura,Irf8,Prdm1,Irf2,Irf1,Irf3,Irf5,Irf9,Irf4,Irf7,Stat1,Churc1,E2f1,Zfp683,Myb	H2-K1,H2-D1,Fth1,Gas5
+61	elemento-TCGCCCA	0.0333152	3.10081	M24		Rnf5,Stxbp6,Parp12,Dbndd2,Gm561,H2-K1
+62	transfac_pro-M00699	0.0331972	3.08462	M11	Irf8,Irf6,Irf7,Irf1,Irf4,Irf2,Irf3,Irf5,Stat1,Stat2,Myb,Zeb1,Sfpi1	H2-K1,H2-D1,Epdr1,Ube2e2,Gas5,C4b,Cnbp
+63	homer-M01747	0.0330084	3.05871	M10		Cd63,Prkcdbp,Hnrnpa0,Rpl22l1,Fez2,Rpl9
+64	jaspar-PF0019.1	0.0329258	3.04738	M20		Rpl9,0610012G03Rik,Rplp2,Rpl23,Rps9,Fam103a1,Bcas2,Fam174a,Rpl37a,Aldh6a1,Fxyd6,H2-K1
+65	yetfasco-491	0.0328668	3.03928	M13	Gata5,Gata1,Gata4,Gata2,Gata3,Gata6	Nkx6-2,Vstm2l,Psme1,Rpl13a,Rpl8,Hsd17b11,Uqcr10
+66	transfac_pro-M00647	0.0328314	3.03442	M25	Nr1h3,Nr1h2,Nr1h4,Rara,Rarb,Nr1i3,Rarg,Nr1i2,Nr2f2,Rxra,Nr2f1,Rxrb	C1qc,Txndc15,Cd63,Rpl38
+67	hdpi-HCFC2	0.0327606	3.0247	M21	Hcfc2	H2-D1,H2-K1,Sf3b5,Rpl22l1,Vstm2l,2300009A05Rik,Hsd17b11,Gnai2,S100a13,Uqcr10,Gm561,Apoe,Phpt1,Fdx1,Fez2
+68	tfdimers-MD00429	0.0327606	3.0247	M17	Ikzf2,Arid3a,Otx1,Otx2,Pitx2,Obox5,Pdx1,Hnf1b,Hnf1a,Ikzf1	Dbndd2,Nkx6-2,Vstm2l,Rnf5,C1qtnf4,2300009A05Rik,Cyp27a1,Rpl22l1,Hprt,Stxbp6
+69	transfac_pro-M01182	0.0327134	3.01823	M26	Hinfp	Rnf5,Drap1,Dbndd2,Gas5,Rps18,Pomp,Fth1,Rps7,Gm561,Tsn,Mrps26,Bcas2,Ube2e2,Aldh6a1,Hnrnpa0,Anapc13,H2-D1,C4b,Hsd17b11,Rpl13a,Tmem9,Rpl38,Vsnl1,2810008D09Rik,Nap1l5,Zfp622,Cox7a2l,Tceal1,Chchd2,Sar1b,Rpl22l1,Txndc15,Cox7a2
+70	jaspar-MA0038.1	0.0326662	3.01175	M17	Gfi1,Gfi1b	Vstm2l,Ldhb,Gas5,Gnai2,Hnrnpa0,Aldh6a1
+71	hdpi-YWHAZ	0.0326426	3.00851	M17	Ywhaz	Vstm2l,Apoe,Sh3bgrl2,Gnai2,Sf3b5,S100a13
+72	transfac_public-M00243	0.0326308	3.00689	M3	Egr1,Egr2,Egr4,Egr3	2300009A05Rik,Dbndd2,Rpl22l1,Pomp,Dad1,Aldh6a1,Ergic3,Vstm2l,C4b

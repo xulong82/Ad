@@ -1,0 +1,77 @@
+; Name	BRAIN
+; Species and nomenclature	Mus musculus, MGI symbols
+; Motif collection	10K (9713 PWMs)
+; Minimum NEScore	3.0
+; Rank threshold for visualization	5000
+; ROC threshold for AUC calculation (%)	0.03
+; Minimum identity between orthologous genes	0.0
+; Maximum false discovery rate (FDR) on motif similarity	0.001
+; Motif rankings database	500bp upstream (7 species)
+; Number of valid nodes	114
+; iRegulon version	iRegulon v1.3 (build: 2015-02-12)
+# Rank	Motif id	AUC	NES	ClusterCode	Transcription factor	Target genes
+1	elemento-TCCTCGTC	0.105845	5.70488	M1		Srrm4,Phf21a,Dyrk1a,Cacna1e,Pgbd5,P4hb,Smg7,Ep300,Ept1,Sos2,Tmem131,Myh9,Cdr1
+2	iDMMPMM-BAB1	0.088406	4.45089	M2	Pole4,Nfyc	Tle3,Dyrk1a,Phf21a,Cacna1a,Nav1,Magi1,Cacna1c,Zdhhc9,Tnik,Tm9sf4,Dscam,Ntng2
+3	transfac_pro-M02853	0.0845473	4.17341	M3	Foxa2,Nanog	Tle3,Phf21a,Dyrk1a,Srrm4,Ep300,Fxr2,Tnik,Ube4a,Zbtb38,Cacna1a,Crebbp,Ltbp1
+4	elemento-AAGCGCA	0.0802549	3.86476	M4		Ept1,Rnf111,Tnik,Gpatch8,Magi1,Zmat3,Clip3,Fxr2,Dhx33,Gsk3b,Cacna1a,Srrm4,Lifr,Ltbp1
+5	jaspar-MA0123.1	0.0789088	3.76796	M5		Dyrk1a,Cacna1a,Tle3,Lifr,Phf21a,Sos2,Crocc,Mef2d,Cacna1c,Mll2,Ltbp1,Cacna1e,Ep300,Fry,Tnik,Smg7,Nav1,Syt7,Zmat3,Fxr2,Rnf214,Rnf111,Atp13a1,Rab3gap2,Bcl2l1,Ept1,Frmd4a,Khsrp,Hipk1,Ppargc1b,Gpatch8,Ntng2,Nrip1,Nrxn3,Srrm4,Ankrd52,Tcp11l1,Naa25,Dscam,Clip3
+6	yetfasco-1618	0.0775777	3.67225	M6	Foxn4,Foxn3,Foxn2,Foxn1,Foxh1,Jazf1	Mef2d,Cacna1c,Cacna1a,Rab3gap2,Phf21a,Ampd2,Ntng2,Fgd4,Ltbp1,Magi1,Mast2
+7	transfac_pro-M01092	0.0773833	3.65827	M3	Tcf7l2,Tcf7l1,Tcf7,Lef1,Nanog,Sox11,Sox4	Tle3,Ncam1,Nav1,Zbtb38,Mll2,Dyrk1a,Phf21a,Pitpnc1,Mast2,Srrm4,Cacna1a,Ntng2,Cacna1c,Magi1,Ep300,Fxr2,Ltbp1
+8	flyfactorsurvey-pfk_SANGER_5_FBgn0035405	0.0770991	3.63783	M6		Frmd4a,Ntng2,Cdr1,Cacna1a,Gsk3b,Cacna1c,Srrm4,Ptprz1,Ncam1
+9	homer-M00410	0.0770841	3.63676	M2		Phf21a,Srrm4,Dyrk1a,Nav1,Cacna1a,Zbtb38,Cacna1e,Ep300,Zdhhc9,Tle3,Fxr2,Mll2,Cacna1c
+10	hdpi-NANOS1	0.0764261	3.58944	M7	Nanos1	Cacna1c,Tle3,Dyrk1a,Phf21a,Cacna1e,Tnik,Cacna1a,Ep300,Sos2,Srrm4,Rprd2,Lifr,Fry,Dscam,Smg7,Plxna4,Rnf214,Ppargc1b,Tmem131,Ltbp1,Ankrd13b,Ept1,Hipk1,1700025G04Rik,Tcp11l1,Ncam1,Pgbd5,Gsk3b,Frmd4a,Ptprz1,Gpatch8,Rab3gap2,Zmat3,Pitpnc1,Crocc,Grik3,Nrip1,Fgd4,Bcl2l1,Srrm2,Atp13a1,Stau1,Ncoa1,Mef2d,Clip3,Nav1,Crebbp,Fxr2,Uba1,Mdn1,Iqgap1
+11	transfac_pro-M01654	0.0763812	3.58621	M2	Arid3a	Phf21a,Tle3,Ltbp1,Tnik,Nav1,Dyrk1a,Zbtb38,Cacna1a,Ep300,Cacna1e,Crocc,Crebbp,Cacna1c,Srrm4,Naa25
+12	yetfasco-796	0.0761868	3.57223	M8	Kdm4d,Kdm4c,Kdm4a,Kdm4b	Tle3,Mll2,Magi1,Fxr2,Zbtb38,Igsf3,Ltbp1,Frmd4a,Tm9sf4,Nrxn3,Mical3,Mpeg1
+13	wolfe-rn_SOLEXA_F2-4	0.0761718	3.57115	M3	Zfp362,Zfp384,Zfp513	Tle3,Cacna1a,Phf21a,Rprd2,Cacna1e,Fxr2,Dyrk1a,Srrm4,Grid2ip,Zbtb38,Bcl2l1
+14	yetfasco-1042	0.0761718	3.57115	M3		Phf21a,Nav1,Zbtb38,Cacna1a,Dyrk1a,Crebbp,Cacna1c,Ep300,Tle3,Pitpnc1
+15	homer-M01488	0.0761569	3.57008	M7		Phf21a,Cacna1c,Ntng2,Cacna1e,Sorbs2,Cacna1a,Tle3,Nrxn3
+16	yetfasco-1751	0.0761569	3.57008	M2		Nav1,Phf21a,Cacna1a,Tle3,Zdhhc9,Dscam,Cacna1e,Fxr2,Cacna1c,Dyrk1a,Pitpnc1,Ncam1
+17	flyfactorsurvey-dei_da_SANGER_5_FBgn0008649	0.0756184	3.53136	M9	Tcf3,Tal1,Tcf4,Zfp146,Zfp260,Figla,Atoh8,Bhlhe22,Bhlhe23,Scrt1,Scrt2	Zbtb38,Frmd4a,Fgd4,Ltbp1,Magi1,Sorbs2
+18	stark-ATGTGAT	0.0755437	3.52598	M10		Fgd4,Hipk1,Zbtb38,Ntng2,Ep300,Srrm4,Cacna1e,Magi1,Crocc,Ltbp1,Sorbs2,Cacna1c,Bcl2l1,Rnf214,Tmem131,Gsk3b,Cdr1
+19	yetfasco-1568	0.0752296	3.5034	M11		Bptf,Fxr2,Ankrd13b,Magi1,Mll2,Hipk1,P4hb,Khsrp,Grik3
+20	transfac_pro-M00923	0.0741228	3.42381	M12		Dyrk1a,Phf21a,Fam193a,Rnf214,Cacna1c,Tle3,Smg7,Fxr2,Sos2,Cacna1e,Pitpnc1,Dscam,Hipk1,Rab3gap2,Ltbp1,Lifr,Mef2d,Gpatch8,Grid2ip,Iqgap1,Grik3,Magi1,Zmat3,Mast2,Crebbp,Ncam1,Cacna1a,Fry,Ep300,Plxna4,Mll2,Gsk3b,Srrm4,Tnik,Son,Clip3,Rprd2,Slc20a1
+21	encode-UW.Motif.0240	0.0738985	3.40768	M13		Grik3,Zbtb38,Fgd4,Magi1,Gsk3b,Cacna1a,Stau1,Mast2
+22	stark-BMGYBGYYGYNGMVBV	0.0737938	3.40015	M12		Tle3,Cacna1c,Phf21a,Dyrk1a,Sos2,Rab3gap2,Rnf111,Gsk3b,Pitpnc1,Bcl2l1,Plxna4,Ep300,Cacna1e,Slc20a1,Smg7,Rnf214,Mll2,Hipk1,Son,Lifr,Tnik,Ppargc1b,Srrm2,Mast2,Pgbd5,Grik3,Ltbp1,Ntng2,Fam193a,Dhx33,Hmbox1,Lamc1,Uba1,Magi1,Fry,Myh9,Dscam,Frmd4a,Khsrp,Cbl,1700025G04Rik,Tmem131,Ankrd13b,Ept1,Fam120a,Cacna1a
+23	flyfactorsurvey-jigr1_SANGER_5_FBgn0039350	0.0736592	3.39047	M3		Cacna1a,Phf21a,Dyrk1a,Srrm4,Tle3,Nav1,Cacna1e,Zbtb38,Dscam,Pitpnc1,Zdhhc9
+24	transfac_pro-M01240	0.0736592	3.39047	M14	Gtf2ird1	Fry,Tle3,Dscam,Ppargc1b,Smg7,Ltbp1,Cacna1c,Gpatch8,Cacna1e,Dyrk1a,Cacna1a,1700025G04Rik,Pitpnc1,Nrip1,Ncam1,Sos2,Rnf214
+25	elemento-ATGTGGA	0.0735246	3.3808	M10		Cdr1,Pitpnc1,Ltbp1,Fxr2,Mll2,Igsf3,Uba1,Frmd4a,Fgd4
+26	transfac_pro-M01827	0.0735096	3.37972	M3		Tle3,Phf21a,Dyrk1a,Zbtb38,Cacna1a,Magi1,Cacna1c,Cacna1e,Ep300,Pitpnc1
+27	wolfe-Sqz_SOLEXA_F1-3	0.0731357	3.35283	M3	Zfp362,Zfp513	Cacna1a,Tle3,Cacna1e,Rprd2,Phf21a
+28	transfac_pro-M02857	0.0731208	3.35176	M3	Foxl1,Foxj3,Foxj1	Zbtb38,Srrm4,Pitpnc1,Cacna1a,Phf21a,Dyrk1a,Nav1,Tle3
+29	yetfasco-1656	0.073046	3.34638	M2		Zdhhc9,Nav1,Dyrk1a,Phf21a,Tle3,Srrm4,Pitpnc1,Magi1,Ntng2,Sorbs2,Cacna1c,Ep300,Cacna1a
+30	encode-UW.Motif.0085	0.0728067	3.32917	M15		Ncam1,Gpatch8,Srrm4,Zbtb38,Fam193a,Ntng2,Plxna4,Naa25,Fry,Cacna1a,Phf21a,Ep300,Rprd2,Ltbp1,Son,Gsk3b,Hmbox1,Fxr2,Ptprz1,Stau1
+31	taipale-CGGACACAAT-FOXK1-DBD	0.0724926	3.30659	M16	Foxk1,3110039M20Rik	Mll2,Ltbp1,Fry,Iqgap1,Uba1,Ankrd13b,Son,Tnik,Nrxn3
+32	hdpi-RARA	0.0722234	3.28723	M14	Rara	Dyrk1a,Smg7,Phf21a,Grik3,Cacna1c,Ept1,Son,Pitpnc1,Sos2,Clip3,Srrm2,Dscam,Frmd4a,Mll2,Zdhhc9,Gsk3b,Naa25,Ep300,Bptf,Cacna1e,Cacna1a
+33	homer-M00834	0.0722234	3.28723	M5		Cacna1e,Mll2,Nav1,Tnik,Ep300,Crocc,Ankrd52,Fry,Gpatch8,Lifr,Bcl2l1,Dscam,Mef2d,Fxr2,Ltbp1
+34	iDMMPMM-HB	0.072014	3.27217	M3	Zfp513,Zfp362,Zfp384	Tle3,Phf21a,Cacna1a,Srrm4,Rprd2,Dyrk1a,Cacna1e,Tnik,Fxr2
+35	jaspar-PB0095.1	0.071999	3.2711	M12	Zbtb14	Fxr2,Magi1,P4hb,Grik3,Bcl2l1,Gpatch8,Rprd2,Dym,1700025G04Rik
+36	transfac_public-M00065	0.0718345	3.25927	M9	Tal1,Tcf3,Tcf4,Zfp146,Zfp260,Bhlhe22,Bhlhe23,Neurod1	Zbtb38,Fgd4,Frmd4a,Ltbp1,Mll2
+37	swissregulon-GTF2I.p2	0.0717149	3.25066	M17	Gtf2i	Gsk3b,Tle3,Thrap3,Nrxn3,Tnik,Frmd4a,Fxr2,Gpatch8,Srrm4,Phf21a,Ppargc1b,Crocc,Cacna1c,Plxna4,Fry,Ltbp1,Zmat3,Nrip1,Mef2d,Grid2ip
+38	transfac_pro-M02916	0.0709372	3.19474	M3	Srf,Elf3,Zfp362,Zfp384	Tle3,Phf21a,Dyrk1a,Cacna1a,Zbtb38,Pitpnc1,Fxr2,Rprd2,Cacna1e
+39	jaspar-PF0159.1	0.0709072	3.19259	M18		Fxr2,Vars2,Clip3,Magi1,Ltbp1,Sos2,Son,Ube4a,Gpatch8,P4hb,Lamc1,Inpp4a
+40	yetfasco-850	0.0708474	3.18829	M2	Dbx1,Pou1f1,Pou3f4,Nkx6-3,Nkx6-1,Hlx,Pou3f1,Dbx2,Tlx2,Pou3f2,Lhx3,Phox2b,Hoxa7,Lmx1b,Jazf1,Rax,Pou5f1,Myb,Gm5828,Tox4,Hmgb4,Tox,Tox3,Tox2	Nav1,Phf21a,Tle3,Dyrk1a,Cacna1a,Rprd2,Cacna1c,Cacna1e,Ntng2,Tnik,Tm9sf4,Ep300,Dscam,Zdhhc9
+41	stark-VSGYYGCMGYCGYYGMMKKYG	0.0708325	3.18721	M12		Dyrk1a,Phf21a,Fxr2,Rab3gap2,Pitpnc1,Hipk1,Sos2,Cacna1c,Mll2,Tle3,Smg7,Cacna1e,Grid2ip,Rnf214,Lifr,Grik3,Mast2,Clip3,Ep300,Tmem131,Gsk3b,Plxna4,Syt7,Fam120a,Son,Zmat3,Crebbp,Ept1,P4hb,Slc20a1,Fgd4,Magi1,Fam193a,Cacna1a,Rprd2,Pgbd5,Atp13a1,Ankrd13b,Tfdp1,Mef2d,Stau1,Igsf3,Khsrp,Adam17,Tnik,Rnf111
+42	yetfasco-987	0.070653	3.17431	M2	Nfyc,Pole4,Tox4,Gm5828,Hmgb4,Tox2,Tox3,Tox	Tle3,Nav1,Crocc,Cacna1a,Dyrk1a,Tm9sf4,Phf21a,Dscam,Tnik
+43	transfac_public-M00022	0.0705782	3.16893	M3	Zfp513	Tle3,Phf21a,Cacna1a,Rprd2,Fxr2,Srrm4,Dyrk1a,Cacna1e
+44	transfac_pro-M02856	0.070309	3.14957	M3	Foxk1	Ube4a,Tle3,Dyrk1a,Zbtb38,Magi1,Srrm4,Smg7
+45	homer-M00136	0.0702342	3.14419	M9	Olig2,Tal1,Tcf3,Tcf4,Bhlhe22,Bhlhe23,Zfp146,Zfp260,Neurod2,Neurog2,Neurog1,Neurog3,Nr2f2,Nr2f1,Olig3,Atoh7	Mical3,Zbtb38,Frmd4a,Fgd4,Mll2,Magi1,Ltbp1,Sorbs2,Cacna1a,Srrm4
+46	yetfasco-43	0.0702193	3.14312	M19		Frmd4a,Srrm4,Grid2ip,Fry,Magi1,Dscam,Slc20a1,Tle3,Mll2,Nrip1,Cacna1c,Ppargc1b
+47	flyfactorsurvey-Oli_da_SANGER_5_3_FBgn0032651	0.0698005	3.113	M9	Bhlhe22,Bhlhe23,Zfp146,Zfp260,Neurod4,Neurod6,Neurod1,Neurod2	Ltbp1,Frmd4a,Zbtb38,Fgd4,Sorbs2,Grik3,Fry,Magi1,Myh9,Mll2
+48	transfac_pro-M02850	0.0697257	3.10763	M3	Elf3,Srf,Tcf7l1,Zfp362,Zfp384	Phf21a,Dyrk1a,Tle3,Cacna1a,Rprd2,Nav1,Cacna1e,Srrm4,Cacna1c,Pitpnc1,Ep300
+49	encode-UW.Motif.0342	0.0696509	3.10225	M20		Zbtb38,Tmem131,Cacna1c,Cacna1a,Hipk1,Srrm4,Uba1,Tm9sf4
+50	homer-M00116	0.069636	3.10117	M9	Neurod1,Tcf3,Tal1,Tcf4,Olig2,Bhlhe23,Bhlhe22,Nr3c1,Pgr,Zfp42,Atoh7	Mical3,Fgd4,Zbtb38,Sorbs2,Ltbp1,Frmd4a,Magi1,Mll2,Srrm4
+51	jaspar-MA0398.1	0.0695911	3.09795	M2		Nav1,Tle3,Cacna1a,Dscam,Phf21a,Tnik,Cacna1c,Cacna1e,Ep300,Ntng2,Dyrk1a,Rprd2,Ncam1
+52	flyfactorsurvey-CG2052_SOLEXA_2.5_FBgn0039905	0.0695313	3.09365	M3	Tfap2e,Srf,Zfp362,Zfp384	Tle3,Phf21a,Cacna1a,Cacna1e,Rprd2,Dyrk1a
+53	homer-M00594	0.0693368	3.07966	M2		Dyrk1a,Phf21a,Tle3,Nav1,Ep300,Tnik,Ube4a,Srrm4,Cacna1a,Zdhhc9
+54	transfac_pro-M01907	0.069292	3.07644	M2		Nav1,Tle3,Cacna1a,Dscam,Phf21a,Tnik,Cacna1c,Cacna1e,Ep300,Ntng2,Dyrk1a,Rprd2,Ncam1
+55	yetfasco-478	0.069292	3.07644	M2		Nav1,Tle3,Cacna1a,Dscam,Phf21a,Tnik,Cacna1c,Cacna1e,Ep300,Ntng2,Dyrk1a,Rprd2,Ncam1
+56	flyfactorsurvey-hb_SOLEXA_5_FBgn0001180	0.0692172	3.07106	M3	Zfp513,Zfp362,Zfp384	Phf21a,Cacna1a,Tle3,Srrm4,Dyrk1a,Rprd2
+57	flyfactorsurvey-sqz_SOLEXA_5_FBgn0010768	0.0691873	3.06891	M3	Zfp362,Zfp384,Srf,Zfp513	Phf21a,Tle3,Rprd2,Cacna1a,Cacna1e
+58	flyfactorsurvey-Oli_da_SANGER_5_2_FBgn0032651	0.0690078	3.056	M9	Bhlhe22,Bhlhe23,Tcf3,Tal1,Olig2,Zfp146,Zfp260,Neurod1,Atoh7	Fgd4,Zbtb38,Mll2,Frmd4a,Ltbp1,Cacna1e,Mical3,Cacna1a,Fry
+59	jaspar-CN0137.1	0.0686788	3.03234	M20		Slc8a1,Tle3,Fry,Nrip1,Ncam1,Grid2ip,Bptf,Magi1
+60	elemento-CGGCGGC	0.0686189	3.02804	M21		Dyrk1a,Phf21a,Ep300,Tle3,Sos2,Nrip1,Gsk3b,Crebbp,Rnf111,Rnf214,Uba1,Cacna1c,Fam120a,Zmat3,Fxr2,Rab3gap2,Plxna4,Mll2,Bptf,Grik3,Hipk1,Khsrp,Fry,Pitpnc1,Iqgap1,Hmbox1,Ankrd13b,Ncoa1,Son,Syt7,Ppargc1b,P4hb,Frmd4a,Cacna1a,Magi1,Pgbd5,Crocc,Igsf3,Smg7,Lifr,Cacna1e,Dscam,Adam17,1700025G04Rik,Rprd2,Srrm2,Tmem131,Ltbp1
+61	flyfactorsurvey-jim_F1-9_SOLEXA_2.5_FBgn0027339	0.068604	3.02697	M3	Zfp362,Zfp384	Zbtb38,Tle3,Cacna1a,Phf21a,Dyrk1a,Fxr2,Rprd2,Cacna1e
+62	homer-M00431	0.068604	3.02697	M2	Hoxc8,Hoxb8,Hoxd8,Hoxb7,Hoxa7	Phf21a,Nav1,Cacna1a,Dyrk1a,Tle3,Dscam,Cacna1c,Zbtb38,Cacna1e,Ncam1
+63	transfac_pro-M01363	0.0685442	3.02266	M2	Lmx1b,Lmx1a,Lhx5,Lhx3,Lhx1,Prop1,Hoxb4,Arid3a,Nkx6-3,Hoxc5,Alx1,Alx4,Hoxc4,Hoxc6,Pou3f2,Vsx1,Shox2,Phox2b,Otp,Hoxa7,Nkx6-1,Pax7,Lhx9,Uncx,Dbx2,Hoxa4,Tlx2,Nobox,Msx1,Pou3f1,Pou3f4,Alx3,Prrx1,Pou2f1,Esx1,Dbx1,Pou1f1,Isl2,Lbx2,Phox2a,Lhx2,Arx,Pax6,Pou4f3,Lhx6,Rhox6,En1,Prrx2,Hoxd1,Hoxd8,En2,Pax4,Barx2,Nkx1-2,Vax2,Myb,Crx,Yy1,Hoxa13	Zbtb38,Nav1,Olfr613,Tle3,Dyrk1a,Tnik,Dscam,Phf21a
+64	transfac_pro-M01483	0.0684694	3.01729	M2	Dbx1,Tlx2,Dbx2,Pax7,Vsx1,Hoxd8,Hoxc6,Lhx1,Hoxc5,Pou2f1,Hoxb4,Hoxa4,Lhx3,Lmx1b,Hoxc4,Nkx6-3,Hoxa7,Barx2,Msx1,Lmx1a,Lhx5,Otp,Prop1,Esx1,Pou3f1,Phox2b,Pou3f4,Pou1f1,Shox2,Alx1,Nkx6-1,Pax6,Phox2a,Pou3f2,Alx3,Lhx9,Arid3a,Pou4f3,Hnf1b,Hnf1a,Alx4,Lbx2,Uncx,Isl2,Prrx2,Nkx1-2,Myb,Crx,Yy1	Nav1,Phf21a,Tle3,Tnik,Dscam,Dyrk1a,Zdhhc9,Ncam1,Cacna1c,Cacna1a,Zbtb38,Uba1,Crebbp,Ep300,Cacna1e,Srrm4
+65	jaspar-MA0010.1	0.068275	3.00331	M3		Phf21a,Zbtb38,Tle3,Dyrk1a,Ncam1,Pitpnc1,Fxr2,Nav1

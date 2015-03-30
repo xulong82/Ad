@@ -74,3 +74,51 @@ ggplot(graph.dt, aes(x = order, y = value, fill = type)) +
   theme(legend.position = "top", legend.direction = "horizontal", 
         legend.text = element_text(size = 8, face = "bold"),
         legend.title = element_blank(), legend.key = element_blank())
+
+#--- Choose genes by PCA
+tpm2.ctr <- tpm2 - apply(tpm2, 1, mean)
+tpm2.svd <- svd(tpm2.ctr)
+barplot(tpm2.svd$v[, 1])
+barplot(tpm2.svd$v[, 2])
+
+type <- gsub("[2456]m.*", "", colnames(tpm2))
+cors <- apply(tpm2.svd$v, 2, function (x) {cor(x, as.numeric(as.factor(type)))})
+
+bar3.dat <- data.frame(pc = paste("PC", 1:length(cors), sep = ""), value = abs(cors))
+bar3.dat$pc <- factor(bar3.dat$pc, levels = paste("PC", 1:length(cors), sep = ""))
+
+ggplot(bar3.dat, aes(x = pc, y = value)) +
+  geom_bar(stat = "identity") +
+  geom_hline(yintercept = .2) +
+  theme_bw() + 
+  xlab("") + ylab("Pearson's Correlation (abs)") +
+  theme(panel.border = element_rect(size = 1, color = "black")) +
+  theme(axis.text.x = element_text(size = 10, angle = -90, face = "bold"),
+        axis.text.y = element_text(size = 10, face = "bold"),
+        axis.title = element_text(size = 10, face = "bold"))
+
+tpm2.u <- tpm2.svd$u[, id1.pc]
+dimnames(tpm2.u) <- list(rownames(tpm2), id2.pc)
+ids <- apply(tpm2.u, 2, function (x) {abs(x) > sd(x)})
+gns <- rownames(tpm2.u)[apply(ids, 1, function (x) {sum(as.numeric(x)) > 0})]
+
+ens.ucsc <- read.delim("~/Dropbox/X/myRefGene.tx")
+ens.ucsc <- ens.ucsc[!duplicated(ens.ucsc$name2), ]
+ens.ucsc <- data.frame(row.names  = ens.ucsc$name2, 
+                       chrom      = ens.ucsc$chrom,
+                       chromStart = ens.ucsc$txStart,
+                       chromEnd   = ens.ucsc$txEnd)
+ens.ucsc$chrom <- as.character(ens.ucsc$chrom)
+
+clust1.dat <- ens.ucsc[updns, ]
+clust1.dat <- clust1.dat[!is.na(clust1.dat$chrom), ]
+clust1.ord <- data.frame(row.names = c(paste("chr", 1:19, sep = ""), "chrX", "chrY"), order = 1:21)
+clust1.dat$order <- reorder(clust1.dat$chrom, clust1.ord[clust1.dat$chrom, ])
+ggplot(clust1.dat, aes(x = order)) +
+  geom_bar() +
+  theme_bw() +
+  xlab("") + ylab("Count") +
+  theme(panel.border = element_rect(size = 1, color = "black")) +
+  theme(axis.text = element_text(size = 10, face = "bold"),
+        strip.text = element_text(size = 10, face = "bold"),
+        axis.title = element_text(size = 10, face = "bold"))

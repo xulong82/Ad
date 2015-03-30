@@ -1,0 +1,60 @@
+; Name	Brain
+; Species and nomenclature	Mus musculus, MGI symbols
+; Motif collection	10K (9713 PWMs)
+; Minimum NEScore	4.0
+; Rank threshold for visualization	5000
+; ROC threshold for AUC calculation (%)	0.03
+; Minimum identity between orthologous genes	0.0
+; Maximum false discovery rate (FDR) on motif similarity	0.001
+; Motif rankings database	500bp upstream (7 species)
+; Number of valid nodes	14
+; iRegulon version	iRegulon v1.3 (build: 2015-02-12)
+# Rank	Motif id	AUC	NES	ClusterCode	Transcription factor	Target genes
+1	stark-CTTNNATAC	0.203046	5.95105	M1		Slc8a1,Plxna3,Plxna4,Ntrk3
+2	jaspar-MA0130.1	0.198892	5.81675	M2	Zfp354c	Mical3,Cacna1e,Myh9
+3	encode-UW.Motif.0437	0.188444	5.47899	M3		Grid2ip,Slc8a1,Cacna1e
+4	jaspar-CN0049.1	0.175352	5.05577	M4		Mical3,Ntrk3,Grid2ip,Plxna4
+5	yetfasco-885	0.171073	4.9174	M5		Grid2ip,Cacna1e,Myh9
+6	yetfasco-1745	0.165534	4.73835	M6		Cacna1e,Slc8a1,Mpeg1
+7	transfac_pro-M00389	0.165408	4.73428	M7		Plxna4,Ntrk3
+8	yetfasco-1991	0.164275	4.69765	M5		Cacna1e,Myh9
+9	yetfasco-1931	0.163268	4.6651	M8		Cacna1e,Ntrk3
+10	transfac_public-M00230	0.163016	4.65696	M9		Grid2ip,Ntrk3,Slc8a1,Crebbp,Cacna1e,Myh9
+11	yetfasco-1595	0.162764	4.64882	M6		Cacna1e,Ntrk3
+12	hdpi-CYB5R1	0.162638	4.64475	M1	Cyb5r1	Ntrk3,Plxna4,Plxna3
+13	yetfasco-1106	0.162387	4.63661	M5		Grid2ip,Cacna1e
+14	elemento-CTCCACC	0.16138	4.60406	M2		Myh9,Cacna1e
+15	yetfasco-1702	0.16138	4.60406	M10		Ntrk3,Mical3,Myh9
+16	encode-UW.Motif.0215	0.159743	4.55115	M3		Ntrk3,Cacna1e
+17	encode-UW.Motif.0163	0.158862	4.52267	M11		Plxna4,Cacna1e,Ntrk3,Plxna3
+18	homer-M01478	0.15861	4.51453	M12	Foxn4,Foxn3,Foxn2,Foxn1,Foxh1,Jazf1	Cacna1e,Slc8a1
+19	tfdimers-MD00228	0.158233	4.50232	M7	Tfap4,Pdx1	Ntrk3,Plxna4
+20	jaspar-CN0068.1	0.158107	4.49825	M13		Slc8a1,Plxna4,Mical3
+21	transfac_pro-M00479	0.157855	4.49011	M2	Wt1	Myh9,Cacna1e
+22	flyfactorsurvey-Ct_Cell_FBgn0004198	0.157729	4.48604	M14	Cux1,Cux2	Cacna1e,Plxna3,Plxna4,Mpeg1,Myh9,Ntrk3,Slc8a1
+23	jaspar-CN0174.1	0.156974	4.46162	M15		Slc8a1,Plxna4
+24	encode-UW.Motif.0060	0.156219	4.43721	M16		Mical3,Grid2ip,Ntrk3
+25	encode-UW.Motif.0467	0.156219	4.43721	M14		Mical3,Cacna1e
+26	yetfasco-1213	0.152568	4.31919	M3	Nfyc,Pole4	Cacna1e,Crebbp,Grid2ip
+27	jaspar-CN0032.1	0.152064	4.30292	M17		Grid2ip,Cacna1e
+28	encode-UW.Motif.0218	0.151813	4.29478	M7		Slc8a1,Cacna1e
+29	transfac_pro-M01691	0.151687	4.29071	M16		Ntrk3,Slc8a1,Cacna1e
+30	encode-UW.Motif.0505	0.151561	4.28664	M5		Grid2ip,Cacna1e
+31	encode-UW.Motif.0105	0.150302	4.24594	M6		Plxna4,Grid2ip
+32	encode-UW.Motif.0149	0.148917	4.20118	M6		Grid2ip,Slc8a1
+33	encode-UW.Motif.0602	0.148917	4.20118	M3	Foxa2	Cacna1e,Crebbp,Mpeg1
+34	homer-M00375	0.14854	4.18897	M16	Deaf1	Cacna1e,Slc8a1
+35	flyfactorsurvey-Ct_SOLEXA_FBgn0004198	0.148036	4.17269	M14	Cux1,Cux2	Plxna3,Cacna1e
+36	homer-M00467	0.14791	4.16862	M14	Cux1,Cux2	Plxna3,Cacna1e
+37	homer-M00860	0.147281	4.14828	M2		Myh9,Cacna1e
+38	jaspar-CN0137.1	0.147155	4.14421	M4		Slc8a1,Grid2ip
+39	hdpi-OLIG1	0.146903	4.13607	M13	Olig1	Ntrk3,Mical3
+40	homer-M01782	0.1464	4.11979	M12	Jazf1,Foxn4,Foxn1,Foxn3,Foxn2,Foxh1	Slc8a1,Cacna1e,Mpeg1,Mical3
+41	encode-UW.Motif.0217	0.146148	4.11165	M6		Grid2ip,Cacna1e,Slc8a1,Myh9
+42	encode-UW.Motif.0391	0.146148	4.11165	M14		Myh9,Cacna1e,Mpeg1
+43	transfac_public-M00155	0.146148	4.11165	M14	Nr2f2	Ntrk3,Cacna1e
+44	jaspar-MA0370.1	0.145267	4.08316	M16		Ntrk3,Slc8a1
+45	tfdimers-MD00457	0.145015	4.07503	M2	Srebf2,Srebf1,Zfp354c,Mzf1	Myh9,Grid2ip,Cacna1e
+46	flyfactorsurvey-CG15601_SANGER_5_FBgn0030673	0.144386	4.05468	M11		Myh9,Plxna3,Cacna1e
+47	transfac_pro-M01160	0.144134	4.04654	M2	Zfp354c	Myh9,Cacna1e
+48	transfac_pro-M01088	0.143127	4.01398	M16	Deaf1	Cacna1e,Slc8a1

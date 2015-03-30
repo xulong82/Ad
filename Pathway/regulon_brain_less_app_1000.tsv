@@ -1,0 +1,401 @@
+; Name	BRAIN
+; Species and nomenclature	Mus musculus, MGI symbols
+; Motif collection	10K (9713 PWMs)
+; Minimum NEScore	3.0
+; Rank threshold for visualization	5000
+; ROC threshold for AUC calculation (%)	0.03
+; Minimum identity between orthologous genes	0.0
+; Maximum false discovery rate (FDR) on motif similarity	0.001
+; Motif rankings database	500bp upstream (7 species)
+; Number of valid nodes	6
+; iRegulon version	iRegulon v1.3 (build: 2015-02-12)
+# Rank	Motif id	AUC	NES	ClusterCode	Transcription factor	Target genes
+1	homer-M00632	0.333535	8.61872	M1	Hsf1,Hsf4,Hsf2,Hsf3	Prnp,App
+2	tfdimers-MD00352	0.333535	8.61872	M2	Nfatc2,Mycs	App,Prnp
+3	yetfasco-2094	0.314804	8.11828	M3	Bach2,Jdp2,Junb,Jun,Fosb,Jund,Fos,Fosl1,Bach1,Batf,Sfpi1,Arnt	Prnp,App
+4	hdpi-CFL2	0.312387	8.0537	M4	Cfl2	Psen1,App
+5	tfdimers-MD00327	0.307855	7.93263	M5	Tcf3,Pax4,Pou5f1,Tcf7l1,Sox2,Pou2f1,Pou3f1,Nr2f2,Nr2f1,Yy1,E2f1,Maf,Cdx2,Gata2,Gata3,Gata4,Gata6,Gata1,Gata5,Srf,Tbp,Tbpl2,Tbpl1,Zfp362,Zfp384,Nfatc1,Mybl2,Myb,Mybl1,Snapc4,2310045N01Rik,Mef2b,Mef2a,Mef2c,Mef2d	Prnp,App
+6	yetfasco-2101	0.306949	7.90841	M6		App,Prnp
+7	transfac_public-M00038	0.297281	7.65012	M5	Jdp2,Bach1,Fosb,Fosl1,Jund,Jun,Fos,Junb,Bach2,Fosl2,Batf,Sfpi1,Srf,Arnt,Tgif1,Tgif2,Gm7148	Prnp,App
+8	taipale-RAANCGAAAWTCGNTTY-IRF7-DBD	0.29577	7.60976	M7	Irf7	App,Prnp
+9	yetfasco-1781	0.295468	7.60169	M3	Jdp2,Junb,Jun,Jund,Fos,Fosl1,Fosb,Bach2,Batf,Sfpi1,Arnt,Srf	Prnp,App
+10	elemento-CAAGATCA	0.285498	7.33532	M8		Nsdhl,App
+11	yetfasco-2091	0.285498	7.33532	M3	Jdp2,Bach2,Fos,Fosl1,Fosb,Jun,Jund,Junb,Batf,Sfpi1,Arnt	Prnp,App
+12	transfac_public-M00495	0.266163	6.81873	M3	Bach1,Jdp2,Bach2,Fosl1,Fos,Junb,Jund,Fosb,Jun,Batf,Sfpi1,Srf	App,Prnp
+13	transfac_public-M00490	0.26284	6.72994	M3	Bach2,Fos,Jund,Fosl1,Junb,Fosb,Jun,Bach1,Jdp2,Fosl2,Batf,Sfpi1,Srf,Arnt	App,Prnp
+14	flyfactorsurvey-kay_Jra_SANGER_5_FBgn0001297	0.258308	6.60886	M3	Fosl1,Fosl2,Fosb,Fos,Jdp2,Bach2,Junb,Jun,Jund,Batf,Sfpi1,Arnt,Srf	Prnp,App
+15	yetfasco-884	0.242598	6.18913	M3	Jdp2,Fosl1,Fosb,Junb,Jund,Jun,Fos,Bach1,Bach2,Batf,Sfpi1,Arnt,Nfatc1,Srf	Prnp,App
+16	taipale-ATGASTCAT-Jdp2-DBD	0.242296	6.18106	M3	Bach1,Jdp2,Batf,Sfpi1	Prnp,App
+17	tfdimers-MD00491	0.232931	5.93084	M9	Crx,Emx2,Emx1	App,Prnp
+18	yetfasco-1574	0.232628	5.92277	M10		Prnp,Psen1
+19	homer-M00104	0.232326	5.9147	M11	Maff,Mafb,Mafk,Maf,Nrl,Dbp	App,Prnp
+20	taipale-ATGASTCAT-JDP2-full	0.230816	5.87434	M3	Jdp2,Bach1,Batf,Sfpi1	Prnp,App
+21	encode-UW.Motif.0015	0.228701	5.81784	M12		App,Prnp
+22	transfac_public-M00517	0.223867	5.68869	M3	Junb,Jun,Jund,Fos,Fosb,Fosl1,Jdp2,Nfe2,Fosl2,Bach2,Bach1,Mafk,Batf,Sfpi1,Arnt,Mafa	App,Prnp
+23	transfac_pro-M01555	0.222961	5.66447	M3	Jdp2,Bach1,Junb,Fos,Jun,Fosb,Jund,Fosl1,Bach2,Mafg,Nfe2l1,Fosl2,Batf,Sfpi1,Arnt,Tgif1,Tgif2,Gm7148,Srf	Prnp,App
+24	yetfasco-840	0.222961	5.66447	M3	Jdp2,Bach1,Fosb,Junb,Fosl1,Jun,Fos,Jund,Bach2,Mafg,Nfe2l1,Fosl2,Batf,Sfpi1,Arnt,Tgif1,Tgif2,Gm7148,Srf	Prnp,App
+25	yetfasco-1484	0.215408	5.46268	M3	Srf,Jdp2,Bach1,Bach2,Batf,Sfpi1	Prnp,App
+26	transfac_pro-M02824	0.213897	5.42232	M1	Zbtb12	App,Prnp
+27	jaspar-POL013.1	0.212387	5.38196	M13		App,Prnp
+28	yetfasco-1455	0.205438	5.19631	M3	Jdp2,Jund,Jun,Fosl1,Fos,Junb,Fosb,Bach1,Bach2,Fosl2,Srf,Batf,Sfpi1,Arnt,Mybl2,Mybl1,Snapc4,Myb	Prnp,App
+29	homer-M00096	0.205136	5.18824	M3	Jun,Jdp2,Jund,Junb,Fos,Fosl1,Fosb,Bach2,Bach1,Fosl2,Batf,Sfpi1,Arnt,Srf,Nfatc1	Prnp,App
+30	transfac_pro-M01633	0.203625	5.14788	M14		App,Psen1
+31	yetfasco-1629	0.203625	5.14788	M3	Jund,Fosl1,Junb,Jun,Fosb,Fos,Jdp2,Bach1,Fosl2,Bach2,Batf,Sfpi1,Srf,Arnt,Irf8	Prnp,App
+32	encode-UW.Motif.0280	0.199396	5.03488	M15		App
+33	encode-UW.Motif.0146	0.199094	5.02681	M10		Prnp
+34	flyfactorsurvey-nau_SANGER_5_FBgn0002922	0.198792	5.01874	M16	Myf6,Myf5,Myog,Myod1,Neurod1	App
+35	taipale-AWCAGCTGWT-TFAP4-DBD	0.198792	5.01874	M16	Tfap4	App
+36	taipale-AWCAGCTGWT-TFAP4-full	0.198187	5.00259	M16	Tfap4,Msc	App
+37	transfac_public-M00189	0.198187	5.00259	M17	Tfap2b,Tfap2c,Tfap2a	Prnp,App
+38	flyfactorsurvey-crp_SANGER_10_FBgn0001994	0.197885	4.99452	M16	Tfap4	App
+39	tiffin-TIFDMEM0000079	0.197885	4.99452	M16	Msc	App
+40	elemento-ATCAGCTG	0.196979	4.97031	M16		App
+41	transfac_pro-M02017	0.196677	4.96223	M1	Hsf1,Hsf4,Hsf3	Prnp,App
+42	homer-M00231	0.19577	4.93802	M16	Myf6,Msc	App
+43	transfac_pro-M03119	0.19577	4.93802	M16		App
+44	encode-UW.Motif.0618	0.195468	4.92995	M18		Nsdhl
+45	jaspar-PF0110.1	0.195468	4.92995	M18		Nsdhl
+46	factorbook-SREBF1	0.194864	4.9138	M19	Srebf1,Srebf2	App
+47	transfac_public-M00045	0.194864	4.9138	M9	Nfil3,Tef,Hlf	Prnp
+48	flyfactorsurvey-gt_NAR_FBgn0001150	0.194562	4.90573	M9	Atf2,Hlf,Tef,Nfil3	Prnp
+49	taipale-SAAGGTCANNTSAAGGTCA-ESRRA-DBD	0.194562	4.90573	M20	Esrra,Nr5a1,Nr6a1,Esrrg,Rxra	App
+50	transfac_pro-M01583	0.193958	4.88959	M21		App
+51	transfac_public-M00166	0.193656	4.88152	M22	Hsf1,Hsf4,Hsf2,Hsf3	App
+52	transfac_public-M00170	0.193353	4.87345	M22	Hsf1,Hsf2,Hsf4,Hsf3	App
+53	taipale-NRTTACGTAAYN-Dbp-DBD	0.193051	4.86537	M9	Nfil3,Atf2,Hlf,Tef	Prnp
+54	taipale-NRTTACRTAAYN-TEF-DBD	0.192749	4.8573	M9	Tef,Nfil3,Atf2,Hlf,Hoxa13	Prnp
+55	transfac_public-M00204	0.192749	4.8573	M3		App,Prnp
+56	yetfasco-1131	0.192749	4.8573	M23		Psen1
+57	yetfasco-960	0.192749	4.8573	M23		Psen1
+58	flyfactorsurvey-Fer1_SANGER_5_FBgn0037475	0.191843	4.83309	M16	Ptf1a	App
+59	homer-M01771	0.191843	4.83309	M14		App
+60	jaspar-MA0399.1	0.191843	4.83309	M14		App
+61	taipale-NRTTACGTAAYN-Hlf-DBD	0.191541	4.82501	M9	Nfil3,Atf2,Hlf,Tef	Prnp
+62	yetfasco-1078	0.191541	4.82501	M24		App
+63	yetfasco-1011	0.191239	4.81694	M25		Psen1
+64	jaspar-PF0018.1	0.190937	4.80887	M26	Arnt,Bhlhe40,Srebf1,Srebf2,Atf3,Arntl,Helt	App
+65	hdpi-RAB14	0.190634	4.8008	M27	Rab14	App,Prnp
+66	jaspar-CN0127.1	0.190634	4.8008	M28		Nsdhl
+67	jaspar-MA0382.1	0.190634	4.8008	M29		Prnp
+68	taipale-NRTTACGTAAYN-DBP-full	0.190634	4.8008	M9	Dbp,Nfil3,Tef,Hlf,Atf2,Hoxa13	Prnp
+69	transfac_pro-M01710	0.190634	4.8008	M11		App
+70	taipale-NRTTACGTAAYN-DBP-DBD	0.190332	4.79273	M9	Dbp,Nfil3,Atf2,Hlf,Tef	Prnp
+71	homer-M00256	0.19003	4.78466	M16	Myf6,Myod1,Msc	App
+72	transfac_pro-M01677	0.189728	4.77658	M14		App
+73	yetfasco-1623	0.189728	4.77658	M30		App,Prnp,Psen1
+74	yetfasco-673	0.189728	4.77658	M14		App
+75	transfac_public-M00175	0.189426	4.76851	M16	Tfap4	App
+76	yetfasco-1499	0.189426	4.76851	M26	Srebf1,Arnt,Bhlhe40,Usf1,Mlx,Atf3	App
+77	yetfasco-46	0.18852	4.7443	M31		Prnp
+78	taipale-NNNNTGCTGACN-Mafb-DBD	0.188218	4.73623	M11	Mafk,Mafb,Maf,Maff,Nrl,Dbp,Mafg	App
+79	homer-M00172	0.187915	4.72815	M32	Six1	App
+80	transfac_pro-M03143	0.187915	4.72815	M9	Hlf,Atf2,Tef,Nfil3	Prnp
+81	transfac_pro-M01238	0.187613	4.72008	M33	Deaf1	App,Prnp
+82	transfac_public-M00260	0.187613	4.72008	M9	Hlf,Tef,Nfil3,Atf2	Prnp
+83	yetfasco-881	0.187613	4.72008	M3	Jdp2,Nfe2,Bach1,Fos,Fosl2,Junb,Jund,Fosb,Fosl1,Jun,Batf,Sfpi1	Prnp,App
+84	yetfasco-1661	0.187311	4.71201	M34		App,Psen1
+85	swissregulon-BACH2.p2	0.187009	4.70394	M3	Bach2,Bach1,Fos,Fosb,Jund,Junb,Fosl1,Jun,Jdp2,Fosl2,Batf,Sfpi1,Srf,Arnt	Prnp,App
+86	swissregulon-NFIL3.p2	0.187009	4.70394	M9	Nfil3	Prnp
+87	transfac_public-M00165	0.187009	4.70394	M1	Hsf1,Hsf4,Hsf2,Hsf3	Prnp
+88	flyfactorsurvey-HLH4C_SANGER_5_FBgn0011277	0.186707	4.69587	M35	Nhlh1,Nhlh2	App
+89	tfdimers-MD00037	0.186707	4.69587	M16	Pura	App
+90	encode-UW.Motif.0494	0.186103	4.67972	M36		Prnp
+91	yetfasco-2025	0.185801	4.67165	M37		App
+92	transfac_pro-M02272	0.185498	4.66358	M20	Rxra,Rara,Rora,Esrrg,Nup133,Cbx7	App
+93	yetfasco-1564	0.185498	4.66358	M29		Prnp
+94	encode-UW.Motif.0580	0.185196	4.65551	M15		App
+95	jaspar-MA0025.1	0.185196	4.65551	M9	Nfil3,Tef	Prnp
+96	transfac_pro-M02379	0.185196	4.65551	M38		Psen1
+97	taipale-NRTTACGTAAYN-HLF-full	0.184894	4.64744	M9	Hlf,Nfil3,Tef,Atf2,Hoxa13	Prnp
+98	taipale-NRTTACRTAAYN-TEF-FL	0.184894	4.64744	M9	Tef,Nfil3,Hlf,Hoxa13	Prnp
+99	transfac_pro-M01023	0.184894	4.64744	M1	Hsf1,Hsf2,Hsf4,Hsf3	Prnp
+100	yetfasco-1411	0.184894	4.64744	M9		Prnp
+101	yetfasco-5	0.184592	4.63937	M39		Nsdhl,App
+102	homer-M01521	0.18429	4.63129	M30		App
+103	taipale-NNNNTGCTGAN-NRL-DBD	0.18429	4.63129	M11	Nrl,Maf,Mafb,Mafk,Dbp,Maff,Bach1	App
+104	hdpi-HSF1	0.183384	4.60708	M40	Hsf1	Prnp
+105	transfac_public-M00228	0.183082	4.59901	M9	Tef,Hlf,Nfil3,Atf2	Prnp
+106	homer-M00880	0.182779	4.59093	M5		Prnp,App
+107	swissregulon-ZEB1.p2	0.182477	4.58286	M41	Zeb1,Lmo2,Tcf3,Snai3	App
+108	jaspar-CN0025.1	0.182175	4.57479	M7		App
+109	hdpi-CYB5R1	0.181571	4.55865	M42	Cyb5r1	Psen1
+110	swissregulon-HLF.p2	0.181571	4.55865	M9	Hlf,Tef,Nfil3	Prnp
+111	tfdimers-MD00348	0.181571	4.55865	M43	Hoxa13,Ap3b1	App
+112	yetfasco-1345	0.181269	4.55058	M9	Tef,Hlf	Prnp
+113	yetfasco-502	0.181269	4.55058	M17		App,Prnp,Psen1
+114	yetfasco-2098	0.180967	4.5425	M9	Hlf,Tef,Atf2	Prnp
+115	tfdimers-MD00007	0.18006	4.51829	M44	Irf8,E2f1,Irf1,Irf2,Irf9,Irf4,Irf5,Irf7,Irf3,Irf6,Myb,Zeb1,Pou5f1,Jun,Fos,Foxm1	Prnp
+116	yetfasco-2062	0.179456	4.50215	M14		App
+117	jaspar-MA0043.1	0.179154	4.49407	M9	Hlf,Tef,Nfil3	Prnp
+118	jaspar-CN0207.1	0.178852	4.486	M45		Prnp
+119	yetfasco-1408	0.178852	4.486	M9	Tef,Hlf,Atf2	Prnp
+120	yetfasco-1903	0.178852	4.486	M26	Srebf1,Usf1,Bhlhe40,Arnt,Usf2,Atf3	App
+121	flyfactorsurvey-CG12155_SANGER_5_FBgn0029957	0.17855	4.47793	M46		Prnp
+122	taipale-AAGGTCANNNNAAGGTCA-ESRRG-full	0.17855	4.47793	M20	Esrrg,Nr5a1,Esrra,Rxra	App
+123	yetfasco-2238	0.17855	4.47793	M26	Usf1,Srebf1,Arnt,Max,Myc,Usf2,Mlx,Atf3,Arnt2	App
+124	jaspar-PF0026.1	0.177946	4.46179	M9	Hoxa13	Prnp
+125	yetfasco-294	0.177946	4.46179	M1	Hsf4,Hsf3	Prnp
+126	taipale-NRTTACRTAAYN-NFIL3-DBD	0.177341	4.44564	M9	Nfil3,Hlf,Tef,Atf2	Prnp
+127	yetfasco-2092	0.177341	4.44564	M9	Atf2	Prnp
+128	transfac_pro-M01544	0.177039	4.43757	M47		Psen1
+129	yetfasco-841	0.177039	4.43757	M47		Psen1
+130	flyfactorsurvey-CG12605_SANGER_10_FBgn0035481	0.176737	4.4295	M48	Scrt2,Scrt1	App
+131	taipale-TTCTAGAANNTTC-HSF1-DBD	0.176737	4.4295	M1	Hsf1,Hsf2,Hsf4,Hsf3	Prnp,App
+132	yetfasco-1295	0.176435	4.42143	M49		App
+133	homer-M01815	0.175831	4.40529	M9	Nfil3,Tef	Prnp
+134	yetfasco-1628	0.175529	4.39721	M3	Junb,Fos,Jund,Jun,Fosl1,Fosb,Jdp2,Bach1,Fosl2,Bach2,Batf,Sfpi1,Srf,Arnt,Irf8	Prnp,App
+135	yetfasco-1728	0.175529	4.39721	M50		Psen1
+136	yetfasco-2070	0.175529	4.39721	M14		App
+137	taipale-GGMTNAKCC-RHOXF1-DBD	0.175227	4.38914	M51	Rhox12,Rhox10,Rhox11,Rhox13	App
+138	taipale-NATGASTCATN-NFE2-DBD	0.175227	4.38914	M3	Nfe2,Bach1,Jdp2,Bach2,Batf,Sfpi1,Srf	Prnp,App
+139	transfac_public-M00398	0.175227	4.38914	M9	Hlf,Tef,Atf2,Nfil3	Prnp
+140	tfdimers-MD00174	0.174924	4.38107	M52	Pdx1,Stat6	Prnp
+141	encode-UW.Motif.0636	0.174622	4.373	M18		Nsdhl
+142	taipale-ATGASTCAT-JDP2-DBD	0.174622	4.373	M3	Jdp2,Bach1,Batf,Sfpi1	Prnp,App
+143	homer-M00537	0.174018	4.35685	M9	Hlf,Atf2,Tef	Prnp
+144	jaspar-PF0161.1	0.174018	4.35685	M53		Prnp
+145	stark-TTAYGTAA	0.174018	4.35685	M9	Nfil3,Tef,Hlf	Prnp
+146	hdpi-ZBTB46	0.173414	4.34071	M54	Zbtb46	Prnp
+147	homer-M01473	0.173414	4.34071	M9	Atf2,Tef,Hlf	Prnp
+148	yetfasco-374	0.173414	4.34071	M17		App
+149	transfac_pro-M02849	0.172508	4.3165	M47	Ehf	Psen1
+150	transfac_public-M00169	0.172205	4.30842	M1	Hsf1,Hsf2,Hsf4,Hsf3	Prnp
+151	homer-M00628	0.171903	4.30035	M9		Prnp,App
+152	yetfasco-1738	0.171601	4.29228	M55		App
+153	encode-UW.Motif.0001	0.171299	4.28421	M3	Bach1,Jdp2,Bach2,Fosl1,Fosl2,Jund,Fosb,Junb,Jun,Fos,Batf,Sfpi1	App,Prnp
+154	hdpi-SOD1	0.171299	4.28421	M56	Sod1	App
+155	transfac_public-M00220	0.171299	4.28421	M26	Srebf1,Arnt,Usf1,Bhlhe40,Mlx,Atf3,Helt	App,Prnp
+156	tfdimers-MD00249	0.170997	4.27614	M57	Mafa,Ets1	App
+157	yetfasco-1909	0.170997	4.27614	M58		Prnp
+158	swissregulon-FOS_FOS_B-L1__JUN_B-D_.p2	0.170695	4.26807	M3	Fosb,Fos,Junb,Fosl1,Jund,Jdp2,Batf	App,Prnp
+159	taipale-GGMTNAKCC-RHOXF1-full	0.170393	4.25999	M51	Rhox12,Rhox10,Rhox11,Rhox13	App
+160	transfac_pro-M01177	0.170393	4.25999	M5	Srebf2,Srebf1,Yy1,Wt1	App
+161	transfac_pro-M02336	0.170393	4.25999	M59	Cux1,Cux2	Prnp
+162	yetfasco-843	0.170393	4.25999	M47	Ets1	App,Psen1
+163	encode-UW.Motif.0276	0.169789	4.24385	M43		Prnp
+164	transfac_pro-M03541	0.169789	4.24385	M3	Jun,Fosb,Jund,Fos,Fosl2,Junb,Fosl1,Mafg,Nfe2l1,Nfe2l2	App,Prnp
+165	yetfasco-1516	0.169486	4.23578	M3	Mybl2,Mybl1,Myb,Snapc4	App
+166	yetfasco-1702	0.168882	4.21964	M60		App
+167	transfac_pro-M01613	0.167976	4.19542	M30		Psen1
+168	homer-M01769	0.167674	4.18735	M39		Nsdhl,App
+169	factorbook-HSF1	0.167069	4.17121	M1	Hsf1,Hsf2,Hsf4,Hsf3	Prnp
+170	jaspar-PF0135.1	0.166465	4.15506	M54		App
+171	taipale-RTCACGTGAY-Srebf1-DBD	0.166465	4.15506	M26	Srebf1,Arnt,Bhlhe40,Usf1,Srebf2,Mlx,Helt,Atf3,Arntl	App,Prnp
+172	yetfasco-1075	0.166465	4.15506	M61		Prnp,Nsdhl,Psen1
+173	yetfasco-2159	0.166465	4.15506	M30		App
+174	yetfasco-73	0.166465	4.15506	M9	Atf2	Prnp
+175	yetfasco-1508	0.166163	4.14699	M3	Jdp2,Fosb,Jund,Fos,Jun,Junb,Fosl1,Bach1,Bach2,Fosl2,Srf,Batf,Sfpi1,Arnt	Prnp,App
+176	hdpi-MXD4	0.165559	4.13085	M4	Mxd4	Psen1
+177	taipale-TTCTAGAANNTTC-HSF4-DBD	0.165257	4.12278	M1	Hsf4,Hsf2,Hsf1,Hsf3	Prnp,App
+178	encode-UW.Motif.0194	0.164955	4.1147	M62		Prnp
+179	transfac_public-M00344	0.164955	4.1147	M16	Nhlh2	App
+180	taipale-TTCTAGAANNTTC-HSF2-DBD	0.16435	4.09856	M1	Hsf2,Hsf1,Hsf4,Hsf3	Prnp,App
+181	yetfasco-599	0.16435	4.09856	M9	Nfil3,Tef	Prnp
+182	transfac_pro-M00927	0.164048	4.09049	M16	Tfap4,Ascl2,Pdx1	App
+183	tfdimers-MD00184	0.163444	4.07435	M63	Tcf4,Pitx3,Tcf7l2,Lef1	Prnp,App
+184	yetfasco-948	0.163444	4.07435	M64	Gata3,Gata2,Gata5,Gata4,Gata6,Gata1	App
+185	jaspar-PF0138.1	0.163142	4.06627	M18		Nsdhl
+186	taipale-GTGGTCCCGGATYAT-SPDEF-full	0.163142	4.06627	M65	Spdef	App
+187	yetfasco-1067	0.162538	4.05013	M66		App
+188	homer-M01468	0.162236	4.04206	M58		App,Nsdhl,Prnp
+189	transfac_pro-M03137	0.162236	4.04206	M16	Myf6,Myog,Tcf3,Myod1,Ascl2	App
+190	yetfasco-28	0.162236	4.04206	M58		App
+191	encode-UW.Motif.0683	0.161934	4.03399	M62		Psen1,Prnp
+192	yetfasco-1445	0.161631	4.02591	M3	Jdp2,Bach2,Bach1,Fosb,Jun,Jund,Junb,Fos,Fosl1,Srf,Batf,Sfpi1,Arnt	Prnp,App
+193	flyfactorsurvey-Ct_Cell_FBgn0004198	0.161329	4.01784	M59	Cux1,Cux2	Prnp
+194	transfac_pro-M01656	0.161329	4.01784	M47	Trp63,Trp53,Trp73,Irx4,Smad3,Myb,Zbtb14,Nkx2-1,Hand2,Usf2,Tcf12,Myog,Myf6,Mxi1,Mitf,Hand1,Tfeb,Tal1,Mxd4,Nhlh1,Myc,Myf5,Arid5b,Mxd1,Tal2,Tcf4,Mxd3,Tcf3,Bhlhe41,Mycs,Hic1,Nr3c1	Prnp
+195	yetfasco-397	0.161329	4.01784	M26	Arnt,Srebf1,Usf1,Bhlhe40,Mycn,Mlx,Srebf2,Helt,Atf3,Arntl	App
+196	yetfasco-873	0.161329	4.01784	M57		App
+197	tfdimers-MD00127	0.161027	4.00977	M67	Hoxa13,Tfap2c,Hoxc13	Nsdhl
+198	yetfasco-2063	0.160725	4.0017	M5	Neurod1	App
+199	yetfasco-293	0.160725	4.0017	M68		Prnp
+200	yetfasco-409	0.160725	4.0017	M9	Tef,Hlf,Atf2,Hoxa13	Prnp
+201	flyfactorsurvey-Ct_SOLEXA_FBgn0004198	0.160423	3.99363	M59	Cux1,Cux2	Prnp
+202	tiffin-TIFDMEM0000024	0.160423	3.99363	M7		Prnp
+203	yetfasco-206	0.160121	3.98556	M69		Psen1
+204	transfac_pro-M01640	0.159819	3.97748	M9	Tef,Atf2	Prnp
+205	transfac_pro-M01869	0.159819	3.97748	M70	Cebpg,Cebpb,Cebpd,Cebpa,Meis1,Ikzf2	Prnp
+206	yetfasco-2182	0.159819	3.97748	M26	Srebf1,Usf1,Arnt,Bhlhe40,Max,Myc,Atf3,Mlx	App
+207	flyfactorsurvey-Mes2_SANGER_5_FBgn0037207	0.159517	3.96941	M33		Prnp
+208	flyfactorsurvey-Fer3_da_SANGER_5_FBgn0037937	0.159214	3.96134	M16	Ferd3l	App
+209	homer-M00858	0.159214	3.96134	M32		App
+210	yetfasco-1129	0.158912	3.95327	M17	Egr1	App,Prnp
+211	yetfasco-501	0.158308	3.93713	M17		App
+212	yetfasco-1764	0.158006	3.92905	M71		Nsdhl
+213	taipale-RTCACGTGAY-SREBF2-DBD	0.157704	3.92098	M26	Srebf2,Srebf1,Arnt,Bhlhe40,Usf1,Mlx,Helt,Atf3,Arntl,Arntl2	App,Prnp
+214	yetfasco-1013	0.157704	3.92098	M37		Prnp
+215	jaspar-PF0072.1	0.157402	3.91291	M22	Hsf1,Hsf4,Hsf3	App,Prnp
+216	yetfasco-1436	0.157402	3.91291	M72		Prnp
+217	stark-TGCTCAATGAA	0.1571	3.90484	M73	Mtor	Nsdhl
+218	yetfasco-1433.2	0.1571	3.90484	M5	Mybl2,Mybl1,Myb,Snapc4,Jazf1,Tbp,Tbpl2,Tbpl1,Srf,2310045N01Rik,Mef2b,Mef2a,Mef2c,Mef2d	Prnp
+219	hdpi-NOLA1	0.156798	3.89677	M10	Gar1,Morn1	Prnp
+220	jaspar-MA0303.1	0.156798	3.89677	M3	Jdp2,Bach1,Jund,Fosb,Fosl1,Junb,Fos,Jun,Bach2,Mafg,Nfe2l1,Fosl2,Batf,Sfpi1,Tgif1,Tgif2,Gm7148,Arnt,Srf	Prnp,App
+221	tiffin-TIFDMEM0000031	0.156798	3.89677	M74		Prnp
+222	homer-M00105	0.156495	3.8887	M24	Mafa,Mafk,Junb,Fosl1,Jund,Fos,Fosb,Jun,Nfe2,Maf,Dbp	App
+223	yetfasco-68	0.156495	3.8887	M75		Prnp
+224	elemento-ACAGGTG	0.156193	3.88062	M48	Snai3,Scrt2,Scrt1	App,Prnp
+225	transfac_pro-M03565	0.156193	3.88062	M41	Snai2	App
+226	homer-M01781	0.155287	3.85641	M5		Psen1
+227	yetfasco-1960	0.155287	3.85641	M5		App
+228	hdpi-TIMM8A	0.154985	3.84834	M76		App
+229	stark-CNNNGCGYRTGANYNAT	0.154985	3.84834	M19		App
+230	tfdimers-MD00267	0.154985	3.84834	M77	E2f1,Mzf1,Nfkb1,Rela	App
+231	tiffin-TIFDMEM0000046	0.154683	3.84027	M43		Prnp
+232	transfac_pro-M01593	0.154683	3.84027	M57	Zfx,Zfy2,Zfy1	App
+233	taipale-NWTRMATATKYAWN-Pou2f2-DBD	0.154381	3.83219	M78	Pou2f1,Pou5f1,Pou2f2,Pou2f3,Pou3f3	Prnp
+234	transfac_pro-M01772	0.154381	3.83219	M70	Cebpb,Cebpa,Cebpd,Hlf,Cebpe,Cebpg,Crx,Tbp	Prnp
+235	yetfasco-1292	0.154381	3.83219	M22	Hsf1,Hsf2,Hsf4,Hsf3	App,Psen1
+236	encode-UW.Motif.0495	0.154079	3.82412	M15		Prnp,Nsdhl
+237	homer-M00467	0.154079	3.82412	M59	Cux1,Cux2	Prnp
+238	yetfasco-1307	0.154079	3.82412	M5	Srf,Tbp,Tbpl2,Tbpl1,Jazf1,Mef2b,2310045N01Rik,Mef2a,Mef2c,Mef2d,Mybl2,Myb,Mybl1,Snapc4	Psen1,App
+239	homer-M00635	0.153776	3.81605	M6		Prnp,App,Psen1
+240	transfac_pro-M01105	0.153776	3.81605	M79		App
+241	hdpi-HIP2	0.153474	3.80798	M80	Ube2k	App
+242	yetfasco-854	0.153474	3.80798	M33		Prnp
+243	elemento-ATCACCT	0.153172	3.79991	M21		App,Prnp
+244	yetfasco-1351	0.153172	3.79991	M9		Prnp
+245	encode-UW.Motif.0656	0.152568	3.78376	M15		Prnp,App
+246	flyfactorsurvey-cato_da_SANGER_10_FBgn0024249	0.152568	3.78376	M16	Neurod1,Neurod2,Neurod4,Neurod6,Ptf1a	App
+247	yetfasco-2112	0.152266	3.77569	M81		App
+248	yetfasco-778	0.152266	3.77569	M9		Prnp
+249	swissregulon-RBPJ.p2	0.151964	3.76762	M82	Rbpj,Rbpjl	Psen1
+250	taipale-GACCCCCCGCGNNG-GLIS2-DBD	0.151964	3.76762	M14	Glis2,Glis3,Glis1,Zic4,Zic1,Zic2,Zic5	App
+251	transfac_pro-M01872	0.151964	3.76762	M70	Dbp,Crx,Tbp,Tfap2c,Mzf1	Prnp
+252	flyfactorsurvey-esg_SANGER_2.5_FBgn0001981	0.151662	3.75955	M48	Snai2,Snai1,Snai3,Myod1,Tcf21,Msc,Tcf23	App
+253	encode-UW.Motif.0254	0.150755	3.73533	M5		App
+254	jaspar-PF0085.1	0.150755	3.73533	M44	Irf2,Irf7,Irf8,Irf6,Irf3,Irf4,Irf1,Irf5,Irf9,E2f1,Myb,Zfp683,Stat1,Stat2	Prnp
+255	taipale-TTTCCAYNRTGGAAA-NFATC1-full	0.150151	3.71919	M83	Nfatc1	Psen1,Prnp
+256	transfac_pro-M01558	0.150151	3.71919	M26	Bhlhe40,Arnt,Myc,Max,Srebf1,Usf1,Usf2,Mlx,Arntl	App,Prnp
+257	yetfasco-795	0.150151	3.71919	M26	Bhlhe40,Arnt,Max,Myc,Srebf1,Usf1,Usf2,Mlx,Arntl	App,Prnp
+258	jaspar-CN0126.1	0.149849	3.71112	M73		Prnp
+259	jaspar-PF0103.1	0.149849	3.71112	M84	Yy2	Psen1
+260	taipale-NTMATCATCATTAN-MEOX2-DBD	0.149849	3.71112	M52	Meox2	Prnp
+261	tiffin-TIFDMEM0000072	0.149849	3.71112	M64		Psen1
+262	stark-ATCTNATC	0.149245	3.69497	M85		App
+263	transfac_pro-M02876	0.149245	3.69497	M3	Jdp2,Junb,Fos,Fosb,Jun,Fosl1,Jund,Bach1,Bach2,Nfe2l1,Mafg,Batf,Sfpi1,Arnt,Srf	Prnp,App
+264	yetfasco-2074	0.148943	3.6869	M9	Atf2	Prnp
+265	hdpi-HNRPA0	0.14864	3.67883	M86	Hnrnpa0	Prnp
+266	yetfasco-1149	0.14864	3.67883	M50		Psen1
+267	transfac_public-M00022	0.148338	3.67076	M34	Zfp513	App
+268	elemento-AACAGCTG	0.148036	3.66269	M16	Msc,Myf5	App
+269	homer-M01470	0.147734	3.65462	M3		App,Prnp
+270	yetfasco-2061	0.147734	3.65462	M14		App
+271	yetfasco-555	0.147734	3.65462	M17		App
+272	jaspar-PF0007.1	0.147432	3.64654	M3	Jdp2,Fos,Arnt,Batf,Sfpi1	App,Prnp
+273	jaspar-MA0337.1	0.14713	3.63847	M17		App
+274	yetfasco-2039	0.146828	3.6304	M50		Psen1
+275	stark-TTAATGATG	0.146526	3.62233	M53		Prnp
+276	transfac_pro-M00915	0.146224	3.61426	M17	Tfap2a,Tfap2c,Tfap2b	App
+277	transfac_pro-M01168	0.146224	3.61426	M5	Srebf1,Srebf2,Mycs	App
+278	yetfasco-1867	0.145619	3.59811	M47	Kin	App
+279	taipale-NTGCTGASTCAGCAN-MAFF-DBD	0.145317	3.59004	M24	Maff,Mafk,Dbp	App
+280	tfdimers-MD00232	0.145015	3.58197	M70	Tbp,Cebpb,Cebpa,Cebpd,Cebpg,Cebpe	Prnp
+281	homer-M01545	0.144713	3.5739	M17	Egr1	App
+282	tfdimers-MD00202	0.144713	3.5739	M7	Tbp	Prnp
+283	transfac_pro-M01244	0.144713	3.5739	M1	Hsf2,Hsf1,Hsf4,Hsf3	Prnp,App
+284	taipale-AACAATAMCATTGTT-SOX15-full	0.144411	3.56583	M87	Sox15,Sox2,Sox14,Sox21,Sox7,Sox18	Prnp
+285	homer-M00243	0.144109	3.55775	M33		Prnp
+286	jaspar-CN0036.1	0.144109	3.55775	M86		App
+287	jaspar-MA0415.1	0.143807	3.54968	M9	Atf2,Gmeb1,Gmeb2	Prnp
+288	tfdimers-MD00373	0.143807	3.54968	M44	Tbp,Stat6,Cebpa,Cebpe,Cebpg,Cebpb,Gabpb1,Fli1,Elf2,Elk4,Elk1,Etv6,Elf4,Spib	Prnp
+289	transfac_public-M00176	0.143807	3.54968	M16	Tfap4	App
+290	swissregulon-ATF2.p2	0.143505	3.54161	M9	Atf2,Tef,Nfil3,Hlf	Prnp
+291	yetfasco-922	0.143505	3.54161	M66		App
+292	yetfasco-684	0.143202	3.53354	M39		Nsdhl,App,Psen1
+293	taipale-GTGGTCCCGGATYAT-SPDEF-DBD	0.1429	3.52547	M65	Spdef	App
+294	tfdimers-MD00140	0.141994	3.50125	M88	Otx2,Irf1	App
+295	elemento-GATCATC	0.141692	3.49318	M89		App,Prnp
+296	yetfasco-1608	0.141088	3.47704	M9		Prnp
+297	transfac_pro-M01111	0.140181	3.45282	M82	Rbpj	Nsdhl
+298	transfac_pro-M01185	0.140181	3.45282	M50	Bcl6,Bcl6b	Prnp
+299	homer-M01832	0.139879	3.44475	M66		App
+300	encode-UW.Motif.0187	0.139577	3.43668	M12		Prnp
+301	transfac_public-M00125	0.139577	3.43668	M83	Srf,2310045N01Rik,Mef2b,Mef2c,Mef2a,Mef2d	Nsdhl
+302	yetfasco-523	0.139275	3.42861	M17		App
+303	transfac_pro-M00646	0.138973	3.42054	M56	Hnf1b	App
+304	tfdimers-MD00071	0.138671	3.41246	M70	Sox10,Cebpa,Cebpe,Cebpg,Cebpb,Cebpd,Foxa2,Foxa3,Foxa1,Foxd1,Nr3c1,Jun,Fos,Foxc2	Prnp,Psen1,App
+305	tfdimers-MD00301	0.138369	3.40439	M44	Ikzf1,E2f6,Ep300	App
+306	yetfasco-1496	0.138369	3.40439	M9	Tef,Atf2	Prnp
+307	yetfasco-2042	0.138369	3.40439	M3	Nfe2l2,Fosl1,Jund,Jun,Fos,Junb,Fosb,Fosl2	App
+308	jaspar-CN0118.1	0.138066	3.39632	M36		Prnp
+309	tfdimers-MD00272	0.138066	3.39632	M52	Isl1,Pou3f1,Hnf1a,Hnf1b,Bptf,Foxo1,Crx,Hoxa13,Hoxb5,Hoxa5,Hoxb6,Hoxa6,Irx4	Prnp
+310	jaspar-PF0106.1	0.137462	3.38018	M90	Elk3	Psen1
+311	hdpi-PIK3C3	0.13716	3.37211	M56	Pik3c3	App
+312	jaspar-CN0094.1	0.136858	3.36403	M86		App
+313	yetfasco-1045	0.136858	3.36403	M91		Prnp
+314	yetfasco-482	0.136858	3.36403	M30		Psen1,Prnp,App
+315	factorbook-v-Maf	0.136556	3.35596	M24	Mafk,Maff,Maf,Mafb,Dbp,Nrl	App,Prnp
+316	transfac_pro-M02271	0.136556	3.35596	M92	Hoxa5	Prnp
+317	jaspar-MA0348.1	0.136254	3.34789	M30		Psen1,Prnp,App
+318	taipale-TTCTAGAANNTTC-HSF1-full	0.136254	3.34789	M1	Hsf1,Hsf2,Hsf4,Hsf3	Prnp
+319	transfac_public-M00415	0.136254	3.34789	M38	Zeb1	Psen1,App
+320	encode-UW.Motif.0332	0.135952	3.33982	M72		Prnp
+321	transfac_pro-M01228	0.135952	3.33982	M3	Maf	App
+322	elemento-AAGGTGA	0.13565	3.33175	M93		App
+323	homer-M00002	0.13565	3.33175	M3	Jun,Batf,Fosl2,Junb,Fos,Fosl1,Sfpi1,Jund,Jdp2,Fosb,Bach1,Bach2,Nfe2,Nfe2l2,Maf,Nfe2l1,Nfe2l3,Mafk,Mafg,Maff,Mafb,Arnt,Srf,Nfatc1	Prnp,App
+324	homer-M00511	0.13565	3.33175	M92	Isl1	Prnp
+325	yetfasco-1880	0.135347	3.32368	M16		App
+326	yetfasco-1912	0.135347	3.32368	M94		App
+327	tfdimers-MD00235	0.135045	3.3156	M44	Stat1,Dbp,Sfpi1,Churc1,Tbp,Cebpb,Yy1,Nfatc3	Prnp
+328	yetfasco-1080	0.135045	3.3156	M64	Thoc2,BC005561	Prnp,App
+329	yetfasco-1755	0.135045	3.3156	M55		Prnp,App
+330	elemento-AGGTGCG	0.134743	3.30753	M41		App
+331	jaspar-MA0372.1	0.134743	3.30753	M95	Kdm4d,Kdm4c,Kdm4b,Kdm4a	App
+332	taipale-NNNNNTGCTGAN-MAFK-DBD	0.134441	3.29946	M11	Mafk,Maf,Mafb,Maff,Nrl,Dbp,Bach1	App,Prnp
+333	tiffin-TIFDMEM0000063	0.134441	3.29946	M28		Nsdhl
+334	transfac_pro-M03179	0.134441	3.29946	M91		Psen1
+335	yetfasco-1491	0.134139	3.29139	M9	Dbp	Prnp
+336	elemento-AGCTGCG	0.133535	3.27524	M35		App
+337	transfac_pro-M01919	0.133535	3.27524	M95	Kdm4d,Kdm4c,Kdm4b,Kdm4a	App
+338	yetfasco-547	0.133535	3.27524	M95	Kdm4d,Kdm4c,Kdm4a,Kdm4b	App
+339	flyfactorsurvey-HLH106_SANGER_5_2_FBgn0015234	0.133233	3.26717	M26	Srebf1,Arnt,Bhlhe40,Mycn,Usf1,Srebf2,Mlx,Helt,Atf3,Arntl,Arntl2	App
+340	elemento-TCCAGCTC	0.132931	3.2591	M96		App
+341	taipale-ATGCGGGYRCCCGCAT-GCM1-full	0.132931	3.2591	M57	Gcm1	Prnp
+342	yetfasco-575	0.132628	3.25103	M17		App
+343	flyfactorsurvey-vri_SANGER_5_FBgn0016076	0.132326	3.24296	M9	Nfil3,Tef,Hlf,Atf2	Prnp
+344	transfac_pro-M00770	0.132024	3.23489	M70	Cebpe,Cebpb,Cebpd,Cebpg,Cebpa,Sox9,Nr3c1,Stat6,Sox10,Ikzf1	Prnp,Nsdhl
+345	yetfasco-1845	0.132024	3.23489	M97		Nsdhl,Prnp
+346	yetfasco-817	0.132024	3.23489	M80		Psen1
+347	tfdimers-MD00227	0.131722	3.22681	M5	Smad1,Maf,Tcf7l1,Sox2,Tcf3,Pax4,Yy1,Hoxd1,Pdx1,Cebpa,Cebpe,Cebpg,Cebpb,Pou3f1	App
+348	yetfasco-1452	0.131722	3.22681	M9	Tef,Atf2	Prnp
+349	yetfasco-550	0.131722	3.22681	M30		Psen1,App
+350	swissregulon-MAFB.p2	0.13142	3.21874	M24	Mafb	App
+351	yetfasco-731	0.13142	3.21874	M9		Prnp
+352	jaspar-MA0048.1	0.131118	3.21067	M35	Nhlh1,Nhlh2	App
+353	transfac_public-M00197	0.131118	3.21067	M39		Nsdhl,Prnp,Psen1
+354	yetfasco-1305	0.131118	3.21067	M14		App
+355	yetfasco-311	0.131118	3.21067	M69		Psen1
+356	transfac_pro-M00912	0.130816	3.2026	M70	Cebpa,Cebpb,Cebpd,Cebpe,Cebpg,Sox9,Nr3c1,Stat6,Tbp,Ikzf1,Sox10	Prnp,Nsdhl
+357	hdpi-ZCCHC14	0.130514	3.19453	M13	Zcchc14	App,Prnp
+358	tfdimers-MD00360	0.130514	3.19453	M52	Gata3,Pdx1	Prnp
+359	transfac_public-M00414	0.129909	3.17838	M41	Zeb1,Lmo2,Tcf3,Snai3,Mesp1,Id4	App
+360	yetfasco-1497	0.129909	3.17838	M19	Srebf1,Srebf2	App
+361	tiffin-TIFDMEM0000082	0.129607	3.17031	M40		Prnp
+362	transfac_pro-M01711	0.129003	3.15417	M3	Mybl2,Mybl1,Myb,Snapc4	App
+363	taipale-NCCGGNNNNNNCCGGN-TFCP2-full	0.128701	3.1461	M59	Tfcp2,Tfcp2l1	Prnp
+364	transfac_public-M00122	0.128701	3.1461	M26	Usf1,Max,Myc,Arnt,Usf2,Bhlhe40,Ascl1,Arid5b,Myod1,Mxd3,Mxi1,Hand2,Tal1,Myf5,Tcf12,Tcf4,Tfeb,Bhlhe41,Myog,Nhlh1,Mxd4,Tal2,Tcf3,Mycn,Myf6,Hand1,Mitf,Tfe3,Mxd1,Srebf1,Arnt2,Mycs,Atf3,Mlx,Arntl,Olig2,Clock,Hey1,Hey2,Mnt,Id1,Npas2,Hes6,Olig1,Heyl,Arntl2,Gata2,Gata3,Gata4,Gata6,Gata1,Gata5	App
+365	yetfasco-875	0.128701	3.1461	M9	Atf2,Gmeb1,Gmeb2	Prnp
+366	yetfasco-928	0.128399	3.13803	M64		App,Prnp
+367	transfac_pro-M02088	0.128097	3.12995	M16	Tcf3,Myod1,Myog,Myf6,Lmo2,Tcf12,Ascl2	App
+368	homer-M01778	0.127795	3.12188	M69		Psen1
+369	homer-M01551	0.127492	3.11381	M26	Arnt,Srebf1,Usf1,Bhlhe40,Mycn,Mlx,Srebf2,Helt,Atf3,Arntl	App
+370	homer-M01820	0.127492	3.11381	M34		App,Prnp,Psen1
+371	tfdimers-MD00315	0.127492	3.11381	M63	Otx2,Nkx3-1,Nkx3-2,Nkx2-6,Pax7,Arid3a	Prnp,App
+372	yetfasco-544	0.127492	3.11381	M60		App,Prnp
+373	taipale-AACAATANCATTGTT-SRY-DBD	0.126888	3.09767	M87	Sox2,Sox15,Sox14,Sox21,Sox18,Sox7,Sox8	Prnp
+374	yetfasco-1301	0.126888	3.09767	M17		App,Nsdhl,Psen1,Prnp
+375	yetfasco-402	0.126888	3.09767	M3	Mybl2,Mybl1,Myb,Snapc4	App,Prnp
+376	flyfactorsurvey-HLH4C_da_SANGER_5_3_FBgn0011277	0.126586	3.0896	M48	Nhlh1,Nhlh2	App
+377	homer-M01821	0.126586	3.0896	M98		App
+378	homer-M00296	0.126284	3.08152	M9	Cebpa,Hlf,Dbp	Prnp
+379	encode-UW.Motif.0133	0.125982	3.07345	M54		Prnp
+380	homer-M00011	0.125982	3.07345	M11	Bach1,Nfe2l1,Mafg,Nfe2l2,Nfe2,Mafk,Maf,Nfe2l3,Bach2,Mafb,Maff,Dbp,Nrl	App,Prnp
+381	jaspar-MA0411.1	0.125076	3.04924	M60		App,Prnp
+382	taipale-TGCCACGTCATCA-Creb3l2-DBD	0.125076	3.04924	M99	Taf9,Creb3l1,Creb3,Atf6,Atf6b,Creb3l2	Prnp
+383	transfac_pro-M03571	0.124773	3.04117	M70	Cebpd,Cebpa,Cebpb,Cebpe,Cebpg,Tbp,Sox9,Nr3c1,Sox10	Prnp,Nsdhl,Psen1
+384	stark-AATTRYGWCA	0.124471	3.03309	M100		Psen1
+385	encode-UW.Motif.0581	0.123867	3.01695	M62		App
+386	transfac_pro-M01343	0.123565	3.00888	M51	Pitx3,Obox3,Obox2,Pitx1,Obox1,Gsc	App
+387	transfac_pro-M01970	0.123565	3.00888	M50		Psen1
+388	transfac_pro-M00391	0.123263	3.00081	M81		App
+389	yetfasco-1609	0.123263	3.00081	M9	Atf2	Prnp

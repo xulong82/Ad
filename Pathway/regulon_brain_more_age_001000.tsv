@@ -1,0 +1,100 @@
+; Name	BRAIN
+; Species and nomenclature	Mus musculus, MGI symbols
+; Motif collection	10K (9713 PWMs)
+; Minimum NEScore	3.0
+; Rank threshold for visualization	5000
+; ROC threshold for AUC calculation (%)	0.03
+; Minimum identity between orthologous genes	0.0
+; Maximum false discovery rate (FDR) on motif similarity	0.001
+; Motif rankings database	500bp upstream (7 species)
+; Number of valid nodes	65
+; iRegulon version	iRegulon v1.3 (build: 2015-02-12)
+# Rank	Motif id	AUC	NES	ClusterCode	Transcription factor	Target genes
+1	yetfasco-1906	0.0785238	5.54592	M1		Nop10,Derl1,Slain1,Dact3,2210013O21Rik,Ino80b,Pef1
+2	jaspar-PF0069.1	0.0706844	4.88314	M2	E2f1,E2f6,E2f8	Nop10,Msh2,Slain1,Mrpl18,Ino80b
+3	yetfasco-1727	0.0682623	4.67837	M1		Nop10,Slain1,Derl1,Dact3,2210013O21Rik,Pef1
+4	yetfasco-1898	0.0665955	4.53745	M1		Mzt1,Mrps14,2700060E02Rik,Clta,Rnf13,Mrpl18,Atp6v0b,2210013O21Rik,Atp5e,Derl1,2610301B20Rik,Sncb,Dact3,Eef1g,Cox4i1,Nop10,Dazap2,Nudt10
+5	tiffin-TIFDMEM0000098	0.066309	4.51323	M3		Mrps23,Atp5e,2610301B20Rik,2210013O21Rik,Gabarapl1,Nop10
+6	stark-KCAATAAA	0.0637046	4.29304	M4		Id4,2700060E02Rik,Mrps14,Prdx1
+7	flyfactorsurvey-CG8281_SANGER_5_FBgn0035824	0.0634181	4.26881	M4		Id4,Mrps14,Pef1,Nop10,2700060E02Rik
+8	tiffin-TIFDMEM0000104	0.0630274	4.23579	M5		Lsm6,2700060E02Rik,Dact3,Id4,Mzt1,Derl1,2210013O21Rik
+9	jaspar-CN0095.1	0.0630014	4.23358	M6		Sgpp1,Dact3,Mrpl18,Id4
+10	taipale-NACCCGGAAGTAN-ELF3-full	0.0600062	3.98037	M7	Elf3,Ehf,Elf1,Elf2,Elf5,Elf4,Elk3	Mrpl18,Rab2a,Dazap2,Ino80b,Nop10
+11	stark-MAATTNAATT	0.0593551	3.92532	M8		Mzt1,Prdx3,2210013O21Rik,Pef1,2700060E02Rik
+12	yetfasco-2031	0.0591207	3.9055	M9		Id4,Rpl17,Pgrmc1,2210013O21Rik
+13	transfac_pro-M01165	0.0587561	3.87467	M7	Elk1,Elk4,Elk3,Gabpa,Erg,Fli1,Fev,Ets2,Erf,Etv5,Ets1,Etv1,Etv3,Etv2,Gabpb1	Ino80b,Nop10,Derl1,Rab2a,Mrpl18,Mrps23,Atp5e,Pef1,Dazap2,Itm2b,Id4,Prdx3,Clta,Msh2,Cox4i1,2700060E02Rik,Anapc11
+14	yetfasco-1558	0.0586519	3.86587	M10		Ino80b,Tmem59,Cox4i1,Nop10,Prdx1,Eef1g,Dazap2,Mrpl18,Pef1,2610301B20Rik,Msh2,Slain1,Pdk1,2210013O21Rik,Atp5e,Elac1,Anapc11,Ankrd46,Sgpp1,Clta,Rab28,Id4,Ankrd45,Derl1
+15	elemento-ACGACGA	0.0584696	3.85045	M11		Dact3,Derl1,Cox4i1,2700060E02Rik,Mrpl18,2610301B20Rik,Mrps23
+16	transfac_pro-M00737	0.0578967	3.80201	M2	E2f1	Mrpl18,Nop10,Msh2,Cox4i1,Slain1
+17	homer-M00030	0.0576362	3.77999	M2	E2f4,E2f1,E2f6	Nop10,Ino80b,Msh2,Slain1,Mrpl18,Derl1,Cox4i1,Tmem59,Gabarapl1,Dazap2,2610301B20Rik,Eef1g,2210013O21Rik,Nap1l4,Atp5e,Pdk1,Oat,Nudt10,Ankrd45
+18	transfac_pro-M01583	0.0575841	3.77559	M12		2610301B20Rik,Atp6v0b,Rnf13,Mrpl18,Itm2b
+19	homer-M01509	0.0572195	3.74476	M13		2610301B20Rik,Mzt1,Oat,Sncb,Mrpl18
+20	transfac_pro-M01163	0.0572195	3.74476	M7	Elk1,Elk4,Elk3,Erg,Fev,Fli1,Ets2,Gabpa,Etv5,Erf,Gabpb1,Ets1,Etv1,Etv3,Etv2	Ino80b,Rab2a,Nop10,Derl1,Mrpl18,Dazap2,Mrps23
+21	homer-M01745	0.0567247	3.70293	M14		Derl1,2610301B20Rik,Mrps23
+22	factorbook-SP1	0.0566726	3.69852	M9	Sp1,Sp2,Sp4,Sp3,Klf7,Klf5,Smad3,Ascl2,Klf4,Sp8,Sp9,Sp6,Sp7,Sp5,Klf17,Zfp352,Klf14,Zbtb14,Klf16,Klf6,Klf12,Klf3	Adk,Pgrmc1,Fkbp3,Dact3,Dazap2,Mrps14,2700060E02Rik,Prdx3,Eef1g,Derl1,Itm2b,Mrpl18,Mzt1,Gabarapl1,2210013O21Rik,Slain1,Id4,Pdk1
+23	elemento-CGCATCA	0.0564903	3.68311	M15		Pgrmc1,Atp6v0b,Nudt10,Adk,Oat
+24	transfac_pro-M01818	0.0564903	3.68311	M16	Taf9,Creb3	2700060E02Rik,Derl1,Atp6v0b
+25	stark-AANTNTAATGACA	0.0564382	3.67871	M17	Emx1,Emx2	2700060E02Rik,Mrps14,Lsm6
+26	transfac_public-M00263	0.0560215	3.64348	M1		Mzt1,Nudt10,Mrps14,2210013O21Rik,2610301B20Rik,Rnf13,Mrpl18,Ino80b,Mrps23,Clta,Nop10,Tmem59,Atp5e,Sncb,Prdx1,Atp6v0b,Cox4i1,Dact3,2700060E02Rik,Fkbp3,Id4,Itm2b,Eef1g,Lsm6,Pgrmc1,Rpl17,Gabarapl1
+27	taipale-NGCTGTWAN-Rhox11-DBD	0.0559173	3.63467	M18	Rhox11,Crx	Id4,Gabarapl1,Eef1g,2210013O21Rik,2700060E02Rik
+28	selexconsensus-ems	0.0558912	3.63247	M17	Emx1,Emx2	2700060E02Rik,Mrps14,Lsm6
+29	yetfasco-2109	0.0556568	3.61265	M19		2700060E02Rik,Mzt1,Rnf13,Rpl17,Mrpl18,Id4,Derl1,Prdx3
+30	yetfasco-1174	0.0551099	3.56641	M20		Gabarapl1,Mzt1,Lsm6,Sag
+31	elemento-ACGTGGC	0.0549797	3.5554	M16	Creb3l1	Derl1,2700060E02Rik,Eef1g,Sgpp1,Atp6v0b
+32	hdpi-RNASEH2C	0.0549276	3.551	M21	Rnaseh2c	Id4,2700060E02Rik,Mrpl18,Nap1l4
+33	taipale-AMCCGGATGTN-SPDEF-DBD	0.0544848	3.51356	M7	Spdef,Etv5,Elk4,Elk1,Elf1	Nop10,Rab2a,Ino80b,Mrpl18,Atp5e
+34	taipale-WACCCGGAAGTA-ELF3-DBD	0.0544848	3.51356	M7	Elf3,Ehf,Elf1,Elf2,Elf5,Elf4,Elk3	Rab2a,Mrpl18,Dazap2,Nop10,Ino80b
+35	yetfasco-2100	0.0543807	3.50476	M19		Rnf13,Mzt1,Derl1,Rpl17,Mrpl18,Prdx3,Eef1g,2700060E02Rik,2610301B20Rik,Sncb,Ankrd45,Pdk1,Rcn2,Ino80b,Gabarapl1,Mrps23,Nudt10,Clta,Dazap2,Nop10,Id4,Atp5e
+36	transfac_pro-M02913	0.0543546	3.50255	M1	Sp100	Derl1,2700060E02Rik,Id4,Cox4i1
+37	yetfasco-1636	0.0541723	3.48714	M22		Dact3,2210013O21Rik,Fkbp3,Srp14,Mrpl18,Clta
+38	yetfasco-2064	0.0541723	3.48714	M23		Cox4i1,Id4,2700060E02Rik,Slain1,Ankrd46,Sgpp1,Clta,Gabarapl1,Derl1,Msh2,Mrpl18,Tmem59,Sag
+39	hdpi-H1FX	0.0540681	3.47833	M10	H1fx	Mrpl18,Atp5e,Ino80b,Prdx1,Id4
+40	yetfasco-1083	0.0540421	3.47613	M24		2700060E02Rik,Atp5e,Prdx3
+41	flyfactorsurvey-CG5669_SOLEXA_5_FBgn0039169	0.05399	3.47173	M9	Sp1,Sp2,Sp4,Sp3,Klf7,Klf4,Klf5,Smad3,Sp8,Sp9,Sp6,Sp7,Sp5,Klf17,Zfp352,Klf14,Klf16,Klf6,Klf12,Klf3,Klf13	Adk,Fkbp3,Dazap2,Pgrmc1,Dact3,2700060E02Rik,Prdx3,Mrps14,Eef1g,Mzt1,Derl1,Mrpl18
+42	yetfasco-780.1	0.0538858	3.46292	M14		Slain1,Rab2a,Pef1,2700060E02Rik,Eef1g,Mrpl18,Ankrd46,Id4,Sgpp1,Rnf13,Nap1l4,Rab28,Tmem59,Derl1,Mzt1,Atp5e,Mrps23,Dact3,Pgrmc1,Nudt10,Anapc11,Sncb,Gabarapl1
+43	homer-M01805	0.0538598	3.46072	M25		Cox4i1,Dazap2,Mrpl18,Rab2a,2700060E02Rik,Eef1g,Derl1,Mrps14,Pdk1,2610301B20Rik,Tmem59,Nap1l4,Rnf13,Ino80b,Pef1,Dact3,Lsm6,Nop10,Gabarapl1,Anapc11,Atp6v0b
+44	tiffin-TIFDMEM0000066	0.0537816	3.45411	M8		2700060E02Rik,Mrps14,2610301B20Rik,Id4,2210013O21Rik
+45	flyfactorsurvey-lola-PC_SOLEXA_FBgn0005630	0.0534691	3.42769	M10		Mrpl18,Ino80b,Prdx1,Tmem59,Atp5e,Gabarapl1
+46	transfac_pro-M01208	0.0534431	3.42549	M26	Fli1,Ets1,Elk3,Elk1,Elf1,Erf,Elf2,Erg,Elk4,Ets2,Gabpb1,Etv4,Gabpa	Anapc11,Mrpl18,Pef1,Rab2a,Nop10
+47	transfac_pro-M02087	0.053391	3.42108	M5	Cdx2	Id4,Prdx1,2700060E02Rik
+48	yetfasco-1184	0.053391	3.42108	M27		Id4,Anapc11,Cox4i1,Dact3,Pgrmc1,Rab28,Prdx1,Ino80b,Elac1,Ankrd46,Rps2
+49	encode-UW.Motif.0176	0.0531045	3.39686	M28		Prdx3,Derl1,Tmem59,Sag
+50	transfac_pro-M03099	0.0527399	3.36604	M18	Rhox11,Crx	Id4,Prdx1,Eef1g,Sag,Gabarapl1,2210013O21Rik,Atp5e
+51	jaspar-PF0021.1	0.0526878	3.36163	M7	Etv3,Erf,Gabpa,Etv2,Fli1,Erg,Ets2	Mrps23,Derl1,Tmem59,Ino80b,Clta,Mrpl18
+52	tiffin-TIFDMEM0000074	0.0522971	3.3286	M3		Mrps23,2700060E02Rik,Dact3,Pgrmc1,Atp5e,Mrpl18,Id4
+53	taipale-CCGGAASCGGAAGTN-ETV6-full	0.0522711	3.3264	M7	Etv6,Etv3,Erg,Erf,Ets2,Fli1,Gabpb1,Fev,Gabpa,Etv2,Ets1,Elk3,Elk1,Spic,Etv1,Etv5,Elk4	Mrps23,Derl1,Ino80b,Mrpl18,Rab2a,Dazap2,Clta
+54	elemento-GCGTCAC	0.0519846	3.30218	M29		Dazap2,Anapc11,Atp6v0b,Dact3
+55	transfac_pro-M01636	0.0518544	3.29117	M21		Derl1,Id4,2700060E02Rik,Sgpp1,Dazap2,Anapc11,Atp5e,Tmem59,2610301B20Rik,Bbs4,Atp6v0b,Rpl17,Gabarapl1,Pgrmc1,Mrpl18,Rnf13,Nudt10
+56	homer-M00647	0.0515158	3.26255	M3		Id4,Prdx1,Dact3,Mrps23
+57	yetfasco-1162	0.0514897	3.26034	M25		Rab2a,Gabarapl1,Rnf13,Bbs4,Atp5e
+58	hdpi-NNT	0.0513595	3.24933	M27	Nnt	2700060E02Rik,2210013O21Rik,Id4,Gabarapl1,Nap1l4,Mrpl18,Eef1g,Ino80b,Atp5e,Mrps15,Srp14,Cox4i1,Derl1,Lsm6,Mrps23,Ankrd45,Prdx3,Clta,Sag,Sncb,Pgrmc1,Prdx1,2610301B20Rik,Rpl17,Mrps14,Nudt10,Rab2a
+59	taipale-NNTTTTGGCGCCAAAANN-E2F2-DBD	0.0513595	3.24933	M2	E2f2	Gabarapl1,Nop10,Atp5e
+60	taipale-TGCCACGTGGCA-Creb3l2-DBD	0.0512814	3.24273	M16	Usf1,Usf2,Creb3l1,Mnt	Eef1g,Atp6v0b,Dact3,Dazap2,2700060E02Rik,Acpl2,Derl1,Gabarapl1,Bbs4,Atp5e,Prdx3,Prdx1,Nop10,Sgpp1,Rnf13
+61	jaspar-PF0118.1	0.0512033	3.23612	M28		Derl1,Rab2a,Rcn2,Clta,Tmem59,Slain1,Eef1g,Pef1,Sag,Mrpl18,Nop10
+62	yetfasco-1741	0.0511512	3.23172	M18		Dazap2,Mrpl18,Sgpp1,Eef1g,Mrps23,2210013O21Rik,Oat,Lsm6,Id4,Atp5e,2610301B20Rik,Mrps14,Rab2a,Sncb,Pdk1,Dact3,Srp14,Fkbp3,Mzt1,Gabarapl1,Atp6v0b,Adk,Seh1l
+63	swissregulon-XBP1.p3	0.0510991	3.22732	M16	Xbp1,Creb3	Derl1,2700060E02Rik,Eef1g,Prdx1,Prdx3,Bbs4,Lsm6,Rnf13,Sgpp1,2610301B20Rik,Nop10,Mrpl18
+64	taipale-TAGAYRAYTGMCANGAA-ZNF713-full	0.0510209	3.22071	M30		Ankrd45,Rab2a,Bbs4,Mrpl18,Id4,Srp14,Pdk1
+65	transfac_pro-M01770	0.0509949	3.21851	M16	Xbp1,Creb3	Derl1,2700060E02Rik,Eef1g,Prdx1,Prdx3,Bbs4,Lsm6,Rnf13,Sgpp1,Nop10,Mrpl18,2610301B20Rik
+66	transfac_pro-M01790	0.0508126	3.20309	M31		Atp5e,Sncb,Rpl17,Rcn2,Derl1,Bbs4,Mrpl18
+67	yetfasco-1014	0.0507865	3.20089	M1		Mzt1,Dact3,Mrps14,Rnf13
+68	encode-UW.Motif.0349	0.0505782	3.18328	M32		Mrps23,Derl1,Sag
+69	elemento-CGATCGC	0.050474	3.17447	M33		2700060E02Rik,Mrpl18,Id4,Nudt10,Mzt1,2610301B20Rik,Mrps23,Fkbp3,Atp6v0b,Cox4i1,Nap1l4,Derl1,Pef1,Acpl2,Mrps14,Pgrmc1,Rnf13,Slain1,Lsm6,Sgpp1
+70	encode-UW.Motif.0083	0.0503698	3.16566	M7	Elk3,Ehf,Gabpa,Elk1,Fli1,Elk4,Erg,Ets1,Etv5,Elf2,Elf1,Ets2	Mrpl18,Nop10,Ino80b,Derl1,Anapc11,Rab2a
+71	encode-UW.Motif.0162	0.0502657	3.15685	M32		Lsm6,Prdx3,Sgpp1
+72	taipale-ATCRATNNNNNATCRAT-CUX1-DBD	0.0500052	3.13484	M22	Cux1	2610301B20Rik,Dact3,Sgpp1,Mrps23,Atp5e
+73	transfac_pro-M02086	0.0499531	3.13043	M5	Cdx1	2700060E02Rik,Id4,Prdx1
+74	yetfasco-980	0.049875	3.12383	M34	Nfya	Clta,2700060E02Rik,Msh2,Mrpl18,Slain1,Mzt1
+75	transfac_pro-M01584	0.0498489	3.12162	M16	Taf9	Derl1,Eef1g,Atp6v0b,2700060E02Rik,Nop10,Dact3,2610301B20Rik,Mrpl18,Sgpp1,Pgrmc1,Prdx1,Prdx3,Acpl2,Mzt1,Dazap2,Mrps23,Slain1,Clta,Rab2a
+76	hdpi-HCLS1	0.0498229	3.11942	M16	Hcls1	Pef1,Derl1,2700060E02Rik,Eef1g
+77	transfac_pro-M01114	0.0496666	3.10621	M10	E2f1	Nop10,Mrpl18,Msh2,Slain1,Ino80b,Derl1,Pef1,Tmem59,Atp5e,Gabarapl1,2610301B20Rik,Sag
+78	jaspar-PF0110.1	0.0495104	3.093	M34		Nap1l4,Rcn2,Oat,Msh2,Rnf13,Pef1,Atp6v0b,Dact3,Gabarapl1,Tmem59,Pdk1,Clta,Mrpl18,Rps2,2700060E02Rik,Sncb,Id4,Anapc11,Eef1g
+79	taipale-TAAWYGNNNNTAAWYG-BARHL2-full	0.0492499	3.07098	M18	Barhl2,Pdx1	Mrpl18,Fkbp3,2700060E02Rik,Atp5e
+80	swissregulon-EHF.p2	0.0492239	3.06878	M7	Ehf,Elf1,Elf2,Elf5,Elf4,Elf3,Elk3,Etv5	Rab2a,Dazap2,Mrpl18,Nop10
+81	swissregulon-E2F1..5.p2	0.0491978	3.06658	M2	E2f3,E2f4,E2f5,E2f1,E2f2,Tfdp1,E2f7	Mrpl18,Msh2,Nop10,Mrps23,Slain1,Ino80b,Pgrmc1,Mzt1,Tmem59,Adk,Id4,Pef1,Nudt10,Nap1l4,2610301B20Rik
+82	taipale-NACCCGGAAGTA-EHF-full	0.0488593	3.03795	M7	Ehf,Elf3,Elf5,Elf2,Elf1,Elf4,Elk3,Etv5	Rab2a,Mrpl18,Ino80b,Nop10,Dazap2
+83	yetfasco-1919	0.0488072	3.03355	M18		2210013O21Rik,Mrpl18,Eef1g,Fkbp3,Bbs4,Prdx3,Clta
+84	flyfactorsurvey-Eip74EF_SANGER_5_FBgn0000567	0.048729	3.02694	M7	Elf2,Elf1,Elf4,Ehf,Elf5	Rab2a,Mrpl18,Ino80b,Dazap2,Nop10
+85	hdpi-RAB7A	0.048729	3.02694	M27	Rab7	Id4,Pgrmc1,Sncb
+86	taipale-ACCCGGAAGTN-ELF5-DBD	0.0486249	3.01814	M7	Elf5,Ehf,Elf3,Elf4,Elf2,Etv5,Elf1,Elk3,Spic,Ets2,Erf,Etv2,Ets1,Elk1,Fev,Fli1,Gabpb1,Etv3,Etv1,Gabpa,Spib,Elk4,Erg,Sfpi1,Etv6,Etv4	Dazap2,Rab2a,Nop10,Ino80b,Mrpl18
+87	yetfasco-1462	0.0486249	3.01814	M23		Id4,Mrpl18,Dact3
+88	homer-M00573	0.0484946	3.00713	M7	Etv2,Erg,Fli1,Fev,Ets2,Gabpa,Etv3,Ets1,Erf,Etv1,Elk1,Elk3,Elk4,Gabpb1,Etv5,Etv4,Etv6	Ino80b,Nop10,Cox4i1,Dazap2,Pef1,Derl1,Clta,Id4,Atp5e,Anapc11

@@ -3,14 +3,33 @@ library(ggplot2)
 library(mail)
 library(ape)
 library(amap)
+library(igraph)
 
+load("./summary.rdt")
 load("./brain_bc2014.rdt")
-load("./gene_summary.rdt")
 load("./glm_brain.rdt")
 load("./five.rdt")
+load("./edges.rdt")
 
 shinyServer(function(input, output) {
-  
+  output$igraph <- renderPlot({
+    edges <- edgesList[[input$genes_by_pattern]]
+    igraph.dt <- graph.data.frame(edges)
+
+    if (input$layout == 1) igraph.dt$layout <- layout.sphere
+    if (input$layout == 2) igraph.dt$layout <- layout.circle
+    if (input$layout == 3) igraph.dt$layout <- layout.fruchterman.reingold
+
+    V(igraph.dt)$color = rep("chartreuse3", length(V(igraph.dt)$name))
+    V(igraph.dt)$color[V(igraph.dt)$name %in% edges$Var1] <- "gold"
+    V(igraph.dt)$size = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 10 + 2
+    V(igraph.dt)$label.cex = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 2 + 0.5
+    V(igraph.dt)$label.color = rep("dodgerblue3", length(V(igraph.dt)$name))
+    V(igraph.dt)$label.color[V(igraph.dt)$color == "gold"] = "firebrick1"
+
+    plot.igraph(igraph.dt, vertex.frame.color = "white", edge.arrow.size = 0.3)
+  }, height = 800)
+
   output$boxplot <- renderPlot({
     tissue <- input$tissue
     geneId <- input$gene
@@ -65,33 +84,59 @@ shinyServer(function(input, output) {
     tile.dt <- data.frame(value = c(tile.dt), 
       profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
       group = factor(rep(mylab, each = nrow(tile.dt)), levels = mylab))
-
+    
+    mylab <- paste(1:length(profile.Id), sapply(geneId.profile, length), sep = "-")
     ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
       theme_bw() + xlab("") + ylab("") + coord_flip() +
-      scale_y_discrete(labels = sapply(geneId.profile, length)) +
+      scale_y_discrete(labels = mylab) +
       scale_fill_manual(values = c("grey80", "firebrick1")) 
   })
 
-  output$glm_table <- renderTable({
+  output$glm_table1 <- renderText({
     table1 <- glm[[input$select3]][[input$type]]
     if (input$tissue2 == 2) {
       load("./glm_retina.rdt")
       table1 <- glm[[input$select4]][[input$type]]
     } 
+    table1[["symbol_by_pattern"]][[as.numeric(input$pattern)]]
+  })
 
-    if (input$result == "symbol_by_pattern") {
-      x <- table1[["symbol_by_pattern"]] 
-      x <- lapply(x, function (x) paste(x, collapse = ", "))
-      table2 <- do.call(rbind, x)
-      colnames(table2) <- "Gene Symbol"
-      table2 <- apply(table2, 2, rev)
-    } else {
-      table2 <- table1[[input$result]]
-      table2$Symbols = gsub(";", "; ", table2$Symbols)
+  output$glm_table2 <- renderTable({
+    table1 <- glm[[input$select3]][[input$type]]
+    if (input$tissue2 == 2) {
+      load("./glm_retina.rdt")
+      table1 <- glm[[input$select4]][[input$type]]
     } 
-    table2
+    table1[["gk_by_pattern"]][[as.numeric(input$pattern)]][["KEGG"]]
+    }, include.rownames = TRUE)
+  
+  output$glm_table3 <- renderTable({
+    table1 <- glm[[input$select3]][[input$type]]
+    if (input$tissue2 == 2) {
+      load("./glm_retina.rdt")
+      table1 <- glm[[input$select4]][[input$type]]
+    } 
+    table1[["gk_by_pattern"]][[as.numeric(input$pattern)]][["BP"]]
   }, include.rownames = TRUE)
-
+  
+  output$glm_table4 <- renderTable({
+    table1 <- glm[[input$select3]][[input$type]]
+    if (input$tissue2 == 2) {
+      load("./glm_retina.rdt")
+      table1 <- glm[[input$select4]][[input$type]]
+    } 
+    table1[["gk_by_pattern"]][[as.numeric(input$pattern)]][["MF"]]
+  }, include.rownames = TRUE)
+  
+  output$glm_table5 <- renderTable({
+    table1 <- glm[[input$select3]][[input$type]]
+    if (input$tissue2 == 2) {
+      load("./glm_retina.rdt")
+      table1 <- glm[[input$select4]][[input$type]]
+    } 
+    table1[["gk_by_pattern"]][[as.numeric(input$pattern)]][["CC"]]
+  }, include.rownames = TRUE)
+  
   output$five_graph <- renderPlot({
     mycol <- five$gdt$mycol
     myhc <- five$gdt
