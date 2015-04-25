@@ -1,38 +1,41 @@
 #!/bin/sh
 #
-# ChIP-seq data analysis pipeline
 # Author: XuLong Wang (xulong.wang@jax.org)
 
-# Usage: sh mybowtie.sh > mylog
+module load bowtie
+module load samtools
 
 echo $0
-echo "begin: `date`"
+begin=`date +%h`
 
-myindex="/data/xwang/Genome/GRCm38.73/GRCm38.73"
-mydir="/data/xwang/Prdm9/Encode"
+index="/data/xwang/AD/B6xC3H/B6xC3H.transcriptome"
+dir1="/data/xwang/AD/howell_2014/brain_trim"
+dir2="/data/xwang/AD/emase"
 
-for filename in H3k04me1MAdult8wksC57bl6StdRawDataRep1 \
-                H3k04me1MAdult8wksC57bl6StdRawDataRep2 \
-		InputMAdult8wksC57bl6StdRawDataRep1 \
-		InputMAdult8wksC57bl6StdRawDataRep2; do
-  echo "Processing $filename..."
-  bowtie -p 32 \
+files=`find $dir1 -name '*LaneALL_R1.fastq'`
+for filename1 in $files; do
+  filename2=`basename $filename1`
+  filename3=${filename2/_R1.fastq/}
+  echo "$filename3"
+  echo "running bowtie"
+  bowtie -p 20 \
          -q \
-	 -I 36 \
-         --phred64-quals \
-	 --best \
-	 --chunkmbs 512 \
-	 --sam \
-	 "$myindex" \
-	 "$mydir"/wgEncodeLicrHistoneTestis"$filename".fastq \
-	 "$mydir"/wgEncodeLicrHistoneTestis"$filename".sam
+         --phred33-quals \
+         --chunkmbs 512 \
+         --sam \
+         -a --best --strata \
+         "$index" \
+         -1 "$dir1"/"$filename3"_R1.fastq \
+         -2 "$dir1"/"$filename3"_R2.fastq \
+         "$dir2"/"$filename3".sam
+  echo "running samtools"
+  samtools view -bSF 4 \
+                -o "$dir2"/"$filename3".bam \
+                "$dir2"/"$filename3".sam
+  echo "delete the sam file"
+  rm "$dir2"/"$filename3".sam
 done
 
-echo "end: `date`"
-
-# Build index with bowtie-build
-# cd /hpcdata/xwang/Genome/GRCm38.73
-# bowtie-build Mus_musculus.GRCm38.73.dna.chromosome.1.fa,Mus_musculus.GRCm38.73.dna.chromosome.2.fa,Mus_musculus.GRCm38.73.dna.chromosome.3.fa,Mus_musculus.GRCm38.73.dna.chromosome.4.fa,Mus_musculus.GRCm38.73.dna.chromosome.5.fa,Mus_musculus.GRCm38.73.dna.chromosome.6.fa,Mus_musculus.GRCm38.73.dna.chromosome.7.fa,Mus_musculus.GRCm38.73.dna.chromosome.8.fa,Mus_musculus.GRCm38.73.dna.chromosome.9.fa,Mus_musculus.GRCm38.73.dna.chromosome.10.fa,Mus_musculus.GRCm38.73.dna.chromosome.11.fa,Mus_musculus.GRCm38.73.dna.chromosome.12.fa,Mus_musculus.GRCm38.73.dna.chromosome.13.fa,Mus_musculus.GRCm38.73.dna.chromosome.14.fa,Mus_musculus.GRCm38.73.dna.chromosome.15.fa,Mus_musculus.GRCm38.73.dna.chromosome.16.fa,Mus_musculus.GRCm38.73.dna.chromosome.17.fa,Mus_musculus.GRCm38.73.dna.chromosome.18.fa,Mus_musculus.GRCm38.73.dna.chromosome.19.fa,Mus_musculus.GRCm38.73.dna.chromosome.X.fa,Mus_musculus.GRCm38.73.dna.chromosome.Y.fa,Mus_musculus.GRCm38.73.dna.chromosome.MT.fa GRCm38.73
-
-# echo "." | mail -s "Task in Rockhopper have completed!" emailofx@gmail.com 
+end=`date +%h`
+echo $((end-begin))
 

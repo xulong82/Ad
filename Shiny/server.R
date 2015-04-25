@@ -23,7 +23,7 @@ shinyServer(function(input, output) {
     V(igraph.dt)$color = rep("chartreuse3", length(V(igraph.dt)$name))
     V(igraph.dt)$color[V(igraph.dt)$name %in% edges$Var1] <- "gold"
     V(igraph.dt)$size = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 10 + 2
-    V(igraph.dt)$label.cex = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 2 + 0.5
+    V(igraph.dt)$label.cex = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 2 + 1.0
     V(igraph.dt)$label.color = rep("dodgerblue3", length(V(igraph.dt)$name))
     V(igraph.dt)$label.color[V(igraph.dt)$color == "gold"] = "firebrick1"
 

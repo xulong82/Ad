@@ -3,28 +3,30 @@
 # RNA-seq data analysis pipeline
 # Author: XuLong Wang (xulong.wang@jax.org)
 
-# RSEM: alignment and summation
+# RSEM: alignment and expression estimation 
 
 echo $0
 begin=`date +%h`
  
 module load bowtie/1.0.0
+module load rsem
 
-dir_sou="/hpcdata/xwang/AD/howell_2013_trim"
-dir_des="/hpcdata/xwang/AD/RSEM_2013"
+dir_sou="/hpcdata/xwang/AD/howell_2014/retina_trim"
+#dir_des="/hpcdata/xwang/AD/RSEM_2014/retina"
+dir_des="/hpcdata/xwang/AD/RSEM_2014"
 myref="/hpcdata/xwang/Rsem/GRCm38"
 
 #index=$1
 #files=`find $dir_sou -name *_L00"$index"_R1.fastq`
 
-files=`find $dir_sou -name '*[0-9]_R1.fastq'`
+files=`find $dir_sou -name '*LaneALL_R1.fastq'`
 
 for filename1 in $files; do
   filename2=`basename $filename1`
   filename3=${filename2/_R1.fastq/}
   echo $filename3
   rsem-calculate-expression -p 20 \
-  			    --phred33-quals \
+  			    --bowtie-phred33-quals \
   			    --forward-prob 0.5 \
   			    --paired-end \
                             "$dir_sou"/"$filename3"_R1.fastq \

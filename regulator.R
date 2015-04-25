@@ -6,6 +6,7 @@ rm(list = ls())
 setwd("~/Dropbox/GitHub/Ad")
 
 load("./data/glm_brain.rdt")
+load("./data/fit_brain.rdt")
 
 # ***
 symbol <- glm$less$app$symbol_by_pattern[["FALSE-FALSE-FALSE-TRUE"]]
@@ -33,62 +34,48 @@ symbol <- glm$more$age$symbol_by_pattern[["FALSE-FALSE-TRUE-FALSE-FALSE-FALSE"]]
 symbol <- symbol[sapply(fit.coef[symbol], function(x) x["age6m", "Estimate"] > 0)]
 # ***
 
-write.xlsx(symbol, file = "Pathway/symbols.xlsx", sheetName = "new", append = T)
+write.xlsx(symbol, file = "symbols.xlsx", sheetName = "new", append = T)
 
-# symbol <- glm$more$app$symbol_by_pattern; symbol <- symbol[sapply(symbol, length) > 10]
 # symbol <- glm$more$age$symbol_by_pattern; symbol <- symbol[sapply(symbol, length) > 10]
 # symbol <- lapply(1:length(symbol), function (x) c(names(symbol)[x], symbol[[x]]))
-# ***
+# system("rm Regulator/1.txt"); lapply(symbol, write, "Regulator/1.txt", append = T, ncolumns = 1e3)
 
-system("rm Pathway/1.txt"); lapply(symbol, write, "Pathway/1.txt", append = T, ncolumns = 1e3)
+myEdges <- function(file) {  # PARSE THE IREGULON OUTPUT
+  ireg <- read.delim(paste("Regulator", file, sep = "/"), comment.char = ";", stringsAsFactors = F)
+  
+  factor <- lapply(1:nrow(ireg), function(x) unlist(strsplit(ireg$Transcription.factor[x], split = ",")))
+  target <- lapply(1:nrow(ireg), function(x) unlist(strsplit(ireg$Target.genes[x], split = ",")))
+  factor <- lapply(factor, function(x) x[x %in% names(fit.coef)])  # only mild expression, post-hoc filter required
+  idx <- sapply(factor, length) > 0; factor <- factor[idx]; target <- target[idx]
+  edges <- lapply(1:length(factor), function(x) expand.grid(factor[[x]], target[[x]], stringsAsFactors = F))
+  edges <- do.call(rbind, edges); edges <- edges[! duplicated(edges), ]
+  
+  return(edges)
+}
 
-# --- PARSE THE IREGULON OUTPUT. MORE THAN 10 GENES REQUIRED FOR IREGULON
-load("./data/fit_brain.rdt")
-
-file <- "Pathway/regulon_brain_less_app_0001.tsv"
-file <- "Pathway/regulon_brain_less_app_1000.tsv"
-file <- "Pathway/regulon_brain_more_app_0001.tsv"
-file <- "Pathway/regulon_brain_more_app_1000.tsv"
-file <- "Pathway/regulon_brain_less_age_011000.tsv"
-file <- "Pathway/regulon_brain_more_age_011000.tsv"
-file <- "Pathway/regulon_brain_less_age_001000.tsv"
-file <- "Pathway/regulon_brain_more_age_001000.tsv"
-
-ireg <- read.delim(file, comment.char = ";", stringsAsFactors = F)
-
-pars <- c("(Intercept)", "groupAPP")  # 1000
-pars <- c("(Intercept)", "age6m:groupAPP")  # 0001
-pars <- c("(Intercept)", "age5m")  # 011000
-pars <- c("(Intercept)", "age6m")  # 001000
-
-univ <- names(fit.coef)[sapply(fit.coef, function (x) sum(x[pars, 1]) > 5 & x[pars[2], 1] > 0)]
-
-factor <- lapply(1:nrow(ireg), function(x) unlist(strsplit(ireg$Transcription.factor[x], split = ",")))
-target <- lapply(1:nrow(ireg), function(x) unlist(strsplit(ireg$Target.genes[x], split = ",")))
-factor <- lapply(factor, function(x) x[x %in% univ])
-idx <- sapply(factor, length) > 0; factor <- factor[idx]; target <- target[idx]
-edges <- lapply(1:length(factor), function(x) expand.grid(factor[[x]], target[[x]], stringsAsFactors = F))
-edges <- do.call(rbind, edges); edges <- edges[! duplicated(edges), ]
-
-edgesList <- list()
-edgesList[[gsub("Pathway/", "", file)]] <- edges
+file <- list.files(path = "./Regulator", pattern = "*.tsv")
+edgesList <- lapply(file, myEdges)
+names(edgesList) <- gsub("regulon_(.*).tsv", "\\1", file)
 save(edgesList, file = "Shiny/edges.rdt")
 
 # VISUALIZATION: IGRAPH
-igraph.dt <- graph.data.frame(edges)
+myIgraph <- function (edges) {
+  igraph.dt <- graph.data.frame(edges)
+  igraph.dt$layout <- layout.sphere
+  
+  V(igraph.dt)$color = rep("chartreuse3", length(V(igraph.dt)$name))
+  V(igraph.dt)$color[V(igraph.dt)$name %in% edges$Var1] <- "gold"
+  V(igraph.dt)$size = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 10 + 2
+  V(igraph.dt)$label.cex = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 2 + 0.8
+  V(igraph.dt)$label.color = rep("dodgerblue3", length(V(igraph.dt)$name))
+  V(igraph.dt)$label.color[V(igraph.dt)$color == "gold"] = "firebrick1"
+  
+  plot.igraph(igraph.dt, vertex.frame.color = "white", edge.arrow.size = 0.3)
+}
 
-igraph.dt$layout <- layout.sphere
-igraph.dt$layout <- layout.circle
-igraph.dt$layout <- layout.fruchterman.reingold 
+myIgraph(edgesList[[1]])
 
-V(igraph.dt)$color = rep("chartreuse3", length(V(igraph.dt)$name))
-V(igraph.dt)$color[V(igraph.dt)$name %in% unlist(factor)] <- "gold"
-V(igraph.dt)$size = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 10 + 2
-V(igraph.dt)$label.cex = (degree(igraph.dt) - 1) / (max(degree(igraph.dt)) - 1) * 2 + 0.5
-V(igraph.dt)$label.color = rep("dodgerblue3", length(V(igraph.dt)$name))
-V(igraph.dt)$label.color[V(igraph.dt)$color == "gold"] = "firebrick1"
-
-plot.igraph(igraph.dt, vertex.frame.color = "white", edge.arrow.size = 0.3)
+sapply(edgesList, function(x) unique(x$Var1[grep("Stat", x$Var1)]))  # Stat* appears frequently
 
 # --- VISUALIZATION: ARC DIAGRAM, HIVE PLOT
 # nodes <- data.frame(lab = unique(c(unlist(factor), unlist(target))))

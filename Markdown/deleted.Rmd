@@ -1,0 +1,145 @@
+# GO and KEGG enrichment
+```{r echo=F, warning=F}
+age_spe_up_gk <- lapply(age_spe_up, function(x) myGK(rownames(x)))
+# age_spe_dn_gk <- lapply(age_spe_dn, function(x) myGK(rownames(x)))
+# 
+# # paste(age_spe_up_gk[["2m"]]$GO$MF$Term, collapse = ", ")
+# sapply(age_spe_up_gk, function(x) paste(x$KEGG$Term, collapse = ", "))
+# sapply(age_spe_dn_gk, function(x) paste(x$KEGG$Term, collapse = ", "))
+
+```
+
+## Mixed Age and App effects
+```{r echo=F, warning=F}
+# mixed_eff <- lapply(1:ncol(combn), function(x1) {
+#   y1 = sapply(glm.fit, function(x2) {
+#     y2 = contrast(x2, list(age = combn[2, x1], group = "APP"), list (age = combn[1, x1], group = "APP")) 
+#     c(y2$Contrast, y2$Pvalue)})
+#   rownames(y1) = c("contrast", "pval"); t(y1)
+# }); names(mixed_eff) <- apply(combn, 2, function(x) paste0(x[2], x[1])) 
+```
+
+##### In each gene's GLM return, the "Estimate" column represents each predictor's effect size; the "Pr(>|t|)" column represents the corresponding significance. We constructed a matrix of each gene's estimates on each predictor, and another matrix of the corresponding significance values.
+```{r}
+fit.qr[["App"]]$coefficients
+fit.est <- lapply(fit.qr, function (x) x$coefficients[, "Estimate"])
+fit.est <- do.call(rbind, fit.est)
+tail(fit.est)
+fit.pval <- lapply(fit.qr, function (x) x$coefficients[, "Pr(>|t|)"])
+fit.pval <- do.call(rbind, fit.pval)
+tail(fit.pval)
+```
+
+##### To identify each gene's critical predictors, we binarized the estimate and significance matrices by hard cutoffs. Less stringent cutoffs were applied in a separate analysis. 
+```{r}
+logit <- apply(fit.pval, 2, function (x) x < 0.05) & apply(fit.est, 2, function (x) abs(x) > 0.2)
+tail(logit)
+```
+
+##### The APP- and age-related genes were identified as those who passed the cutoff in at least one of the APP- and age-related predictors, respectively. 
+```{r}
+geneId.age <- geneId[as.logical(rowSums(logit[, grep("age", colnames(fit.pval))]))]
+geneId.age
+geneId.app <- geneId[as.logical(rowSums(logit[, grep("APP", colnames(fit.pval))]))]
+geneId.app
+```
+
+##### GO and KEGG enrichment analysis was applied on the APP- and age-related genes
+```{r}
+gk.app <- myGK(geneId.app)
+head(gk.app$BP[, c("Term", "Pvalue")])
+head(gk.app$MF[, c("Term", "Pvalue")])
+head(gk.app$CC[, c("Term", "Pvalue")])
+head(gk.app$KEGG[, c("Term", "Pvalue")])
+
+gk.age <- myGK(geneId.age)
+head(gk.age$BP[, c("Term", "Pvalue")])
+head(gk.age$MF[, c("Term", "Pvalue")])
+head(gk.age$CC[, c("Term", "Pvalue")])
+head(gk.age$KEGG[, c("Term", "Pvalue")])
+```
+
+##### This gives the overlap between the age- and app-genes.
+```{r}
+grid.newpage()
+draw.pairwise.venn(length(geneId.age), length(geneId.app), length(intersect(geneId.age, geneId.app)), 
+                   category = c("Age", "APP"), fill = c("light blue", "pink"))
+```
+                   
+##### To classify the APP-related genes in more detail, we collapsed the binarized matrix gene by gene and grouped genes from the unique collapsed patterns. We will repeat the same procedure for the age-related genes.
+```{r}
+profile <- logit[geneId.app, grep("APP", colnames(logit))]
+# profile <- logit[geneId.age, grep("age", colnames(logit))]
+tail(profile)
+
+profile.str <- apply(profile, 1, function (x) paste(x, collapse = "-"))
+tail(profile.str)
+profile.table <- sort(table(profile.str))
+profile.Id <- names(profile.table)
+profile.Id
+```
+
+##### Genes in each group
+```{r}
+geneId.profile <- list()
+for (idx in profile.Id)
+  geneId.profile[[idx]] <- geneId.app[profile.str == idx]
+# geneId.profile[[idx]] <- geneId.age[profile.str == idx]
+geneId.profile
+```
+
+##### A tile plot on the groups with each group's gene numbers
+```{r}
+tile.dt <- NULL
+for (i in 1:length(profile.Id))
+  tile.dt <- rbind(tile.dt, as.logical(unlist(strsplit(profile.Id[i], "-"))))
+tile.dt <- data.frame(value = c(tile.dt), 
+  profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
+  group = factor(rep(colnames(profile), each = nrow(tile.dt)), levels = colnames(profile)))
+
+ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
+  theme_bw() + xlab("") + ylab("") + coord_flip() +
+  scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
+# scale_x_discrete(labels = c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_y_discrete(labels = profile.table) +
+  scale_fill_manual(values = c("grey80", "firebrick1")) 
+``` 
+
+##### We repeated the same procedure to classify age-related genes in different groups.
+```{r}
+# profile <- logit[geneId.app, grep("APP", colnames(logit))]
+profile <- logit[geneId.age, grep("age", colnames(logit))]
+tail(profile)
+
+profile.str <- apply(profile, 1, function (x) paste(x, collapse = "-"))
+tail(profile.str)
+profile.table <- sort(table(profile.str))
+profile.Id <- names(profile.table)
+profile.Id
+```
+
+##### Genes in each group
+```{r}
+geneId.profile <- list()
+for (idx in profile.Id)
+# geneId.profile[[idx]] <- geneId.app[profile.str == idx]
+  geneId.profile[[idx]] <- geneId.age[profile.str == idx]
+geneId.profile
+```
+
+##### A tile plot on each group's gene numbers
+```{r}
+tile.dt <- NULL
+for (i in 1:length(profile.Id))
+  tile.dt <- rbind(tile.dt, as.logical(unlist(strsplit(profile.Id[i], "-"))))
+tile.dt <- data.frame(value = c(tile.dt), 
+  profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
+  group = factor(rep(colnames(profile), each = nrow(tile.dt)), levels = colnames(profile)))
+
+ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
+  theme_bw() + xlab("") + ylab("") + coord_flip() +
+# scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_x_discrete(labels = c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")) +
+  scale_y_discrete(labels = profile.table) +
+  scale_fill_manual(values = c("grey80", "firebrick1")) 
+``` 

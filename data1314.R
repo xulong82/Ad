@@ -5,31 +5,31 @@
 rm(list = ls())
 
 #--- 2014 brain ---
-name1 <- list.files(path = "~/Dropbox/AD/RSEM/howell_2014/brain",
+name1 <- list.files(path = "/data/xwang/AD/RSEM/howell_2014/brain",
                     pattern = "*.genes.results")
 name2 <- paste("M", gsub("_GES14_.*", "", name1), sep = "")
 for (i in 1:length(name1)) {
-  filepath <- file.path("~/Dropbox/AD/RSEM/howell_2014/brain", name1[i])
+  filepath <- file.path("/data/xwang/AD/RSEM/howell_2014/brain", name1[i])
   cat(i, "/", length(name1), name1[i], "\n")
   assign(name2[i], read.delim(filepath)[, -2])
 }
 
 #--- 2014 retina ---
-name3 <- list.files(path = "~/Dropbox/AD/RSEM/howell_2014/retina",
+name3 <- list.files(path = "/data/xwang/AD/RSEM/howell_2014/retina",
                     pattern = "*.genes.results")
 name4 <- paste("M", gsub("_GES14_.*", "", name3), sep = "")
 for (i in 1:length(name3)) {
-  filepath <- file.path("~/Dropbox/AD/RSEM/howell_2014/retina", name3[i])
+  filepath <- file.path("/data/xwang/AD/RSEM/howell_2014/retina", name3[i])
   cat(i, "/", length(name3), name3[i], "\n")
   assign(name4[i], read.delim(filepath)[, -2])
 }
 
 #--- 2013 brain ---
-name5 <- list.files(path = "~/Dropbox/AD/RSEM/howell_2013",
+name5 <- list.files(path = "/data/xwang/AD/RSEM/howell_2013",
                     pattern = "*.genes.results")
 name6 <- gsub(".genes.results", "", name5)
 for (i in 1:length(name5)) {
-  filepath <- file.path("~/Dropbox/AD/RSEM/howell_2013", name5[i])
+  filepath <- file.path("/data/xwang/AD/RSEM/howell_2013", name5[i])
   cat(i, "/", length(name5), name5[i], "\n")
   assign(name6[i], read.delim(filepath)[, -2])
 }

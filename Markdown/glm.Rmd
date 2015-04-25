@@ -1,209 +1,158 @@
-## Model gene expression data with a generalized linear model
-Xulong Wang (xulong.wang@jax.org)
+##  A genome-wide gene expression analysis in APP-transgenic mice during development
 
 ***
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=F, warning=F, message=F}
 library(ape)
 library(amap)
 library(ggdendro)
-library(VennDiagram)
 library(MASS)
-library(xtable)
+library(gplots)
 library(ggplot2)
 library(ggvis)
 library(pheatmap)
 library(grid)
-```
+library(dplyr)
+library(contrast)
+library(multcomp)
+library(png)
 
-```{r, message=F, warning=F}
 rm(list = ls())
 setwd("~/Dropbox/GitHub/Ad")
+
+load("./data/brain2014.rdt"); glm.dt <- brain.tpm
+# load("./data/retina2014.rdt"); glm.dt <- retina.tpm
 source("function.R")
-load("./data/brain2014.rdt")
-dt <- brain.tpm
-# load("./data/retina2014.rdt")
-# dt <- retina.tpm
 ```
 
-##### This is the distribution of gene expression values for all genes in all 2014 samples in log2-transformed-TPM unit.
+### We used 2014 samples only, and kept genes that fit two criterias:
+
+1. Maximal expression needs be bigger than 0.25 quantile of the complete datasets
+2. Expression value needs be non-zero in at least 1/10 of the samples.
+
 ```{r}
-dim(dt)
-hist(c(as.matrix(dt)), main = "", xlab = "log2(TPM)")
+cutoff <- quantile(c(as.matrix(glm.dt)), 0.25)  # TPM level
+glm.dt <- glm.dt[apply(glm.dt, 1, function(x) max(x) > cutoff & sum(x > 0) > round(ncol(glm.dt) / 10)), ]
+
+dim(glm.dt)
+par(mar = c(5, 5, 0, 2))
+hist(c(as.matrix(glm.dt)), main = NULL, xlab = "Log2(TPM)", col = "dodgerblue3", border = "white")
 ```
 
-##### We kept genes who fit two criterias: 
-1. Maximal expression must be bigger than 0.25 quantile of the complete datasets
-2. Expression value must be bigger than 0 in at least 1/10 of the samples.
-```{r}
-cutoff <- quantile(c(as.matrix(dt)), 0.25)  # TPM level
-dt <- dt[apply(dt, 1, function(x) max(x) > cutoff), ]
-dt <- dt[apply(dt, 1, function(x) sum(x > 0) > round(ncol(dt) / 10)), ]
-dim(dt)
-```
+### Model the data with two GLMs
 
-##### Each gene's expression values were modeled with a generalized linear model (GLM) by 4 predictors: age, group, batch, and age group interaction.
+We took off each gene's batch effect as estimated by a GLM 4 predictors: age, group, batch, and age group interaction.
+
+$y \sim age + group + batch + age * group$
+
 ```{r}
-age <- factor(gsub("^.*(2m|4m|5m|6m).*", "\\1", colnames(dt)), levels = c("2m", "4m", "5m", "6m"))
-group <- factor(gsub("^.*(WT|APP).*", "\\1", colnames(dt)), levels = c("WT", "APP"))
-batch <- factor(gsub("^.*(2014|mouse).*", "\\1", colnames(dt)), levels = c("2014", "mouse"))
-uid <- paste(age, group, sep = "_")
+age <- factor(gsub("^.*(2m|4m|5m|6m).*", "\\1", colnames(glm.dt)), levels = c("2m", "4m", "5m", "6m"))
+group <- factor(gsub("^.*(WT|APP).*", "\\1", colnames(glm.dt)), levels = c("WT", "APP"))
+uid <- paste(age, group, sep = "_"); table(uid)
+batch <- factor(gsub("^.*(2014|mouse).*", "\\1", colnames(glm.dt)), levels = c("2014", "mouse"))
 conditions <- c("2m_WT", "2m_APP", "4m_WT", "4m_APP", "5m_WT", "5m_APP", "6m_WT", "6m_APP")
-glm.dt <- as.matrix(dt)
-glm.fit <- lapply(1:nrow(glm.dt), function (x) summary(lm(glm.dt[x, ] ~ age + group + batch + age * group)))
-names(glm.fit) <- rownames(glm.dt)
-colnames(dt)
-age
-group
-batch
+conditions <- conditions[conditions %in% uid]
+
+fit0 <- apply(glm.dt, 1, function (x) summary(lm(x ~ age + group + batch + age*group)))
+fit0.batch <- sapply(fit0, function (x) x$coefficients["batchmouse", "Estimate"])
+glm.dt_bc <- glm.dt - as.matrix(fit0.batch) %*% (as.numeric(batch) - 1)
 ```
 
-##### This shows what we get from the GLM, take App for example 
+The batch-corrected gene expressions were modeled by anotehr GLM with 3 predictors: age, group, and age group interaction.
+
+$y \sim age + group + age * group$
+
 ```{r}
-glm.fit[["App"]]
+glm.fit <- apply(glm.dt_bc, 1, function (x) lm(x ~ age + group + age*group))
+summary(glm.fit[["App"]])$coefficient
 ```
 
-##### We took off each gene's batch effect as estimated by the GLM from its raw expression value. The batch-corrected expression values were used in the downstream pair-wise comparisons.
+### Choose genes with R2 > 0.3 and Qvalue < 0.05
+
+GLM's R2 and F-test q-value define how well each gene's expression could be predicted by the predictors. Small p-value and big R2 suggest good fit.
+
 ```{r}
-dt.bc <- dt
-for (i in 1:nrow(dt.bc)) 
-  dt.bc[i, ] <- dt[i, ] - glm.fit[[i]]$coefficients["batchmouse", "Estimate"] * (as.numeric(batch) - 1)
+fit.r2 <- sapply(glm.fit, function (x) summary(x)$r.squared)
+fit.qval <- sapply(glm.fit, function (x) summary(x)$fstatistic) %>% 
+  apply(2, function (x) pf(x[1], x[2], x[3], lower.tail = F)) %>% p.adjust(method = "fdr")
+
+glm.fit <- glm.fit[fit.qval < 0.05 & fit.r2 > 0.3]
+length(glm.fit)
 ```
 
-##### R2 and F-test p-value from the GLM define how well each gene's expression across the samples could be predicted from the model's predictors, which are age, group, batch, and age group interaction. Small p-value and big R2 suggest good fit. 
-##### We searched age- and app-related genes by two criterias with different levels of stringencies on p-value and R2. The more stringent criteria was applied in this document.
-```{r}
-r2 <- sapply(glm.fit, function (x) x$r.squared)
-fval <- sapply(glm.fit, function (x) x$fstatistic)
-pval <- apply(fval, 2, function (x) pf(x[1], x[2], x[3], lower.tail = F))
-qval <- p.adjust(pval, method = "fdr")
+### Age, App, and age_App_inter genes with ANOVA
 
-fit.qr <- glm.fit[qval < 0.05 & r2 > 0.5]
-geneId <- names(fit.qr)
-length(fit.qr)
+ANOVA identifies the normal aging genes, 2-month app genes, age-dependent app genes (4, 5, 6 months)
+
+```{r}
+fit.anova <- lapply(glm.fit, anova)
+fit.anova[["App"]]
+
+genes.aov <- lapply(c("age", "group", "age:group"), function(x1) {
+  y1 = sapply(fit.anova, function(x2) x2[x1, "Pr(>F)"]); y1[y1 < 0.05]
+}); names(genes.aov) <- c("age", "app", "age:app")
+
+sapply(genes.aov, function(x) length(x))
+par(mar = c(0, 5, 0, 2))
+venn(list(age = names(genes.aov[[1]]), APP = names(genes.aov[[2]]), age_int_app = names(genes.aov[[3]])))
 ```
 
-##### In each gene's GLM return, the "Estimate" column represents each predictor's effect size; the "Pr(>|t|)" column represents the corresponding significance. We constructed a matrix of each gene's estimates on each predictor, and another matrix of the corresponding significance values.
+### Age-specific APP effect
+
+This is equivalent with pairwise t-tests between WT and APP samples for each month.
+
 ```{r}
-fit.qr[["App"]]$coefficients
-fit.est <- lapply(fit.qr, function (x) x$coefficients[, "Estimate"])
-fit.est <- do.call(rbind, fit.est)
-tail(fit.est)
-fit.pval <- lapply(fit.qr, function (x) x$coefficients[, "Pr(>|t|)"])
-fit.pval <- do.call(rbind, fit.pval)
-tail(fit.pval)
+age_spe <- lapply(c("2m", "4m", "5m", "6m"), function(x1) {
+  sapply(glm.fit, function(x2) 
+    contrast(x2, list(age = x1, group = "APP"), list(age = x1, group = "WT")))[c("Contrast", "Pvalue"), ]
+}); names(age_spe) <- c("2m", "4m", "5m", "6m")
+
+sapply(c("2m", "4m", "5m", "6m"), function(x1) {
+  contrast(glm.fit[["Stat3"]], list(age = x1, group = "APP"), list (age = x1, group = "WT"))  
+})[c("Contrast", "Pvalue"), ]
+
+age_spe_up <- sapply(age_spe, function(x) x[, x[1, ] > 0.1 & x[2, ] < 0.05])
+age_spe_dn <- sapply(age_spe, function(x) x[, x[1, ] < -0.1 & x[2, ] < 0.05])
+
+sapply(age_spe_up, function(x) ncol(x)) 
+sapply(age_spe_dn, function(x) ncol(x))
 ```
 
-##### To identify each gene's critical predictors, we binarized the estimate and significance matrices by hard cutoffs. Less stringent cutoffs were applied in a separate analysis. 
+### WT-specific age effect (normal aging genes)
+
 ```{r}
-logit <- apply(fit.pval, 2, function (x) x < 0.05) & apply(fit.est, 2, function (x) abs(x) > 0.2)
-tail(logit)
+combn <- combn(c("2m", "4m", "5m", "6m"), 2)
+geno_spe_wt <- lapply(1:ncol(combn), function(x1) {
+  sapply(glm.fit, function(x2)
+    contrast(x2, list(age = combn[2, x1], group = "WT"), list(age = combn[1, x1], group = "WT")))[c("Contrast", "Pvalue"), ]
+}); names(geno_spe_wt) <- apply(combn, 2, function(x) paste0(x[2], "_vs_", x[1])) 
+
+sapply(1:ncol(combn), function(x1) {
+  contrast(glm.fit[["Stat3"]], list(age = combn[2, x1], group = "WT"), list(age = combn[1, x1], group = "WT")) 
+})[c("Contrast", "Pvalue"), ]
+
+geno_spe_wt_up <- sapply(geno_spe_wt, function(x) x[, x[1, ] > 0.1 & x[2, ] < 0.05])
+geno_spe_wt_dn <- sapply(geno_spe_wt, function(x) x[, x[1, ] < -0.1 & x[2, ] < 0.05])
+
+sapply(geno_spe_wt_up, function(x) ncol(x)) 
+sapply(geno_spe_wt_dn, function(x) ncol(x))
 ```
 
-##### The APP- and age-related genes were identified as those who passed the cutoff in at least one of the APP- and age-related predictors, respectively. 
+### APP-specific age effect (app-specific aging genes)
+
 ```{r}
-geneId.age <- geneId[as.logical(rowSums(logit[, grep("age", colnames(fit.pval))]))]
-geneId.age
-geneId.app <- geneId[as.logical(rowSums(logit[, grep("APP", colnames(fit.pval))]))]
-geneId.app
+C <- matrix(c(0,0,0,0,0,0,-1,1), 1) 
+cat("6m APP vs 5m APP Stat3: \n"); summary(glht(glm.fit[["Stat3"]], linfct = C))
 ```
 
-##### GO and KEGG enrichment analysis was applied on the APP- and age-related genes
-```{r}
-gk.app <- myGK(geneId.app)
-head(gk.app$BP[, c("Term", "Pvalue")])
-head(gk.app$MF[, c("Term", "Pvalue")])
-head(gk.app$CC[, c("Term", "Pvalue")])
-head(gk.app$KEGG[, c("Term", "Pvalue")])
+<!--
 
-gk.age <- myGK(geneId.age)
-head(gk.age$BP[, c("Term", "Pvalue")])
-head(gk.age$MF[, c("Term", "Pvalue")])
-head(gk.age$CC[, c("Term", "Pvalue")])
-head(gk.age$KEGG[, c("Term", "Pvalue")])
-```
+glmList <- list()
+glmList$age_spe_up <- age_spe_up
+glmList$age_spe_dn <- age_spe_dn
+glmList$geno_spe_wt_up <- geno_spe_wt_up
+glmList$geno_spe_wt_dn <- geno_spe_wt_dn
 
-##### This gives the overlap between the age- and app-genes.
-```{r}
-grid.newpage()
-draw.pairwise.venn(length(geneId.age), length(geneId.app), length(intersect(geneId.age, geneId.app)), 
-                   category = c("Age", "APP"), fill = c("light blue", "pink"))
-```
-                   
-##### To classify the APP-related genes in more detail, we collapsed the binarized matrix gene by gene and grouped genes from the unique collapsed patterns. We will repeat the same procedure for the age-related genes.
-```{r}
-profile <- logit[geneId.app, grep("APP", colnames(logit))]
-# profile <- logit[geneId.age, grep("age", colnames(logit))]
-tail(profile)
+save(glmList, file = "data/glmList.rdt")
 
-profile.str <- apply(profile, 1, function (x) paste(x, collapse = "-"))
-tail(profile.str)
-profile.table <- sort(table(profile.str))
-profile.Id <- names(profile.table)
-profile.Id
-```
-
-##### Genes in each group
-```{r}
-geneId.profile <- list()
-for (idx in profile.Id)
-  geneId.profile[[idx]] <- geneId.app[profile.str == idx]
-# geneId.profile[[idx]] <- geneId.age[profile.str == idx]
-geneId.profile
-```
-
-##### A tile plot on the groups with each group's gene numbers
-```{r}
-tile.dt <- NULL
-for (i in 1:length(profile.Id))
-  tile.dt <- rbind(tile.dt, as.logical(unlist(strsplit(profile.Id[i], "-"))))
-tile.dt <- data.frame(value = c(tile.dt), 
-  profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
-  group = factor(rep(colnames(profile), each = nrow(tile.dt)), levels = colnames(profile)))
-
-ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
-  theme_bw() + xlab("") + ylab("") + coord_flip() +
-  scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
-# scale_x_discrete(labels = c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")) +
-  scale_y_discrete(labels = profile.table) +
-  scale_fill_manual(values = c("grey80", "firebrick1")) 
-``` 
-
-##### We repeated the same procedure to classify age-related genes in different groups.
-```{r}
-# profile <- logit[geneId.app, grep("APP", colnames(logit))]
-profile <- logit[geneId.age, grep("age", colnames(logit))]
-tail(profile)
-
-profile.str <- apply(profile, 1, function (x) paste(x, collapse = "-"))
-tail(profile.str)
-profile.table <- sort(table(profile.str))
-profile.Id <- names(profile.table)
-profile.Id
-```
-
-##### Genes in each group
-```{r}
-geneId.profile <- list()
-for (idx in profile.Id)
-# geneId.profile[[idx]] <- geneId.app[profile.str == idx]
-  geneId.profile[[idx]] <- geneId.age[profile.str == idx]
-geneId.profile
-```
-
-##### A tile plot on each group's gene numbers
-```{r}
-tile.dt <- NULL
-for (i in 1:length(profile.Id))
-  tile.dt <- rbind(tile.dt, as.logical(unlist(strsplit(profile.Id[i], "-"))))
-tile.dt <- data.frame(value = c(tile.dt), 
-  profile = factor(rep(profile.Id, ncol(tile.dt)), levels = profile.Id),
-  group = factor(rep(colnames(profile), each = nrow(tile.dt)), levels = colnames(profile)))
-
-ggplot(tile.dt, aes(x = group, y = profile, fill = value)) + geom_tile(colour = "white") +
-  theme_bw() + xlab("") + ylab("") + coord_flip() +
-# scale_x_discrete(labels = c("2m:APP", "4m:APP", "5m:APP", "6m:APP")) +
-  scale_x_discrete(labels = c("4m:WT", "5m:WT", "6m:WT", "4m:APP", "5m:APP", "6m:APP")) +
-  scale_y_discrete(labels = profile.table) +
-  scale_fill_manual(values = c("grey80", "firebrick1")) 
-``` 
+-->

@@ -8,16 +8,16 @@ rm(list = ls())
 name1 <- list.files(path = "~/Dropbox/AD/RSEM/howell_new/brain", pattern = "*.genes.results")
 name2 <- paste("mouse_", gsub("_GES14_.*", "", name1), sep = "")
 for (i in 1:length(name1)) {
-  filepath <- file.path("~/Dropbox/AD/RSEM/howell_new/brain", name1[i])
+  filepath <- file.path("/data/xwang//AD/RSEM/howell_new/brain", name1[i])
   cat(i, "/", length(name1), name1[i], "\n")
   assign(name2[i], read.delim(filepath, stringsAsFactors = F)[, -2])
 }
 
 #--- 2014 new retina ---
-name3 <- list.files(path = "~/Dropbox/AD/RSEM/howell_new/retina", pattern = "*.genes.results")
+name3 <- list.files(path = "/data/xwang//AD/RSEM/howell_new/retina", pattern = "*.genes.results")
 name4 <- paste("mouse_", gsub("_GES14_.*", "", name3), sep = "")
 for (i in 1:length(name3)) {
-  filepath <- file.path("~/Dropbox/AD/RSEM/howell_new/retina", name3[i])
+  filepath <- file.path("/data/xwang//AD/RSEM/howell_new/retina", name3[i])
   cat(i, "/", length(name3), name3[i], "\n")
   assign(name4[i], read.delim(filepath, stringsAsFactors = F)[, -2])
 }

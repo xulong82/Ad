@@ -2,47 +2,27 @@ library(GOstats)
 library(KEGG.db)
 library(org.Mm.eg.db)
 library(Category)
-library(pathview)
+library(dplyr)
 
-# --- GO AND KEGG ENRICHMENT ---
+# GO AND KEGG ENRICHMENT
 myGK <- function (geneId) {
-  mygk <- list()
+  entrezId <- mget(geneId, org.Mm.egSYMBOL2EG, ifnotfound = NA) %>% unlist %>% na.omit %>% as.character
+  if(! length(entrezId) > 1) return(NA) # use nsFilter() for additional filtering if required
   
-  entrezId <- mget(geneId, org.Mm.egSYMBOL2EG, ifnotfound = NA)
-  entrezId <- entrezId[! is.na(entrezId)]
-  entrezId <- as.character(entrezId)
+  uni_go <- get("org.Mm.egGO") %>% Lkeys
+  uni_kg <- get("org.Mm.egPATH") %>% Lkeys
   
-  if (length(entrezId) > 1) {  
-    # use nsFilter() for additional filtering if required
-    goAnn <- get("org.Mm.egGO")
-    universe <- Lkeys(goAnn)
-    for (category in c("BP", "MF", "CC")) {
-      params <- new("GOHyperGParams", geneIds = entrezId, universeGeneIds = universe, annotation = "org.Mm.eg.db", 
-                    ontology = category, pvalueCutoff = 0.001, testDirection = "over")  
-      over = hyperGTest(params)
-      go <- summary(over)
-      glist <- geneIdsByCategory(over)
-      glist <- sapply(glist, function(x) {y <- mget(x, envir=org.Mm.egSYMBOL); paste(y, collapse=";")})
-      
-      go$Symbols <- glist[as.character(go[, 1])]
-      mygk[[category]] <- go
-    }
+  GO <- lapply(c("BP", "MF", "CC"), function(category) {
+    over <- new("GOHyperGParams", geneIds = entrezId, universeGeneIds = uni_go, annotation = "org.Mm.eg.db", 
+                ontology = category, pvalueCutoff = 0.001, testDirection = "over") %>% hyperGTest 
+    glist <- sapply(geneIdsByCategory(over), function(x) {y <- mget(x, envir=org.Mm.egSYMBOL); paste(y, collapse=";")})
+    go <- summary(over); go$Symbols <- glist[as.character(go[, paste0("GO", category, "ID")])]; go
+  }); names(GO) <- c("BP", "MF", "CC")
+  
+  over <- new("KEGGHyperGParams", geneIds=entrezId, universeGeneIds=uni_kg, annotation="org.Mm.eg.db", 
+              categoryName="KEGG", pvalueCutoff = 0.01, testDirection="over") %>% hyperGTest
+  glist <- sapply(geneIdsByCategory(over), function(x) {y <- mget(x, envir=org.Mm.egSYMBOL); paste(y, collapse=";")})
+  kegg <- summary(over); kegg$Symbols <- glist[as.character(kegg$KEGGID)]
     
-    keggAnn <- get("org.Mm.egPATH")
-    universe <- Lkeys(keggAnn)
-    params <- new("KEGGHyperGParams", 
-                  geneIds=entrezId, universeGeneIds=universe, annotation="org.Mm.eg.db", 
-                  categoryName="KEGG", pvalueCutoff=0.01, testDirection="over")
-    over <- hyperGTest(params)
-    kegg <- summary(over)
-    glist <- geneIdsByCategory(over)
-    glist <- sapply(glist, function(x) {y <- mget(x, envir=org.Mm.egSYMBOL); paste(y, collapse=";")})
-    kegg$Symbols <- glist[as.character(kegg$KEGGID)]
-    mygk[["KEGG"]] <- kegg 
-    
-  } else {
-    mygk <- "Input genes have zero entrezId!"
-  }
-
-  return(mygk)
+  gk <- list(); gk$GO <- GO; gk$KEGG <- kegg; return(gk)
 }
