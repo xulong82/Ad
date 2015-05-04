@@ -1,0 +1,22 @@
+[samopen] SAM header is present: 93343 sequences.
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1102:12204:74736 1:N:0:ACAGTG/1 (patid 256932); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1106:17575:56405 1:Y:0:ACAGCG/1 (patid 836852); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2101:4828:88628 1:N:0:ACAGTG/1 (patid 7560290); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2103:15497:39628 1:N:0:ACAGTG/1 (patid 7783379); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2205:4941:58022 1:N:0:ACAGTG/1 (patid 10572338); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1106:2858:48211 1:N:0:ACAGTG/1 (patid 15657455); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1108:8176:65885 1:N:0:ACAGTG/1 (patid 15987207); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1202:7517:21585 1:Y:0:ACAGTA/1 (patid 17458914); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1101:15465:8072 1:N:0:ACAGTG/1 (patid 29688484); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1103:14144:69875 1:N:0:ACAGTG/1 (patid 30078585); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1202:4324:79730 1:N:0:ACAGTG/1 (patid 32402622); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1306:18711:92110 1:N:0:ACAGTG/1 (patid 35519754); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:2110:3062:10590 1:Y:0:ACAGTG/1 (patid 38468713); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:2304:20377:14453 1:Y:0:ACAGTA/1 (patid 42497381); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:2311:5530:84083 1:Y:0:ACAGTG/1 (patid 43685549); skipping read
+# reads processed: 44500903
+# reads with at least one reported alignment: 30954749 (69.56%)
+# reads that failed to align: 13546153 (30.44%)
+# reads with alignments suppressed due to -m: 1 (0.00%)
+Reported 83059895 paired-end alignments to 1 output stream(s)
+[bam_sort_core] merging from 113 files...

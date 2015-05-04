@@ -1,0 +1,16 @@
+[samopen] SAM header is present: 93343 sequences.
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:2208:9315:60254 1:N:0:GTGGCC/1 (patid 9199118); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:2309:3873:63157 1:Y:0:GTGGCC/1 (patid 11406770); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2113:18773:91573 1:Y:0:CTGGCC/1 (patid 20203688); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2201:4511:3234 1:Y:0:GTGGCC/1 (patid 20603708); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2210:9835:50693 1:N:0:GTGGCC/1 (patid 21829088); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1114:8221:90065 1:Y:0:GTGGCC/1 (patid 26546185); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1201:13211:39998 1:N:0:GTGGCC/1 (patid 26867208); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1203:5366:35923 1:N:0:GTGGCC/1 (patid 27118189); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2110:6420:72249 1:N:0:GTGGCC/1 (patid 32194453); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2302:1338:8859 1:N:0:GTGGCC/1 (patid 35229172); skipping read
+# reads processed: 37156798
+# reads with at least one reported alignment: 27451736 (73.88%)
+# reads that failed to align: 9705062 (26.12%)
+Reported 73680264 paired-end alignments to 1 output stream(s)
+[bam_sort_core] merging from 98 files...

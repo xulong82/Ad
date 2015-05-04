@@ -1,0 +1,20 @@
+[samopen] SAM header is present: 93343 sequences.
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1103:1573:32931 1:N:0:ACTGAT/1 (patid 566657); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1116:6234:47346 1:Y:0:ACTGAT/1 (patid 3879919); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1203:10845:46504 1:N:0:ACTGAT/1 (patid 4617359); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1204:1784:79109 1:N:0:ACTGAT/1 (patid 4946871); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1207:2343:8805 1:N:0:ACTGAT/1 (patid 5520502); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1308:9239:3742 1:N:0:ACTGAT/1 (patid 9773548); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2105:11570:43906 1:Y:0:AATGAT/1 (patid 13055516); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2201:13048:40266 1:N:0:ACTGAT/1 (patid 15887215); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2315:18187:15775 1:Y:0:ACTGAT/1 (patid 22942510); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1108:19060:81530 1:N:0:ACTCAT/1 (patid 25352614); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1208:5694:5959 1:N:0:ACTGAT/1 (patid 29181630); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2101:16043:39352 1:N:0:ACTGAT/1 (patid 35543034); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2211:20841:15436 1:Y:0:ACTGAT/1 (patid 41768740); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2313:5959:94720 1:N:0:ACTGAT/1 (patid 46287021); skipping read
+# reads processed: 47052377
+# reads with at least one reported alignment: 33745736 (71.72%)
+# reads that failed to align: 13306641 (28.28%)
+Reported 90125300 paired-end alignments to 1 output stream(s)
+[bam_sort_core] merging from 122 files...

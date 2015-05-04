@@ -1,0 +1,56 @@
+; Name	up.txt
+; Species and nomenclature	Mus musculus, MGI symbols
+; Motif collection	10K (9713 PWMs)
+; Minimum NEScore	3.0
+; Rank threshold for visualization	5000
+; ROC threshold for AUC calculation (%)	0.03
+; Minimum identity between orthologous genes	0.0
+; Maximum false discovery rate (FDR) on motif similarity	0.001
+; Motif rankings database	500bp upstream (7 species)
+; Number of valid nodes	221
+; iRegulon version	iRegulon v1.3 (build: 2015-02-12)
+# Rank	Motif id	AUC	NES	ClusterCode	Transcription factor	Target genes
+1	swissregulon-SOX_8-9-10_.p2	0.047662	4.24263	M1	Sox10,Sox9,Sox8,Sox30	Ccnyl1,Map4k4,Marcks,Tek,Opalin,Sox2,Sema4a,Frmd4b,H2afy2,Mllt6,Katnb1
+2	jaspar-CN0022.1	0.0476244	4.23744	M2		Sertad4,Kcnn2,Sema4a,Ly86,Slco2b1,Adcyap1r1,Slc14a1,Ltk,Prr3,Slc8a3,Pwp2,Tnfrsf19,Fgf1,Adamts2,Ednrb
+3	jaspar-MA0077.1	0.0448062	3.8481	M1	Sox9,Sox30,Sox7,Sry,Sox10,Sox6	Map4k4,Ccnyl1,Frmd4b,Tek,Marcks,Sema4a,Mllt6,Opalin,Sox2
+4	yetfasco-43	0.0446333	3.82422	M3		Kcnn2,Sox2,Fmod,H2afy2,Hdac7,Slc11a2,Tmem181a,Stx6,Kctd5,Pwp2,Opalin,Ly86,Stab1
+5	transfac_pro-M02270	0.0438517	3.71624	M2	Foxo3,Foxg1,3110039M20Rik	Sox12,Hdac7,Sox2,Ctdp1,Axl,Ly86,Id4,Slc14a1,Inppl1,Sema4b,Ccnyl1,Dgat1,Dpysl3
+6	yetfasco-1215	0.0435136	3.66952	M4	Gm7148,Tgif2,Tgif1,Mef2b,Mef2a,2310045N01Rik,Mef2c,Mef2d,Prdm2,Prdm1,Zfp683	Slc7a11,Ppap2b,Sertad4,Abi3bp,Dpysl3,Kctd5,Tek,Id4,Tmem181a,Ctgf,Stk38,Slc11a2,Pdrg1,Cxxc5,Uimc1
+7	tfdimers-MD00232	0.0433632	3.64876	M5	Tbp,Cebpb,Cebpa,Cebpd,Cebpg,Cebpe	Slc7a11,Hdac7,Igf2,Gpam,2010111I01Rik,Slc11a2,Arl8a,Tek,Pcdhb7,Stk38,Slc13a4,Stx6,Tmem63a
+8	yetfasco-1733	0.0431678	3.62176	M6		Dpysl3,H2afy2,Hdac7,Slc7a11,Dpf1,2010111I01Rik,Tmem181a,Pwp2
+9	yetfasco-2103	0.0429048	3.58542	M6		Ccnyl1,Sox12,Hdac7,Inppl1,Id4,Commd10,Gtf2ird1,Ctdp1
+10	jaspar-PF0052.1	0.0428898	3.58335	M7		Dpf1,Frmd4b,Hmgb3,Sox2,Fgfbp3,Marcks,Hs6st2,4933439C10Rik,Ednrb
+11	yetfasco-1236	0.042266	3.49717	M4	Gm7148,Tgif2,Tgif1,Mybl1,Mybl2,Snapc4,Myb,E2f1,Tcf3,Pou5f1	Slc7a11,Abi3bp,Id4,Tmem63a,Stk38,Ctgf,Sertad4,Ppap2b,Kctd5,Slc14a1,Tmem181a
+12	yetfasco-1214	0.042251	3.4951	M4	Hira,Rfx2,Rfx3,Rfx4,Rfx6,Rfx8,Rfx1	Slc7a11,Sertad4,Abi3bp,Id4,Cxxc5,Kctd5,Inppl1,Tmem181a,Ctgf,Ppap2b
+13	yetfasco-379	0.0419504	3.45357	M1	Nfyc,Nfya,Nfyb	Katnb1,Cdc23,Cat,Sox2,Kif24,Arl15,Kdm4a,Cstf1,Slc25a28,Camkk1,Slc13a4,Pnpo,Pabpn1,Stx6
+14	taipale-NAACAATRN-SOX9-DBD	0.0416197	3.40788	M1	Sox9,Sox30,Sox7,Sry,Sox5,Sox18,Sox15,Sox6	Frmd4b,Ccnyl1,Map4k4,Mllt6,Tek,Marcks,Sema4a,Sox2
+15	yetfasco-1240	0.0411763	3.34663	M4		Slc7a11,Ppap2b,Ctgf,Sertad4,Abi3bp,Kctd5,Cxxc5,Id4,Rpl5,Tmem181a,Pwp2,Dpysl3,Aktip,Ntng2,Pdrg1,Frmd4b
+16	yetfasco-1198	0.0410786	3.33313	M4	Mybl2,Mybl1,Snapc4,Myb,Mef2a,2310045N01Rik,Mef2b,Mef2c,Mef2d	Slc7a11,Sertad4,Id4,Abi3bp,Fgfbp3,Stk38,Tmem181a,Ntng2,Ppap2b,Dpysl3,Ctgf
+17	yetfasco-1259	0.041041	3.32794	M4	Mef2a,Mef2b,2310045N01Rik,Mef2d,Mef2c,Prdm2,Prdm1,Zfp683,Rfx2,Rfx3,Rfx4,Rfx6,Rfx8,Rfx1	Slc7a11,Ppap2b,Sertad4,Abi3bp,Ctgf,Tmem181a,Cxxc5,Kctd5,Dpysl3,Id4,Pdrg1
+18	homer-M01492	0.0409583	3.31652	M1		Cat,Sox2,Kif24,Arl15,Cdc23,Camkk1,Cstf1,Slc13a4,Kdm4a,Pabpn1,Katnb1,Slc25a28,Mccc1,Stx6
+19	jaspar-PF0049.1	0.0409508	3.31548	M1		Marcks,Sema4a,Map4k4,Sox2,Igf2,Opalin,Frmd4b,2410018L13Rik,Ccnyl1,Mllt6
+20	flyfactorsurvey-Sox15_SANGER_5_FBgn0005613	0.0408682	3.30406	M1	Sox7,Sox17,Sox18	Frmd4b,Mllt6,Map4k4,Ccnyl1,Sox2,Tek,Sema4a,Marcks
+21	yetfasco-1854	0.040808	3.29575	M8	Rfx2,Rfx3,Rfx6,Rfx4,Rfx1,Rfx8	Fgf1,Hdac7,Mllt6,Tmem181a,Coro6,Iqsec2,Commd10,Ctgf,Ntng2,Sema4a
+22	encode-UW.Motif.0250	0.0406277	3.27084	M6		Ccnyl1,Crtap,Ntng2,Crabp2,Iqsec2,Inppl1,Sema4a,Slc13a4,Sertad4,Mical1,Id4,Nxph1,Igfbp5,Abi3bp,Nup54,Pdrg1
+23	yetfasco-1202	0.0406202	3.2698	M9		Sox12,Armc10,Slc6a6,Ikbip,Pgm1,Inppl1,Slc8a3,Igf2,Isoc1,Hdac7,Atmin,Nup210,Fbxo7,Ryk,Arl8a,Frmd4b,Map4k4
+24	jaspar-MF0010.1	0.0405676	3.26253	M10		Inppl1,Marcks,Pnpla6,Mms19,Sox2,Id4,Slc8a3,Map4k4,Stk38,Gtf2ird1,Ccnyl1,Pdrg1
+25	yetfasco-1223	0.0404248	3.2428	M4		Slc7a11,Ntng2,Ppap2b,Abi3bp,Ctgf,Stk38,Id4,Tmem181a,Dpysl3,Kctd5,Sertad4,Frmd4b,Cxxc5,Tek,Pwp2,Pdrg1,Hdac7,Aktip
+26	yetfasco-2079	0.0403045	3.22619	M6		Sox12,Ctdp1,Hdac7,Inppl1,Ccnyl1,Gtf2ird1,Sox2,Slc7a11,Kctd5,Rbm22,Pwp2,Tmem181a,Id4,Stx6,Fgfbp3,Flna
+27	homer-M00300	0.0402294	3.21581	M10		Inppl1,Marcks,Pnpla6,Mms19,Sox2,Id4,Slc8a3,Stk38,Gtf2ird1,Map4k4,Pdrg1,Ccnyl1
+28	transfac_pro-M00753	0.0402294	3.21581	M11		Sertad4,Igf2,Slc11a2,Mnat1,Arl8a,Samhd1,Ptn,Lpcat2,Kctd5,Crabp2,Sema4b
+29	tiffin-TIFDMEM0000085	0.0397935	3.15559	M4		Sertad4,Sox2,Inppl1,Slc7a11,Cxxc5,Marcks,Id4,Abi3bp,Ctgf,Hdac7
+30	transfac_public-M00185	0.0397634	3.15144	M1	Nfyc,Nfyb,Nfya,Pole3,Gm21827,Hnf1b,Hnf1a	Katnb1,Pabpn1,Cdc23,Slc25a28,Kif24,Kdm4a,Pnpo,Arl15,Cstf1,Slc13a4,Cat
+31	yetfasco-1912	0.0396507	3.13587	M12		Igfbp5,Commd10,Dgat1,Abi3bp,Marcks,Ctdp1
+32	stark-RKGTCAAGK	0.0396131	3.13068	M13		Ctgf,Ptgr2,Mllt6,Sertad4,Slc27a2,Pwp2,Hdac7,Trp53,Slc14a1,Ppap2b,Ap1b1,Stx6,Marcks,Dvl2
+33	yetfasco-850	0.0395455	3.12133	M5	Dbx1,Pou1f1,Pou3f4,Nkx6-3,Nkx6-1,Hlx,Pou3f1,Dbx2,Tlx2,Pou3f2,Lhx3,Phox2b,Hoxa7,Lmx1b,Jazf1,Rax,Pou5f1,Myb,Gm5828,Tox4,Hmgb4,Tox,Tox3,Tox2	Inppl1,Marcks,Cxxc5,Stk38,Arl8a,Sertad4,Slc8a3,Rpl5,Ntng2,Rab36,2010111I01Rik,Pdrg1,Hs6st2,Stx6
+34	taipale-NACTTCCGSCGGAARMN-ELK1-full	0.0395079	3.11614	M14	Elk1	Ap1b1,Lzic,Kctd5,Armc9,Wdr74,Ufd1l,Mrpl3,Hs6st2,Ednrb,2810403A07Rik,Taf5l,Hars,Hars2,Sox2
+35	taipale-TGGKCTARCCTCGA-ZNF306-full	0.0391397	3.06527	M3	Zkscan3,Zkscan4	Tmem181a,Sema4a,Prr3,Frmd4b,Rbm22,Cdc23,Kcnn2,Chpf2
+36	yetfasco-1291	0.0390269	3.04969	M15		Sox2,Katnb1,Atg4a,Mccc1,Cdc23,Ppil1,Cstf1,Slc13a4,Pabpn1,Cat
+37	yetfasco-1537	0.0389969	3.04554	M15	Nfyc,Pole4,Nfya	Katnb1,Cat,Cdc23,Kif24,Cstf1,Kdm4a,Sox2,Pabpn1,Pnpo,Slc13a4,Arl15,Mccc1
+38	tiffin-TIFDMEM0000113	0.0389217	3.03516	M5		Tmem63a,Pdrg1,Ednrb,Inppl1,Ntng2,Abi3bp,Marcks
+39	yetfasco-1266	0.0389217	3.03516	M4	Mef2a,2310045N01Rik,Mef2b,Mef2c,Mef2d,Mybl1,Mybl2,Snapc4,Myb	Slc7a11,Sertad4,Abi3bp,Ctgf,Kctd5,Id4,Stk38,Tmem181a
+40	yetfasco-1549	0.0389142	3.03412	M4		Slc7a11,Ppap2b,Cxxc5,Inppl1,Ctgf,Sertad4,Abi3bp,Tmem181a,Pdrg1,Id4,Rpl5,Ntng2,Slc11a2,Commd10,Dpf1,Kctd5,Pwp2,Acad9,Ednrb,Stx6
+41	tfdimers-MD00467	0.0387939	3.01751	M5	Pbx1,Arid3a	Marcks,Cxxc5,Sox2,Ccnyl1,Sertad4,Ctgf,Ednrb,2010111I01Rik,Slc7a11,Ppap2b,Inppl1,Tmem181a
+42	hdpi-PKM2	0.0387639	3.01335	M10	Pkm	Map4k4,Slc8a3,Id4,Inppl1,Ppap2b,Mms19,Sox2,Wdr77,Gtf2ird1,Cstf1,Pnpla6
+43	yetfasco-1201	0.0387263	3.00816	M4		Ctgf,Ppap2b,Abi3bp,Sertad4,Slc7a11
+44	transfac_pro-M02762	0.0386962	3.00401	M7	Hbp1	Hmgb3,4933439C10Rik,Dpf1,Frmd4b,Hs6st2,Fgfbp3,2010111I01Rik,Tmem181a,Sox2,Ednrb

@@ -1,0 +1,11 @@
+[samopen] SAM header is present: 93343 sequences.
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2216:20865:34647 1:N:0:AGTCAA/1 (patid 8789016); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2106:11870:81021 1:N:0:AGTCAA/1 (patid 16571813); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2309:9671:99817 1:N:0:AGTCAA/1 (patid 20481442); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1201:17431:28128 1:N:0:AGTCAA/1 (patid 23053871); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1312:5567:25276 1:Y:0:AGTCAA/1 (patid 26051536); skipping read
+# reads processed: 31895981
+# reads with at least one reported alignment: 22739977 (71.29%)
+# reads that failed to align: 9156004 (28.71%)
+Reported 61169946 paired-end alignments to 1 output stream(s)
+[bam_sort_core] merging from 83 files...

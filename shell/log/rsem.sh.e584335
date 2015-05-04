@@ -1,0 +1,22 @@
+[samopen] SAM header is present: 93343 sequences.
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1113:15786:99302 1:N:0:CTTGTA/1 (patid 2851456); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1202:12207:77509 1:N:0:CTTGTA/1 (patid 3893229); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1205:14598:91577 1:Y:0:CTTGTA/1 (patid 4570631); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1215:13029:24793 1:N:0:CTTGTA/1 (patid 6611047); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2102:11325:55264 1:N:0:CTTGTA/1 (patid 10814017); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2211:19621:8930 1:Y:0:CTTGTA/1 (patid 15976461); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2214:11288:60769 1:N:0:CTTGTA/1 (patid 16682687); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2304:20216:17617 1:N:0:CTTGTA/1 (patid 17807473); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2314:2657:52065 1:N:0:CTTGTA/1 (patid 20043090); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1206:10400:60127 1:N:0:CTTGTA/1 (patid 25286143); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1208:5158:94862 1:N:0:CTTGTA/1 (patid 25800466); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1301:3005:15782 1:N:0:CTTGTA/1 (patid 27605725); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1308:3082:23342 1:N:0:CTTGTA/1 (patid 29130593); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1310:9135:58092 1:N:0:CTTGTA/1 (patid 29646724); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2103:9002:46747 1:N:0:CTTGTA/1 (patid 31544897); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2111:5898:46219 1:N:0:CTTGTA/1 (patid 33141949); skipping read
+# reads processed: 40943441
+# reads with at least one reported alignment: 29372955 (71.74%)
+# reads that failed to align: 11570486 (28.26%)
+Reported 78989959 paired-end alignments to 1 output stream(s)
+[bam_sort_core] merging from 106 files...

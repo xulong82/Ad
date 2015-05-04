@@ -1,0 +1,20 @@
+[samopen] SAM header is present: 93343 sequences.
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1111:15494:6904 1:Y:0:GTTTCG/1 (patid 1360336); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1305:19838:78626 1:N:0:GATTCG/1 (patid 5025328); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2205:9612:37859 1:N:0:GTTTCG/1 (patid 9353339); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2306:13846:83427 1:Y:0:GTTTCG/1 (patid 11758245); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2307:8171:40558 1:Y:0:GTTTCG/1 (patid 11835933); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1211:6207:50836 1:Y:0:GTTTCG/1 (patid 16765638); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1301:5782:57296 1:N:0:GTTTCG/1 (patid 17615862); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2202:18939:43675 1:N:0:GTTTCG/1 (patid 22117246); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2205:17945:56480 1:Y:0:GTTTCG/1 (patid 22539020); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2312:21090:54070 1:N:0:GTTTAG/1 (patid 25724256); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1101:12601:64042 1:N:0:GTTTCG/1 (patid 26441071); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1116:3045:15510 1:Y:0:CTTTCG/1 (patid 28413944); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1201:19574:64070 1:N:0:GTTTCG/1 (patid 28617425); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1216:5060:76642 1:N:0:GTTTCG/1 (patid 30695977); skipping read
+# reads processed: 39518283
+# reads with at least one reported alignment: 28552031 (72.25%)
+# reads that failed to align: 10966252 (27.75%)
+Reported 76057134 paired-end alignments to 1 output stream(s)
+[bam_sort_core] merging from 103 files...

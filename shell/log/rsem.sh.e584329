@@ -1,0 +1,20 @@
+[samopen] SAM header is present: 93343 sequences.
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1111:7669:23312 1:N:0:ACTTGA/1 (patid 2615209); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1309:20321:8405 1:N:0:ACTTGA/1 (patid 10268599); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:1312:10322:96803 1:Y:0:ACTTGA/1 (patid 11273465); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2106:4761:97043 1:N:0:ACTTGA/1 (patid 13782404); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2303:5845:45702 1:Y:0:ACTTGA/1 (patid 20730826); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:3:2305:9230:44588 1:N:0:ACTTGA/1 (patid 21228759); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1102:5037:9068 1:N:0:ACTTGA/1 (patid 24445994); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1102:14247:72625 1:Y:0:ACTTGA/1 (patid 24606658); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:1303:11548:2503 1:N:0:ACTTGA/1 (patid 32898339); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2104:20667:62368 1:N:0:ACTTGA/1 (patid 37326389); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2114:11123:48799 1:N:0:ACATGA/1 (patid 39689114); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2114:18041:89255 1:N:0:ACTTGA/1 (patid 39789699); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2209:15111:49171 1:N:0:ACTTGA/1 (patid 42437091); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00311:79:C6R3HANXX:4:2307:19594:13394 1:Y:0:ACTTGA/1 (patid 45629163); skipping read
+# reads processed: 48098913
+# reads with at least one reported alignment: 33778668 (70.23%)
+# reads that failed to align: 14320245 (29.77%)
+Reported 91424732 paired-end alignments to 1 output stream(s)
+[bam_sort_core] merging from 124 files...

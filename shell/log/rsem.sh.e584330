@@ -1,0 +1,19 @@
+[samopen] SAM header is present: 93343 sequences.
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:1211:17731:32679 1:Y:0:CGATGT/1 (patid 3930125); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:7:2107:12140:100266 1:N:0:CGAGGT/1 (patid 8238851); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1203:3040:17329 1:N:0:CGATGT/1 (patid 17103967); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1205:2603:51238 1:Y:0:CGATGT/1 (patid 17451204); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1214:15805:28459 1:N:0:CGATGT/1 (patid 18783608); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:1302:16000:47883 1:N:0:CGATGT/1 (patid 19423282); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2104:20538:29150 1:N:0:CGATGT/1 (patid 22121238); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2107:12782:66765 1:Y:0:CGATGT/1 (patid 22614785); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2210:10333:42785 1:N:0:CGATGT/1 (patid 25419059); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:5:2306:10237:62967 1:N:0:CGATGT/1 (patid 27264531); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1107:4813:24906 1:N:0:CGATGT/1 (patid 29773065); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:1115:4159:11957 1:N:0:CGATGT/1 (patid 30957667); skipping read
+Warning: Exhausted best-first chunk memory for read HWI-D00273:93:C6GK3ANXX:6:2304:15242:92591 1:N:0:CGATGT/1 (patid 41448716); skipping read
+# reads processed: 43280388
+# reads with at least one reported alignment: 30549378 (70.58%)
+# reads that failed to align: 12731010 (29.42%)
+Reported 81598274 paired-end alignments to 1 output stream(s)
+[bam_sort_core] merging from 111 files...

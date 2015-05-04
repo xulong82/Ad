@@ -1,0 +1,26 @@
+#!/bin/bash
+
+qdel 584277
+qdel 584281
+qdel 584295
+qdel 584286
+qdel 584275
+qdel 584289
+qdel 584293
+qdel 584298
+qdel 584290
+qdel 584283
+qdel 584284
+qdel 584279
+qdel 584287
+qdel 584278
+qdel 584292
+qdel 584297
+qdel 584282
+qdel 584296
+qdel 584285
+qdel 584294
+qdel 584288
+qdel 584291
+qdel 584280
+qdel 584276
