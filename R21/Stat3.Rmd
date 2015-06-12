@@ -1,0 +1,18 @@
+---
+title: "Model fit of Stat1, Stat3, and Stat3-interacting genes"
+output: pdf_document
+---
+
+```{r, echo=F, warning=F, message=F}
+load("~/Dropbox/GitHub/Ad/R21/fit.rdt")
+```
+
+```{r}
+summary(glm.fit[["Stat1"]])
+summary(glm.fit[["Stat3"]])
+summary(glm.fit[["Ep300"]])
+summary(glm.fit[["Ndufa13"]])
+summary(glm.fit[["Nfkb1"]])
+summary(glm.fit[["Ncoa1"]])
+summary(glm.fit[["Mtor"]])
+```
