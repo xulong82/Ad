@@ -159,12 +159,3 @@ hc1 <- hcluster(t(ge[geneId1, ]), method = "pearson", link = "average") %>% as.p
 pdf("Figure/hc1.pdf", height = 5)
 par(mfrow = c(1, 1)); plot(hc1, edge.width=2, font=2, cex=0.7, label.offset=1e-3, tip.color = mycol, direction="downward")
 dev.off()
-
-# PCA
-pca.dt <- sapply(geneId2, function(x) sapply(grp, function(y) mean(ge[x, spInf$grp == y]))) %>% t
-pca <- prcomp(pca.dt - rowMeans(pca.dt))
-barplot(pca$sdev)
-barplot(pca$rotation[, 1])
-barplot(pca$rotation[, 2])
-plot(pca$rotation[, 1], pca$rotation[, 2], xlim = c(-0.6, 1.0))
-text(pca$rotation[, 1] + 5e-2, pca$rotation[, 2], colnames(pca.dt))
