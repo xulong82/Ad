@@ -113,3 +113,20 @@ write.xlsx(mygk[[1]][1], file = "LTP/ltp.xlsx", sheetName = "BP", append = T)
 write.xlsx(mygk[[1]][2], file = "LTP/ltp.xlsx", sheetName = "MF", append = T)
 write.xlsx(mygk[[1]][3], file = "LTP/ltp.xlsx", sheetName = "CC", append = T)
 write.xlsx(mmu04720, file = "LTP/ltp.xlsx", sheetName = "LTP", append = T)
+
+load("data/brain2014All_isoform.rdt")
+brain2014_isoform <- brain2014All[, colnames(brain.tpm)]
+
+gene = "Cacna1c"
+gene = "Crebbp"
+gene = "Braf"
+gene = "Ep300"
+
+ggvis1(gene)
+mouse = useMart("ensembl", dataset = "mmusculus_gene_ensembl")
+tx_select <- getBM(c("external_gene_name", "ensembl_transcript_id"), "external_gene_name", gene, mouse)
+tx_select <- intersect(tx_select$ensembl_transcript_id, rownames(brain2014_isoform))
+glm.dt_select <- brain2014_isoform[tx_select, ]
+glm.dt_select <- glm.dt_select[rowMax(glm.dt_select) > 10, ]
+glm.dt_select <- log2(glm.dt_select + 1)
+glm.fit_select <- apply(glm.dt_select, 1, function (x) summary(lm(x ~ age + geno + batch + age * geno)))
