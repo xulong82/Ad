@@ -17,7 +17,7 @@ setwd("~/Dropbox/GitHub/Load/")
 myList <- list()
 load("../X/summary.rdt")
 summary <- function(x) table %>% filter(query %in% x)
-source("../X/kegg.R")  # KEGG
+source("~/Dropbox/X/function.R")  # KEGG
 
 load("data/ge.rdt")
 ge0 <- sapply(ge, function(x) x$TPM) %>% as.data.frame
