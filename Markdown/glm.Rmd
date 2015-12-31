@@ -22,7 +22,7 @@ setwd("~/Dropbox/GitHub/Ad")
 
 load("./data/brain2014.rdt"); glm.dt <- brain.tpm
 # load("./data/retina2014.rdt"); glm.dt <- retina.tpm
-source("function.R")
+source("~/Dropbox/X/function.R")
 ```
 
 ### We used 2014 samples only, and kept genes that fit two criterias:
