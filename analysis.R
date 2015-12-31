@@ -12,7 +12,7 @@ library(contrast)
 library(igraph)
 
 rm(list = ls())
-setwd("~/Dropbox/GitHub/Load/")
+setwd("~/GitHub/Load/")
 
 myList <- list()
 load("../X/summary.rdt")

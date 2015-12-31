@@ -4,7 +4,7 @@ library(pheatmap)
 
 rm(list = ls())
 cadillac <- "/data/xwang/Load"
-github <- "~/Dropbox/GitHub/Load"
+github <- "~/GitHub/Load"
 
 setwd(cadillac)  # ------------------------------------
 load("GLM/fit_sampling.rdt")  # GLM fit with Stan
@@ -37,7 +37,7 @@ lapply(profile2, write, "Marker/2.txt", append = TRUE, ncolumns = 1e3)
 setwd(github)  # ------------------------------------
 
 # Enrichment
-load("../SCR/shiny/shinyList.rdt")  # background
+load("../Brain/shiny/shinyList.rdt")  # background
 bg <- shinyList$bg
 marker1 <- shinyList$marker1  # less than 47
 marker2 <- shinyList$marker2  # less than 10
@@ -54,4 +54,8 @@ save(profile1, profile2, enrich, file = "Marker/marker.rdt")
 
 pdf(file = "Figure/enrich1.pdf", width = 12)
 pheatmap(t(enrich1))
+dev.off()
+
+pdf(file = "Figure/enrich2.pdf", width = 15)
+pheatmap(t(enrich2), display_numbers = T)
 dev.off()
