@@ -3,6 +3,7 @@
 ***
 
 ```{r, echo=F, warning=F, message=F}
+
 library(ape)
 library(amap)
 library(ggdendro)
@@ -18,11 +19,12 @@ library(multcomp)
 library(png)
 
 rm(list = ls())
-setwd("~/Dropbox/GitHub/Ad")
+setwd("~/Dropbox/GitHub/App")
+source("~/Dropbox/GitHub/X/function.R")
 
-load("./data/brain2014.rdt"); glm.dt <- brain.tpm
+load("./data/brain2014.rdt"); glm.dt <- brain.tpm; rm(brain.tpm)
 # load("./data/retina2014.rdt"); glm.dt <- retina.tpm
-source("~/Dropbox/X/function.R")
+
 ```
 
 ### We used 2014 samples only, and kept genes that fit two criterias:
@@ -37,6 +39,7 @@ glm.dt <- glm.dt[apply(glm.dt, 1, function(x) max(x) > cutoff & sum(x > 0) > rou
 dim(glm.dt)
 par(mar = c(5, 5, 0, 2))
 hist(c(as.matrix(glm.dt)), main = NULL, xlab = "Log2(TPM)", col = "dodgerblue3", border = "white")
+
 ```
 
 ### Model the data with two GLMs
@@ -46,6 +49,7 @@ We took off each gene's batch effect as estimated by a GLM 4 predictors: age, gr
 $y \sim age + group + batch + age * group$
 
 ```{r}
+
 age <- factor(gsub("^.*(2m|4m|5m|6m).*", "\\1", colnames(glm.dt)), levels = c("2m", "4m", "5m", "6m"))
 group <- factor(gsub("^.*(WT|APP).*", "\\1", colnames(glm.dt)), levels = c("WT", "APP"))
 uid <- paste(age, group, sep = "_"); table(uid)
@@ -56,6 +60,41 @@ conditions <- conditions[conditions %in% uid]
 fit0 <- apply(glm.dt, 1, function (x) summary(lm(x ~ age + group + batch + age*group)))
 fit0.batch <- sapply(fit0, function (x) x$coefficients["batchmouse", "Estimate"])
 glm.dt_bc <- glm.dt - as.matrix(fit0.batch) %*% (as.numeric(batch) - 1)
+
+```
+
+### Some genes 
+
+```{r}
+
+gene = "App"
+gene = "Psen1"
+gene = "Nanos1"
+
+graph <- data.frame(value = 2^(c(as.matrix(glm.dt[gene, ]))), cond = factor(uid, levels = conditions), geno = group)
+ggplot(graph, aes(x = cond, y = value, fill = geno)) + geom_boxplot() +
+  theme_bw() + xlab("") + ylab("TPM") + scale_fill_manual(values = c("white", "firebrick1"))
+
+```
+
+# Graph
+
+```{r}
+
+pdf("./Nanos1.pdf", width = 6, height = 3)
+
+graph <- data.frame(value = 2^(c(as.matrix(glm.dt[gene, ]))), cond = factor(uid, levels = conditions), geno = group)
+ggplot(graph, aes(x = cond, y = value, fill = geno)) + geom_boxplot() +
+  theme_bw() + xlab("") + ylab("TPM") + scale_fill_manual(values = c("dodgerblue3", "firebrick1")) +
+  theme(panel.border = element_blank(),
+        axis.line = element_line(color = "grey30"),
+        axis.text.x = element_text(size = 10, face = 2, angle = 90, vjust = 0.5),
+        axis.text.y = element_text(size = 10, face = 2),
+        axis.title = element_text(size = 12, face = 2),
+        legend.position = "none")
+
+dev.off()
+
 ```
 
 The batch-corrected gene expressions were modeled by anotehr GLM with 3 predictors: age, group, and age group interaction.
@@ -63,8 +102,12 @@ The batch-corrected gene expressions were modeled by anotehr GLM with 3 predicto
 $y \sim age + group + age * group$
 
 ```{r}
+
 glm.fit <- apply(glm.dt_bc, 1, function (x) lm(x ~ age + group + age*group))
-summary(glm.fit[["App"]])$coefficient
+summary(glm.fit[["App"]])
+summary(glm.fit[["Psen1"]])
+summary(glm.fit[["Nanos1"]])
+
 ```
 
 ### Choose genes with R2 > 0.3 and Qvalue < 0.05
@@ -72,12 +115,14 @@ summary(glm.fit[["App"]])$coefficient
 GLM's R2 and F-test q-value define how well each gene's expression could be predicted by the predictors. Small p-value and big R2 suggest good fit.
 
 ```{r}
+
 fit.r2 <- sapply(glm.fit, function (x) summary(x)$r.squared)
 fit.qval <- sapply(glm.fit, function (x) summary(x)$fstatistic) %>% 
   apply(2, function (x) pf(x[1], x[2], x[3], lower.tail = F)) %>% p.adjust(method = "fdr")
 
 glm.fit <- glm.fit[fit.qval < 0.05 & fit.r2 > 0.3]
 length(glm.fit)
+
 ```
 
 ### Age, App, and age_App_inter genes with ANOVA
@@ -85,6 +130,7 @@ length(glm.fit)
 ANOVA identifies the normal aging genes, 2-month app genes, age-dependent app genes (4, 5, 6 months)
 
 ```{r}
+
 fit.anova <- lapply(glm.fit, anova)
 fit.anova[["App"]]
 
@@ -95,6 +141,7 @@ genes.aov <- lapply(c("age", "group", "age:group"), function(x1) {
 sapply(genes.aov, function(x) length(x))
 par(mar = c(0, 5, 0, 2))
 venn(list(age = names(genes.aov[[1]]), APP = names(genes.aov[[2]]), age_int_app = names(genes.aov[[3]])))
+
 ```
 
 ### Age-specific APP effect
@@ -102,6 +149,7 @@ venn(list(age = names(genes.aov[[1]]), APP = names(genes.aov[[2]]), age_int_app 
 This is equivalent with pairwise t-tests between WT and APP samples for each month.
 
 ```{r}
+
 age_spe <- lapply(c("2m", "4m", "5m", "6m"), function(x1) {
   sapply(glm.fit, function(x2) 
     contrast(x2, list(age = x1, group = "APP"), list(age = x1, group = "WT")))[c("Contrast", "Pvalue"), ]
@@ -116,6 +164,7 @@ age_spe_dn <- sapply(age_spe, function(x) x[, x[1, ] < -0.1 & x[2, ] < 0.05])
 
 sapply(age_spe_up, function(x) ncol(x)) 
 sapply(age_spe_dn, function(x) ncol(x))
+
 ```
 
 ### WT-specific age effect (normal aging genes)

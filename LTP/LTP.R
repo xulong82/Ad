@@ -6,7 +6,7 @@ library(KEGGREST)
 library(xlsx)
 
 rm(list = ls())
-setwd("~/Dropbox/GitHub/Ad")
+setwd("~/Dropbox/GitHub/App")
 load("data/brain2014.rdt") 
 
 glm.dt <- brain.tpm
